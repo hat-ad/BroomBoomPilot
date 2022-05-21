@@ -8,18 +8,16 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Welcome"
-        component={Welcome}
-        options={{
-          headerRight: () => (
-            <Pressable onPress={() => console.log("press")}>
-              <Text>Help</Text>
-            </Pressable>
-          ),
-        }}
-      />
+    <Stack.Navigator
+      defaultScreenOptions={{
+        headerRight: () => (
+          <Pressable onPress={() => console.log("press")}>
+            <Text>Help</Text>
+          </Pressable>
+        ),
+      }}
+    >
+      {/* <Stack.Screen name="Welcome" component={Welcome} /> */}
     </Stack.Navigator>
   );
 };
