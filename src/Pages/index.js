@@ -1,3 +1,3 @@
 import Welcome from "./Welcome";
-
-export { Welcome };
+import DrivingLicense from "./DocUpload/DrivingLicense";
+export { Welcome, DrivingLicense };
