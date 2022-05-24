@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Welcome, Language, SignUp, DrivingLicense } from "../Pages";
+import { Welcome, Language, SignUp, DrivingLicense, OtpScreen } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
 
@@ -27,14 +27,15 @@ const StackNavigation = () => {
         },
       }}
     >
-      <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen
+      {/* <Stack.Screen name="otp" component={OtpScreen} /> */}
+      {/* <Stack.Screen name="Welcome" component={Welcome} /> */}
+      {/* <Stack.Screen
         name="DrivingLicence"
         options={{
           headerTitle: "Driving License",
         }}
         component={DrivingLicense}
-      />
+      /> */}
       {/* <Stack.Screen name="Welcome" component={Welcome} /> */}
       {/* <Stack.Screen name="Language" component={Language} /> */}
       <Stack.Screen name="SignUp" component={SignUp} />
