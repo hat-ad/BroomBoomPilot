@@ -9,6 +9,7 @@ import {
   vehicleRC,
   AadharOrPanUpload,
   RiderDetails,
+  DocUpload,
   Language,
   OtpScreen,
 } from "../Pages";
