@@ -46,7 +46,7 @@ export default styles = {
     borderWidth: 2,
     borderRadius: 50,
     padding: 10,
-    marginTop: 90,
+    justifyContent: "flex-end"
   },
   centerText: { textAlign: "center", fontSize: 16, fontWeight: "600" },
   image: {
@@ -67,4 +67,8 @@ export default styles = {
   },
   row: { flexDirection: "row", justifyContent: "space-between" },
   iconText: { textAlign: "center", fontSize: 14, fontWeight: "600" },
+  box: {
+    alignSelf: "center", marginLeft: 30, marginRight: "auto", fontSize: 22, fontWeight: '700'
+  },
+  boxBtn: { flexDirection: "row", width: "100%", borderWidth: 1, padding: 20, borderRadius: 10, marginBottom:metrics.scale(20) }
 };

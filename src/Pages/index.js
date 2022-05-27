@@ -6,6 +6,7 @@ import GetReady from "./DocUpload/GetReady";
 import vehicleRC from "./DocUpload/vehicleRC";
 import AadharOrPanUpload from "./DocUpload/aadharOrPanUpload";
 import RiderDetails from "./RiderDetails";
+import DocUpload from "./DocUpload";
 import OtpScreen from "./Otp";
 export {
   Welcome,
@@ -16,5 +17,6 @@ export {
   vehicleRC,
   AadharOrPanUpload,
   RiderDetails,
+  DocUpload,
   OtpScreen,
 };

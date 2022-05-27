@@ -9,6 +9,7 @@ import {
   vehicleRC,
   AadharOrPanUpload,
   RiderDetails,
+  DocUpload,
   Language,
 } from "../Pages";
 import { Pressable } from "react-native";
@@ -38,6 +39,7 @@ const StackNavigation = () => {
         },
       }}
     >
+      <Stack.Screen name="DocUpload" component={DocUpload} />
       <Stack.Screen name="RiderDetails" component={RiderDetails} />
       <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
       <Stack.Screen name="Welcome" component={Welcome} />
