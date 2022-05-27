@@ -9,6 +9,7 @@ import {
   vehicleRC,
   AadharOrPanUpload,
   RiderDetails,
+  Language,
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
@@ -39,8 +40,6 @@ const StackNavigation = () => {
     >
       <Stack.Screen name="RiderDetails" component={RiderDetails} />
       <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
-      <Stack.Screen name="vehicleRc" component={vehicleRC} />
-      <Stack.Screen name="GetReady" component={GetReady} />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen
         name="vehicleRc"
