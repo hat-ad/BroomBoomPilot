@@ -4,6 +4,8 @@ import Language from "./Language/index";
 import SignUp from "./SignUp/index";
 import GetReady from "./DocUpload/GetReady";
 import vehicleRC from "./DocUpload/vehicleRC";
+import AadharOrPanUpload from "./DocUpload/aadharOrPanUpload";
+import RiderDetails from "./RiderDetails/index";
 import OtpScreen from "./Otp";
 export {
   Welcome,
@@ -12,5 +14,7 @@ export {
   DrivingLicense,
   GetReady,
   vehicleRC,
+  AadharOrPanUpload,
+  RiderDetails,
   OtpScreen,
 };

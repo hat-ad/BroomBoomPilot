@@ -12,6 +12,7 @@ export default styles = {
   title: {
     fontWeight: "400",
     fontSize: 22,
+    marginBottom: 20
   },
   muted: {
     fontWeight: "500",

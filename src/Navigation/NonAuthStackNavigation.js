@@ -1,19 +1,17 @@
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   Welcome,
-  Language,
   SignUp,
   DrivingLicense,
   GetReady,
-  vehicleRc,
   vehicleRC,
-  OtpScreen,
+  AadharOrPanUpload,
+  RiderDetails,
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 
 const Stack = createNativeStackNavigator();
@@ -39,9 +37,11 @@ const StackNavigation = () => {
         },
       }}
     >
-      {/* <Stack.Screen name="otp" component={OtpScreen} /> */}
-      {/* <Stack.Screen name="Welcome" component={Welcome} /> */}
-
+      <Stack.Screen name="RiderDetails" component={RiderDetails} />
+      <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
+      <Stack.Screen name="vehicleRc" component={vehicleRC} />
+      <Stack.Screen name="GetReady" component={GetReady} />
+      <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen
         name="vehicleRc"
         options={{
@@ -51,15 +51,15 @@ const StackNavigation = () => {
       />
       <Stack.Screen name="GetReady" component={GetReady} />
 
-      {/* <Stack.Screen
+      <Stack.Screen
         name="DrivingLicence"
         options={{
           headerTitle: "Driving License",
         }}
         component={DrivingLicense}
-      /> */}
-      {/* <Stack.Screen name="Language" component={Language} /> */}
-      {/* <Stack.Screen name="SignUp" component={SignUp} /> */}
+      />
+      <Stack.Screen name="Language" component={Language} />
+      <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>
   );
 };
