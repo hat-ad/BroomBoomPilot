@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { View, Text, Button, Linking, TouchableOpacity } from "react-native";
 import PhoneInput from "react-native-phone-number-input";
 import styles from "./styles";
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const inputRef = useRef(null);
   return (
     <View
@@ -79,6 +79,7 @@ const SignUp = () => {
             borderWidth: 1,
             borderRadius: 50,
           }}
+          onPress={() => navigation.navigate("otp")}
         >
           <Text style={{ textAlign: "center" }}>Send OTP</Text>
         </TouchableOpacity>

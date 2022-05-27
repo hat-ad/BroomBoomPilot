@@ -10,6 +10,7 @@ import {
   AadharOrPanUpload,
   RiderDetails,
   Language,
+  OtpScreen,
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
@@ -38,9 +39,6 @@ const StackNavigation = () => {
         },
       }}
     >
-      <Stack.Screen name="RiderDetails" component={RiderDetails} />
-      <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
-      <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen
         name="vehicleRc"
         options={{
@@ -48,17 +46,27 @@ const StackNavigation = () => {
         }}
         component={vehicleRC}
       />
-      <Stack.Screen name="GetReady" component={GetReady} />
 
-      <Stack.Screen
-        name="DrivingLicence"
-        options={{
-          headerTitle: "Driving License",
-        }}
-        component={DrivingLicense}
-      />
+      <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen
+        name="otp"
+        options={{
+          headerTitle: "OTP",
+        }}
+        component={OtpScreen}
+      />
+      <Stack.Screen
+        name="GetReady"
+        options={{
+          headerTitle: "",
+        }}
+        component={GetReady}
+      />
+
+      <Stack.Screen name="RiderDetails" component={RiderDetails} />
+      <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
     </Stack.Navigator>
   );
 };

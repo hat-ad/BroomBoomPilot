@@ -1,7 +1,8 @@
 import { View, Text } from "react-native";
-import React, { useRef } from "react";
+import React from "react";
 import OTPTextInput from "../../Components/AppOtpInput";
-const OtpScreen = () => {
+import { Button } from "react-native-paper";
+const OtpScreen = ({ navigation }) => {
   return (
     <View style={{ marginTop: 30, paddingHorizontal: 30 }}>
       <Text style={{ fontSize: 22, fontWeight: "700", textAlign: "center" }}>
@@ -23,6 +24,12 @@ const OtpScreen = () => {
         <Text style={{ fontSize: 14, fontWeight: "500" }}>
           Resend OTP in 10s
         </Text>
+        <Button
+          style={{ backgroundColor: "#FFCA28", marginTop: 20 }}
+          onPress={() => navigation.navigate("GetReady")}
+        >
+          change
+        </Button>
       </View>
     </View>
   );
