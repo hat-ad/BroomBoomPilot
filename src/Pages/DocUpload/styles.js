@@ -1,5 +1,10 @@
+import metrics from "../../Utility/metrics";
+
 export default styles = {
-  container: { paddingHorizontal: 20, paddingTop: 40 },
+  container: {
+    paddingHorizontal: 20,
+    paddingTop: metrics.verticalScale(10),
+  },
   heading: {
     fontWeight: "700",
     fontSize: 22,
@@ -43,4 +48,22 @@ export default styles = {
     marginTop: 90,
   },
   centerText: { textAlign: "center", fontSize: 16, fontWeight: "600" },
+  image: {
+    width: 80,
+    height: 80,
+  },
+  selected: {
+    backgroundColor: "#F5C00133",
+  },
+  modalImageContainer: {
+    margin: metrics.moderateScale(10),
+    paddingBottom: metrics.verticalScale(10),
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    height: metrics.verticalScale(120),
+    width: metrics.scale(120),
+  },
+  row: { flexDirection: "row", justifyContent: "space-between" },
+  iconText: { textAlign: "center", fontSize: 14, fontWeight: "600" },
 };

@@ -13,10 +13,13 @@ import {
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
+  const navigation = useNavigation();
   return (
     <Stack.Navigator
       screenOptions={{
@@ -39,8 +42,14 @@ const StackNavigation = () => {
       {/* <Stack.Screen name="otp" component={OtpScreen} /> */}
       {/* <Stack.Screen name="Welcome" component={Welcome} /> */}
 
-      {/* <Stack.Screen name="vehicleRc" component={vehicleRC} /> */}
-      {/* <Stack.Screen name="GetReady" component={GetReady} /> */}
+      <Stack.Screen
+        name="vehicleRc"
+        options={{
+          headerTitle: "Vehicle RC",
+        }}
+        component={vehicleRC}
+      />
+      <Stack.Screen name="GetReady" component={GetReady} />
 
       {/* <Stack.Screen
         name="DrivingLicence"
@@ -50,7 +59,7 @@ const StackNavigation = () => {
         component={DrivingLicense}
       /> */}
       {/* <Stack.Screen name="Language" component={Language} /> */}
-      <Stack.Screen name="SignUp" component={SignUp} />
+      {/* <Stack.Screen name="SignUp" component={SignUp} /> */}
     </Stack.Navigator>
   );
 };
