@@ -44,10 +44,10 @@ const StackNavigation = () => {
         },
       }}
     >
+      <Stack.Screen name="helpAndSupport" component={HelpAndSupport} />
+      <Stack.Screen name="pending" component={Pending} />
       <Stack.Screen name="error" component={Error} />
       <Stack.Screen name="approve" component={Approve} />
-      <Stack.Screen name="pending" component={Pending} />
-      <Stack.Screen name="helpAndSupport" component={HelpAndSupport} />
       <Stack.Screen
         name="vehicleRc"
         options={{ headerTitle: "Vehicle RC" }}
