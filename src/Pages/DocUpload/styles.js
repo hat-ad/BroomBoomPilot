@@ -1,9 +1,13 @@
 import metrics from "../../Utility/metrics";
+import {StyleSheet } from "react-native";
 
-export default styles = {
+
+
+export default styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingTop: metrics.verticalScale(10),
+    flex:1
   },
   heading: {
     fontWeight: "700",
@@ -22,14 +26,15 @@ export default styles = {
   pickerButton: {
     borderRadius: 50,
     backgroundColor: "#347EEA",
-    paddingVertical: 14,
+    paddingVertical: 10,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
   },
   pickerContainer: {
-    width: "50%",
+    width: "40%",
     marginRight: 10,
+    marginVertical: 6,
   },
   uploadContainer: {
     width: "100%",
@@ -37,18 +42,25 @@ export default styles = {
     borderWidth: 1,
     borderStyle: "solid",
     flexDirection: "row",
-    paddingVertical: 10,
-    paddingHorizontal: 5,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
     alignItems: "center",
     borderRadius: 10,
+    marginVertical: 10 
   },
   submit: {
+    borderColor: "#347EEA",
     borderWidth: 2,
     borderRadius: 50,
     padding: 10,
-    justifyContent: "flex-end"
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 20,
+    width: '100%',
+    backgroundColor: "#347EEA",
   },
-  centerText: { textAlign: "center", fontSize: 16, fontWeight: "600" },
+
+  centerText: { textAlign: "center", fontSize: 16, fontWeight: "600", color:"#fff" },
   image: {
     width: 80,
     height: 80,
@@ -71,4 +83,4 @@ export default styles = {
     alignSelf: "center", marginLeft: 30, marginRight: "auto", fontSize: 22, fontWeight: '700'
   },
   boxBtn: { flexDirection: "row", width: "100%", borderWidth: 1, padding: 20, borderRadius: 10, marginBottom:metrics.scale(20) }
-};
+});

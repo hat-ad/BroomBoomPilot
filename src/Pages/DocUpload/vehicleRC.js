@@ -1,10 +1,11 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import {View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { TextInput, Portal, Modal } from "react-native-paper";
 import { AppDocumentPicker } from "../../Components";
 import styles from "./styles";
-import { DeleteIcon, SteeringIcon } from "../../Utility/iconLibrary";
+import { DeleteIcon, SteeringIcon, InfoCircle } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
+
 const VehicleRC = () => {
   const [visible, setVisible] = useState(true);
   return (
@@ -72,6 +73,7 @@ const VehicleRC = () => {
       >
         <Text style={styles.heading}>Enter Vehicle RC number</Text>
         <TextInput placeholder="Enter DL number" mode="outlined" />
+        {/* < InfoCircle /> */}
       </View>
       <TouchableOpacity style={styles.submit}>
         <Text style={styles.centerText}>Submit</Text>

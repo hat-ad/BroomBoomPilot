@@ -19,6 +19,9 @@ export const MapMarkerIcon = ({ size, color, style }) => (
 export const ArrowRight = ({ size, color, style }) => (
   <FontAwesomeIcon icon={"arrow-right"} color={color} style={style} size={size} />
 );
+export const SearchIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"search"} color={color} style={style} size={size} />
+);
 
 export const SteeringIcon = ({ size, color, style }) => (
   <Image

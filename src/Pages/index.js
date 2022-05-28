@@ -8,6 +8,7 @@ import AadharOrPanUpload from "./DocUpload/aadharOrPanUpload";
 import RiderDetails from "./RiderDetails";
 import DocUpload from "./DocUpload";
 import OtpScreen from "./Otp";
+import helpAndSupport from "./HelpAndSupport/index";
 export {
   Welcome,
   Language,
@@ -19,4 +20,5 @@ export {
   RiderDetails,
   DocUpload,
   OtpScreen,
+  helpAndSupport
 };

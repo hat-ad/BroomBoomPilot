@@ -6,6 +6,9 @@ import {
   faCircleCheck,
   faLocationDot,
   faArrowRight,
+  faSearch,
+  // faLockKeyhole,
+  // faInfoCircle
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faArrowUpFromBracket, faTrash, faCircleQuestion, faCircleCheck, faLocationDot,faArrowRight);
+library.add(faSearch,faArrowUpFromBracket, faTrash, faCircleQuestion, faCircleCheck, faLocationDot,faArrowRight);
