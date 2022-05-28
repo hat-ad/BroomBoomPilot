@@ -26,7 +26,7 @@ const OtpScreen = ({ navigation }) => {
         </Text>
         <Button
           style={{ backgroundColor: "#FFCA28", marginTop: 20 }}
-          onPress={() => navigation.navigate("GetReady")}
+          onPress={() => navigation.navigate("docUpload")}
         >
           change
         </Button>

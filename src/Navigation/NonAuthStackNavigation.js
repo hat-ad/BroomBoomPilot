@@ -65,6 +65,13 @@ const StackNavigation = () => {
         }}
         component={GetReady}
       />
+      <Stack.Screen
+        name="docUpload"
+        options={{
+          headerTitle: "",
+        }}
+        component={DocUpload}
+      />
 
       <Stack.Screen name="RiderDetails" component={RiderDetails} />
       <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
