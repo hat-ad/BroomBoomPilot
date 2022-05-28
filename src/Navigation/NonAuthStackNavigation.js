@@ -12,6 +12,9 @@ import {
   DocUpload,
   Language,
   OtpScreen,
+  TermsAndConditions,
+  PrivacyPolicy,
+  SearchCity,
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
@@ -40,14 +43,16 @@ const StackNavigation = () => {
         },
       }}
     >
-      <Stack.Screen
+      {/* <Stack.Screen
         name="vehicleRc"
         options={{
           headerTitle: "Vehicle RC",
         }}
         component={vehicleRC}
-      />
-
+      /> */}
+      {/* <Stack.Screen name="SearchCity" component={SearchCity} /> */}
+      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="SignUp" component={SignUp} />

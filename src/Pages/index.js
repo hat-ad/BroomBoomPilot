@@ -8,6 +8,9 @@ import AadharOrPanUpload from "./DocUpload/aadharOrPanUpload";
 import RiderDetails from "./RiderDetails";
 import DocUpload from "./DocUpload";
 import OtpScreen from "./Otp";
+import TermsAndConditions from "./TermsAndConditions";
+import PrivacyPolicy from "./PrivacyPolicy";
+import SearchCity from "./SearchCity";
 export {
   Welcome,
   Language,
@@ -19,4 +22,7 @@ export {
   RiderDetails,
   DocUpload,
   OtpScreen,
+  TermsAndConditions,
+  PrivacyPolicy,
+  SearchCity,
 };
