@@ -8,7 +8,10 @@ import AadharOrPanUpload from "./DocUpload/aadharOrPanUpload";
 import RiderDetails from "./RiderDetails";
 import DocUpload from "./DocUpload";
 import OtpScreen from "./Otp";
-import helpAndSupport from "./HelpAndSupport/index";
+import HelpAndSupport from "./HelpAndSupport";
+import Approve from "./DocSubmitted/approve";
+import Error from "./DocSubmitted/error";
+import Pending from "./DocSubmitted/pending";
 export {
   Welcome,
   Language,
@@ -20,5 +23,8 @@ export {
   RiderDetails,
   DocUpload,
   OtpScreen,
-  helpAndSupport
+  HelpAndSupport,
+  Approve,
+  Error,
+  Pending,
 };

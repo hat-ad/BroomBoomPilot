@@ -12,7 +12,10 @@ import {
   DocUpload,
   Language,
   OtpScreen,
-  helpAndSupport
+  HelpAndSupport,
+  Approve,
+  Error,
+  Pending,
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
@@ -41,8 +44,15 @@ const StackNavigation = () => {
         },
       }}
     >
-      <Stack.Screen name="helpAndSupport" component={helpAndSupport} />
-      <Stack.Screen name="vehicleRc" options={{headerTitle: "Vehicle RC",}} component={vehicleRC}/>
+      <Stack.Screen name="pending" component={Pending} />
+      <Stack.Screen name="error" component={Error} />
+      <Stack.Screen name="approve" component={Approve} />
+      <Stack.Screen name="helpAndSupport" component={HelpAndSupport} />
+      <Stack.Screen
+        name="vehicleRc"
+        options={{ headerTitle: "Vehicle RC" }}
+        component={vehicleRC}
+      />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="SignUp" component={SignUp} />
