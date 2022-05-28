@@ -20,7 +20,7 @@ const Pending = () => {
       </View>
       <View style={styles.loader}>
         <Image source={require("../../../assets/BigLoader.png")} />
-      </View>
+      </View> 
     </View>
   );
 };

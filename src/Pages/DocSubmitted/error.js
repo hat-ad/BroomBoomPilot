@@ -19,7 +19,7 @@ const Error = () => {
             alignItems: "center",
           }}
         >
-          <View style={{ flexDirection: "row", marginBottom: 24 }}>
+          <View style={{ flexDirection: "row", marginBottom: metrics.verticalScale(14)}}>
             <Image
               style={styles.errorIcon}
               source={require("../../../assets/Icon/alertError.png")}
@@ -28,7 +28,7 @@ const Error = () => {
               Error reason 1 "On the other hand, we a
             </Text>
           </View>
-          <View style={{ flexDirection: "row", marginBottom: 24 }}>
+          <View style={{ flexDirection: "row", marginBottom: metrics.verticalScale(14)}}>
             <Image
               style={styles.errorIcon}
               source={require("../../../assets/Icon/alertError.png")}
@@ -37,7 +37,7 @@ const Error = () => {
               Men who are so beguile by the charms
             </Text>
           </View>
-          <View style={{ flexDirection: "row", marginBottom: 24 }}>
+          <View style={{ flexDirection: "row", marginBottom: metrics.verticalScale(14)}}>
             <Image
               style={styles.errorIcon}
               source={require("../../../assets/Icon/alertError.png")}
@@ -53,7 +53,7 @@ const Error = () => {
         />
       </View>
       <TouchableOpacity style={styles.Errorbtn}>
-        <Text style={{ textAlign: "center", fontSize: 22, color: "#fff" }}>
+        <Text style={{ textAlign: "center", fontSize: 18, color: "#fff" }}>
           Resubmit
         </Text>
       </TouchableOpacity>

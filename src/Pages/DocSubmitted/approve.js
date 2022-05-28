@@ -21,7 +21,7 @@ const Approve = () => {
         />
       </View>
       <TouchableOpacity style={styles.btn}>
-        <Text style={{ textAlign: "center", fontSize: 22, color: "#fff" }}>
+        <Text style={{ textAlign: "center", fontSize: 18, color: "#fff" }}>
           Proceed
         </Text>
       </TouchableOpacity>

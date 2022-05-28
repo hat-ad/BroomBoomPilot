@@ -18,8 +18,8 @@ export default styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "700",
     width: "100%",
-    marginBottom: 50,
-    marginTop: 60,
+    marginBottom: metrics.verticalScale(20),
+    marginTop: metrics.verticalScale(20),
   },
   textP: {
     fontSize: 18,
@@ -41,7 +41,7 @@ export default styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "400",
     width: "80%",
-    marginTop: 25,
+    marginTop: 10,
     marginBottom: metrics.verticalScale(50),
   },
   img: {
@@ -49,13 +49,14 @@ export default styles = StyleSheet.create({
     resizeMode: "contain",
   },
   GreenImg: {
-    width: 120,
+    width: "60%",
+    resizeMode: "contain",
     marginTop: metrics.verticalScale(40),
   },
   ApprovedImg: {
-    width: metrics.scale(230),
+    width: "70%",
     resizeMode: "contain",
-    marginTop: metrics.verticalScale(40),
+    marginTop: metrics.verticalScale(20),
   },
   NotApprovedImg: {
     width: "100%",
@@ -85,8 +86,7 @@ export default styles = StyleSheet.create({
     backgroundColor: "#B1000E",
   },
   errorIcon: {
-    height: "100%",
-    width: "auto",
+    width: 20,
     resizeMode: "contain",
     marginRight: metrics.scale(16),
   },
