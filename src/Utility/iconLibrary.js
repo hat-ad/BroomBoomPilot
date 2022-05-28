@@ -14,13 +14,23 @@ export const CircleCheckIcon = ({ size, color }) => (
   <FontAwesomeIcon icon={"circle-check"} color={color} size={size} />
 );
 export const MapMarkerIcon = ({ size, color, style }) => (
-  <FontAwesomeIcon icon={"location-dot"} color={color} style={style} size={size} />
+  <FontAwesomeIcon
+    icon={"location-dot"}
+    color={color}
+    style={style}
+    size={size}
+  />
 );
 export const ArrowRight = ({ size, color, style }) => (
-  <FontAwesomeIcon icon={"arrow-right"} color={color} style={style} size={size} />
+  <FontAwesomeIcon
+    icon={"arrow-right"}
+    color={color}
+    style={style}
+    size={size}
+  />
 );
 export const SearchIcon = ({ size, color, style }) => (
-  <FontAwesomeIcon icon={"search"} color={color} style={style} size={size} />
+  <FontAwesomeIcon icon={"search"} color={color} size={size} />
 );
 
 export const SteeringIcon = ({ size, color, style }) => (

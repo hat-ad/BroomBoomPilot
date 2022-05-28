@@ -2,13 +2,13 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import styles from "./style";
 import metrics from "../../Utility/metrics";
-// import Search from "../../Utility/iconLibrary";
+import { SearchIcon } from "../../Utility/iconLibrary";
 
 const HelpAndSupport = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={{ flexDirection: "row" }}>
-        {/* <Search /> */}
+        <SearchIcon />
         <Text style={{ fontSize: 24 }}>Search Issue</Text>
       </TouchableOpacity>
       <Text style={styles.anchorTag}>
