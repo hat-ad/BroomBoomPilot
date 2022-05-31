@@ -12,6 +12,9 @@ import HelpAndSupport from "./HelpAndSupport";
 import Approve from "./DocSubmitted/approve";
 import Error from "./DocSubmitted/error";
 import Pending from "./DocSubmitted/pending";
+import TermsAndConditions from "./TermsAndConditions";
+import PrivacyPolicy from "./PrivacyPolicy";
+import SearchCity from "./SearchCity";
 export {
   Welcome,
   Language,
@@ -27,4 +30,7 @@ export {
   Approve,
   Error,
   Pending,
+  TermsAndConditions,
+  PrivacyPolicy,
+  SearchCity,
 };

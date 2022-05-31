@@ -16,6 +16,7 @@ import {
   Approve,
   Error,
   Pending,
+  SearchCity,
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
@@ -44,8 +45,6 @@ const StackNavigation = () => {
         },
       }}
     >
-      {/* <Stack.Screen name="helpAndSupport" component={HelpAndSupport} /> */}
-
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="SignUp" component={SignUp} />
@@ -55,6 +54,11 @@ const StackNavigation = () => {
           headerTitle: "OTP",
         }}
         component={OtpScreen}
+      />
+      <Stack.Screen
+        name="searchCity"
+        component={SearchCity}
+        options={{ headerTitle: "Search City" }}
       />
       <Stack.Screen
         name="GetReady"
@@ -94,6 +98,7 @@ const StackNavigation = () => {
       <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
       <Stack.Screen name="approve" component={Approve} />
       <Stack.Screen name="error" component={Error} />
+      <Stack.Screen name="helpAndSupport" component={HelpAndSupport} />
     </Stack.Navigator>
   );
 };
