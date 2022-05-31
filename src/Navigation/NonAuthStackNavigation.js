@@ -41,6 +41,7 @@ const StackNavigation = () => {
         // headerTitle: () => null,
         headerTintColor: "white",
         headerStyle: {
+          paddingTop: 0,
           backgroundColor: "#1F1F1F",
         },
       }}

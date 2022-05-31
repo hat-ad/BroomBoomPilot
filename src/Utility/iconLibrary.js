@@ -33,6 +33,12 @@ export const ArrowRight = ({ size, color, style }) => (
 export const SearchIcon = ({ size, color, style }) => (
   <FontAwesomeIcon icon={"search"} color={color} style={style} size={size} />
 );
+export const GiftIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"gift"} color={color} style={style} size={size} />
+);
+export const CopyIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"copy"} color={color} style={style} size={size} />
+);
 
 export const SteeringIcon = ({ size, color, style }) => (
   <Image

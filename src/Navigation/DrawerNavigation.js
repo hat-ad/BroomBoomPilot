@@ -1,41 +1,33 @@
 import React from "react";
-import { Button, View } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
-import { HelpAndSupport, RiderDetails } from "../Pages";
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button
-        onPress={() => navigation.navigate("Notifications")}
-        title="Go to notifications"
-      />
-    </View>
-  );
-}
-
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
+import { HelpAndSupport, ReferAndEarn, RiderDetails } from "../Pages";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
   return (
-    <Drawer.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        header: () => null,
-      }}
-    >
-      <Drawer.Screen name="RiderDetails" component={RiderDetails} />
-      <Drawer.Screen name="Support" component={HelpAndSupport} />
-    </Drawer.Navigator>
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Drawer.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            headerTintColor: "white",
+            headerStyle: {
+              backgroundColor: "#1F1F1F",
+            },
+          }}
+        >
+          <Drawer.Screen
+            name="referAndEarn"
+            component={ReferAndEarn}
+            options={{ headerTitle: "Refer And Earn" }}
+          />
+          <Drawer.Screen name="RiderDetails" component={RiderDetails} />
+          <Drawer.Screen name="Support" component={HelpAndSupport} />
+        </Drawer.Navigator>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 

@@ -15,6 +15,8 @@ import Pending from "./DocSubmitted/pending";
 import TermsAndConditions from "./TermsAndConditions";
 import PrivacyPolicy from "./PrivacyPolicy";
 import SearchCity from "./SearchCity";
+import ReferAndEarn from "./ReferAndEarn";
+
 export {
   Welcome,
   Language,
@@ -33,4 +35,5 @@ export {
   TermsAndConditions,
   PrivacyPolicy,
   SearchCity,
+  ReferAndEarn,
 };

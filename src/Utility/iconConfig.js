@@ -8,7 +8,19 @@ import {
   faArrowRight,
   faSearch,
   // faLockKeyhole,
-  // faInfoCircle
+  // faInfoCircle,
+  faGift,
+  faCopy,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faSearch,faArrowUpFromBracket, faTrash, faCircleQuestion, faCircleCheck, faLocationDot,faArrowRight);
+library.add(
+  faSearch,
+  faArrowUpFromBracket,
+  faTrash,
+  faCircleQuestion,
+  faCircleCheck,
+  faLocationDot,
+  faArrowRight,
+  faGift,
+  faCopy
+);
