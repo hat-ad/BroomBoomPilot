@@ -7,7 +7,8 @@ export default styles = StyleSheet.create({
         paddingTop: metrics.verticalScale(10),
         alignItems: "center",
         height: "100%",
-        justifyContent: "space-between",
+        flex: 1,
+        // justifyContent: "space-between",
         backgroundColor: "#F9F9F9"
     },
     anchorTag: {
@@ -19,14 +20,13 @@ export default styles = StyleSheet.create({
     search: {
         flexDirection: "row",
         width: "100%",
-        padding: metrics.verticalScale(16),
+        padding: metrics.verticalScale(12),
         borderColor: "#000",
         borderRadius: 50,
         borderWidth: 1,
         backgroundColor: "#F8EEC7",
         alignItems: "center",
-        // position: "absolute",
-        // bottom: 20
+        marginVertical: metrics.verticalScale(20),
     },
     cards: {
         height: 100,
@@ -53,27 +53,68 @@ export default styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderRadius: 6,
         padding: metrics.verticalScale(20),
-        // top: '12%',
-        // position: "absolute"
+
     },
     selectIssue: {
         width: "100%",
         backgroundColor: "#fff",
         borderRadius: 6,
         padding: metrics.verticalScale(20),
-        // top: '40%',
-        // position: "absolute"
+        marginTop: metrics.verticalScale(20),
+        marginBottom: metrics.verticalScale(0),
     },
     ticketDetails: {
         paddingHorizontal: metrics.scale(20),
-        paddingTop: metrics.verticalScale(10),
-        paddingBottom: metrics.verticalScale(20),
         marginVertical: metrics.verticalScale(20),
+        paddingVertical: metrics.verticalScale(10),
         flexDirection: "row",
         width: '100%',
         borderRadius: 6,
         borderWidth: 1,
         borderColor: "#CCCCCC"
     },
-
+    issueSelect: {
+        paddingHorizontal: metrics.scale(20),
+        paddingVertical: metrics.verticalScale(10),
+        marginVertical: metrics.verticalScale(10),
+        flexDirection: "row",
+        width: '100%',
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: "#CCCCCC"
+    },
+    issueDetails: {
+        paddingHorizontal: metrics.scale(20),
+        paddingVertical: metrics.verticalScale(10),
+        marginVertical: metrics.verticalScale(20),
+        flexDirection: "row",
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: "#CCCCCC"
+    },
+    detailIssue: {
+        paddingHorizontal: metrics.scale(20),
+        paddingVertical: metrics.verticalScale(10),
+        marginVertical: metrics.verticalScale(20),
+        width: '100%',
+        borderRadius: 6,
+        backgroundColor: "#fff",
+        alignSelf: "flex-start"
+    },
+    Btn: {
+        height: 50,
+        backgroundColor: "#347EEA",
+        width: "100%",
+        justifyContent: "center",
+        borderRadius: 50,
+        marginTop: metrics.verticalScale(10),
+        position: "absolute",
+        bottom: 20
+    },
+    BtnText: {
+        fontSize: 20,
+        color: "#fff",
+        fontWeight: "700",
+        alignSelf: "center"
+    },
 });
