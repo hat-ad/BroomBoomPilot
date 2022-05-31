@@ -9,6 +9,7 @@ import RiderDetails from "./RiderDetails";
 import DocUpload from "./DocUpload";
 import OtpScreen from "./Otp";
 import HelpAndSupport from "./HelpAndSupport";
+import ContactUs from "./HelpAndSupport/contactUs";
 import Approve from "./DocSubmitted/approve";
 import Error from "./DocSubmitted/error";
 import Pending from "./DocSubmitted/pending";
@@ -27,6 +28,7 @@ export {
   DocUpload,
   OtpScreen,
   HelpAndSupport,
+  ContactUs,
   Approve,
   Error,
   Pending,
