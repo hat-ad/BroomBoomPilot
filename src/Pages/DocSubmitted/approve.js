@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import styles from "./style";
 
-const Approve = () => {
+const Approve = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={{ width: "100%", alignItems: "center" }}>
@@ -20,7 +20,10 @@ const Approve = () => {
           source={require("../../../assets/Approved.png")}
         />
       </View>
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => navigation.navigate("error")}
+      >
         <Text style={{ textAlign: "center", fontSize: 18, color: "#fff" }}>
           Proceed
         </Text>

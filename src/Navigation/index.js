@@ -8,16 +8,16 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen
-        name="Drawer"
-        component={DrawerNavigation}
-        options={{
-          header: () => null,
-        }}
-      /> */}
       <Stack.Screen
         name="nonAuthStack"
         component={NonAuthStackNavigation}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="Drawer"
+        component={DrawerNavigation}
         options={{
           header: () => null,
         }}

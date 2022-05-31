@@ -44,15 +44,8 @@ const StackNavigation = () => {
         },
       }}
     >
-      <Stack.Screen name="helpAndSupport" component={HelpAndSupport} />
-      <Stack.Screen name="pending" component={Pending} />
-      <Stack.Screen name="error" component={Error} />
-      <Stack.Screen name="approve" component={Approve} />
-      <Stack.Screen
-        name="vehicleRc"
-        options={{ headerTitle: "Vehicle RC" }}
-        component={vehicleRC}
-      />
+      {/* <Stack.Screen name="helpAndSupport" component={HelpAndSupport} /> */}
+
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="SignUp" component={SignUp} />
@@ -77,9 +70,30 @@ const StackNavigation = () => {
         }}
         component={DocUpload}
       />
-
+      <Stack.Screen
+        name="drivingLicense"
+        options={{ headerTitle: "Driving License" }}
+        component={DrivingLicense}
+      />
+      <Stack.Screen
+        name="vehicleRc"
+        options={{ headerTitle: "Vehicle RC" }}
+        component={vehicleRC}
+      />
+      <Stack.Screen
+        name="adhaar"
+        options={{ headerTitle: "Adhaar Or Pan Upload" }}
+        component={AadharOrPanUpload}
+      />
+      <Stack.Screen
+        name="pending"
+        options={{ headerTitle: "" }}
+        component={Pending}
+      />
       <Stack.Screen name="RiderDetails" component={RiderDetails} />
       <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
+      <Stack.Screen name="approve" component={Approve} />
+      <Stack.Screen name="error" component={Error} />
     </Stack.Navigator>
   );
 };
