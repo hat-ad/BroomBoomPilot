@@ -1,6 +1,11 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { HelpAndSupport, ReferAndEarn, RiderDetails } from "../Pages";
+import {
+  HelpAndSupport,
+  ReferAndEarn,
+  RiderDetails,
+  ContactUs,
+} from "../Pages";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const Drawer = createDrawerNavigator();
@@ -25,6 +30,7 @@ const DrawerNavigation = () => {
           />
           <Drawer.Screen name="RiderDetails" component={RiderDetails} />
           <Drawer.Screen name="Support" component={HelpAndSupport} />
+          <Drawer.Screen name="ContactUs" component={ContactUs} />
         </Drawer.Navigator>
       </SafeAreaView>
     </SafeAreaProvider>

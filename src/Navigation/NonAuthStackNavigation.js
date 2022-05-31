@@ -13,6 +13,7 @@ import {
   Language,
   OtpScreen,
   HelpAndSupport,
+  ContactUs,
   Approve,
   Error,
   Pending,
@@ -95,11 +96,11 @@ const StackNavigation = () => {
         options={{ headerTitle: "" }}
         component={Pending}
       />
-      <Stack.Screen name="RiderDetails" component={RiderDetails} />
+      {/* <Stack.Screen name="RiderDetails" component={RiderDetails} /> */}
       <Stack.Screen name="aadharOrPanUpload" component={AadharOrPanUpload} />
       <Stack.Screen name="approve" component={Approve} />
       <Stack.Screen name="error" component={Error} />
-      <Stack.Screen name="helpAndSupport" component={HelpAndSupport} />
+      {/* <Stack.Screen name="helpAndSupport" component={HelpAndSupport} /> */}
     </Stack.Navigator>
   );
 };

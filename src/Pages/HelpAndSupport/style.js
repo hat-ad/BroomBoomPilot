@@ -42,5 +42,36 @@ export default styles = StyleSheet.create({
         height: "50%",
         position: "absolute",
         top: "15%"
-    }
+    },
+    viewAll: {
+        marginLeft: "auto",
+    },
+    recentTickets: {
+        width: "100%",
+        backgroundColor: "#fff",
+        borderRadius: 6,
+        padding: metrics.verticalScale(20),
+        top: '12%',
+        position: "absolute"
+    },
+    selectIssue: {
+        width: "100%",
+        backgroundColor: "#fff",
+        borderRadius: 6,
+        padding: metrics.verticalScale(20),
+        top: '40%',
+        position: "absolute"
+    },
+    ticketDetails: {
+        paddingHorizontal: metrics.scale(20),
+        paddingTop: metrics.verticalScale(10),
+        paddingBottom: metrics.verticalScale(20),
+        marginVertical: metrics.verticalScale(20),
+        flexDirection: "row",
+        width: '100%',
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: "#CCCCCC"
+    },
+
 });
