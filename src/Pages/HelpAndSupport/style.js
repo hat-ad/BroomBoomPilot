@@ -6,7 +6,7 @@ export default styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: metrics.verticalScale(10),
         alignItems: "center",
-        flex: 1,
+        height: "100%",
         justifyContent: "space-between",
         backgroundColor: "#F9F9F9"
     },
@@ -24,7 +24,9 @@ export default styles = StyleSheet.create({
         borderRadius: 50,
         borderWidth: 1,
         backgroundColor: "#F8EEC7",
-        alignItems: "center"
+        alignItems: "center",
+        // position: "absolute",
+        // bottom: 20
     },
     cards: {
         height: 100,
@@ -51,16 +53,16 @@ export default styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderRadius: 6,
         padding: metrics.verticalScale(20),
-        top: '12%',
-        position: "absolute"
+        // top: '12%',
+        // position: "absolute"
     },
     selectIssue: {
         width: "100%",
         backgroundColor: "#fff",
         borderRadius: 6,
         padding: metrics.verticalScale(20),
-        top: '40%',
-        position: "absolute"
+        // top: '40%',
+        // position: "absolute"
     },
     ticketDetails: {
         paddingHorizontal: metrics.scale(20),
