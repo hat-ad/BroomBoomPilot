@@ -1,8 +1,8 @@
-import { NOTIFY } from "../actionTypes";
+import { NOTIFY, HIDE } from "../actionTypes";
 
 const INITIAL_STATE = {
   message: "",
-  type: "",
+  isVisible: false,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -11,7 +11,13 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         message: action.message,
-        type: action.type,
+        isVisible: true,
+      };
+    case HIDE:
+      return {
+        message: "",
+        type: "",
+        isVisible: false,
       };
     default:
       return state;

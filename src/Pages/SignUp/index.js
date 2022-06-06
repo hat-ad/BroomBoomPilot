@@ -1,9 +1,38 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { View, Text, Button, Linking, TouchableOpacity } from "react-native";
+import { TextInput, ActivityIndicator } from "react-native-paper";
 import PhoneInput from "react-native-phone-number-input";
+import { useDispatch } from "react-redux";
+import { notify } from "../../Redux/Actions/notificationActions";
+import Api from "../../Services";
 import styles from "./styles";
 const SignUp = ({ navigation }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
+  const [credentials, setCredentials] = useState({
+    email: "",
+    phone: "",
+  });
+
+  const onSubmit = async () => {
+    setIsLoading(true);
+    try {
+      const response = await Api.post(`/register`, {
+        email: credentials.email,
+      });
+      if (response.ack) {
+        dispatch(notify({ type: "success", message: response.message }));
+        navigation.navigate("otp", { email: credentials.email });
+      }
+      throw new Error(response.message);
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
+
   return (
     <View
       style={{
@@ -55,6 +84,14 @@ const SignUp = ({ navigation }) => {
             borderRadius: 5,
           }}
         />
+        <Text style={{ textAlign: "center", marginVertical: 10 }}>Or</Text>
+        <TextInput
+          label="Email"
+          onChangeText={(text) =>
+            setCredentials({ ...credentials, email: text })
+          }
+          style={{ backgroundColor: "#fff" }}
+        />
       </View>
       <View
         style={{
@@ -79,9 +116,14 @@ const SignUp = ({ navigation }) => {
             borderWidth: 1,
             borderRadius: 50,
           }}
-          onPress={() => navigation.navigate("otp")}
+          disabled={isLoading}
+          onPress={onSubmit}
         >
-          <Text style={{ textAlign: "center" }}>Send OTP</Text>
+          {isLoading ? (
+            <ActivityIndicator />
+          ) : (
+            <Text style={{ textAlign: "center" }}>Send OTP</Text>
+          )}
         </TouchableOpacity>
       </View>
     </View>

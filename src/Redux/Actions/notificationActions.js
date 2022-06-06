@@ -1,9 +1,14 @@
-import { NOTIFY } from "../actionTypes";
+import { HIDE, NOTIFY } from "../actionTypes";
 
 export const notify = (payload) => {
   return {
     type: NOTIFY,
     message: payload.message,
-    type: payload.type,
+  };
+};
+
+export const hide = () => {
+  return {
+    type: HIDE,
   };
 };

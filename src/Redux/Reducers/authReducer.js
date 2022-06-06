@@ -11,7 +11,6 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         clientToken: action.clientToken,
-        user: action.user,
       };
     case LOGOUT:
       return { ...state, clientToken: "", user: "" };

@@ -1,4 +1,4 @@
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { persistCombineReducers } from "redux-persist";
 
 import authReducer from "./authReducer";
@@ -7,7 +7,7 @@ import configReducer from "./configReducer";
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: AsyncStorage,
   whitelist: ["auth"],
 };
 

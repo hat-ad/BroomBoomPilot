@@ -1,3 +1,3 @@
 import AppDocumentPicker from "./AppDocumentPicker";
-
-export { AppDocumentPicker };
+import SnackBar from "./SnackBar";
+export { AppDocumentPicker, SnackBar };

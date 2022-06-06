@@ -7,17 +7,37 @@ const RiderDetails = () => {
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
-        <Image style={{ height: metrics.verticalScale(80), width: metrics.scale(150), }} resizeMode="contain" source={require("../../../assets/logoBigBlack.png")} />
-        <Image style={{height: metrics.verticalScale(130), width: metrics.scale(125),}} source={require("../../../assets/Icon/UserIcon.png")}/>
+        <Image
+          style={{
+            height: metrics.verticalScale(80),
+            width: metrics.scale(150),
+          }}
+          resizeMode="contain"
+          source={require("../../../assets/logoBigBlack.png")}
+        />
+        <Image
+          style={{
+            height: metrics.verticalScale(130),
+            width: metrics.scale(125),
+          }}
+          source={require("../../../assets/Icon/UserIcon.png")}
+        />
         <Text
           style={{
             marginTop: metrics.verticalScale(8),
             fontSize: 22,
             fontWeight: "600",
-          }}>
+          }}
+        >
           Ramesh Kr. Paul
         </Text>
-        <Text style={{ marginTop: metrics.verticalScale(8), fontSize: 12, color: "#347EEA" }}>
+        <Text
+          style={{
+            marginTop: metrics.verticalScale(8),
+            fontSize: 12,
+            color: "#347EEA",
+          }}
+        >
           Pulser 250
         </Text>
       </View>
@@ -34,7 +54,9 @@ const RiderDetails = () => {
           <Text style={styles.cardText}>Vehicle number</Text>
           <Text style={styles.cardHead}>WB5543</Text>
         </View>
-        <View style={[styles.cardCont, { borderBottomWidth: 0 }]}>
+        <View
+          style={[styles.driveCont, { borderBottomWidth: 0, marginBottom: 0 }]}
+        >
           <Text style={styles.cardText}>Driver License</Text>
           <Text style={styles.cardHead}>KGB541FHSKJLS</Text>
         </View>
@@ -48,7 +70,14 @@ const RiderDetails = () => {
         }}
       >
         <TouchableOpacity>
-          <Text style={{ color: "#347EEA", fontSize: 15, fontWeight: "600", lineHeight: 40}}>
+          <Text
+            style={{
+              color: "#347EEA",
+              fontSize: 15,
+              fontWeight: "600",
+              lineHeight: 40,
+            }}
+          >
             View more
           </Text>
         </TouchableOpacity>
@@ -58,9 +87,10 @@ const RiderDetails = () => {
             paddingHorizontal: metrics.scale(30),
             paddingVertical: metrics.verticalScale(10),
             borderRadius: 50,
-            backgroundColor: "#347EEA"
-          }}>
-          <Text style={{color: "#fff"}}>Share</Text>
+            backgroundColor: "#347EEA",
+          }}
+        >
+          <Text style={{ color: "#fff" }}>Share</Text>
         </TouchableOpacity>
       </View>
     </View>

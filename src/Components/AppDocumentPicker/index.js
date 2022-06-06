@@ -1,8 +1,9 @@
-import { View, Button, Text } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import React, { useCallback } from "react";
-import DocumentPicker, { types } from "react-native-document-picker";
-import { TouchableOpacity } from "react-native-gesture-handler";
+// import DocumentPicker, { types } from "react-native-document-picker";
+
 import { UploadIcon } from "../../Utility/iconLibrary";
+import * as DocumentPicker from "expo-document-picker";
 
 const AppDocumentPicker = ({
   title,
@@ -11,19 +12,20 @@ const AppDocumentPicker = ({
   onDocumentPicked,
 }) => {
   const handleDocumentSelection = async () => {
-    try {
-      const pickerResult = await DocumentPicker.pickMultiple({
-        presentationStyle: "fullScreen",
-        copyTo: "cachesDirectory",
-      });
-      onDocumentPicked([pickerResult]);
-    } catch (e) {
-      console.log(e);
-    }
+    console.log("handleDocumentSelection");
+    let result = await DocumentPicker.getDocumentAsync({});
+
+    console.log(result);
   };
   return (
     <View style={containerStyle}>
-      <TouchableOpacity style={buttonStyle} onPress={handleDocumentSelection}>
+      <TouchableOpacity
+        style={buttonStyle}
+        onPress={() => {
+          console.log("onDocumentPicked");
+          handleDocumentSelection();
+        }}
+      >
         <UploadIcon size={18} color="white" />
         <Text
           style={{

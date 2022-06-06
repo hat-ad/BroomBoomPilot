@@ -74,7 +74,6 @@ export default class API {
           data: params,
         };
       }
-
       this.axiosInstance
         .request(options)
         .then((response) => {
