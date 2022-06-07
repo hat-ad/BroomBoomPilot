@@ -17,19 +17,23 @@ const SignUp = ({ navigation }) => {
 
   const onSubmit = async () => {
     setIsLoading(true);
-    try {
-      const response = await Api.post(`/register`, {
-        email: credentials.email,
-      });
-      if (response.ack) {
-        dispatch(notify({ type: "success", message: response.message }));
-        navigation.navigate("otp", { email: credentials.email });
-      }
-      throw new Error(response.message);
-    } catch (error) {
-      dispatch(notify({ type: "error", message: error.message }));
-      console.log(error);
-    }
+    navigation.navigate("otp", { email: credentials.email });
+
+    // console.log("credentials", credentials);
+    // try {
+    //   const response = await Api.post(`/register`, {
+    //     email: credentials.email,
+    //   });
+    //   if (response.status) {
+    //     dispatch(notify({ type: "success", message: response.message }));
+    //     navigation.navigate("otp", { email: credentials.email });
+    //     return;
+    //   }
+    //   throw new Error(response.message);
+    // } catch (error) {
+    //   dispatch(notify({ type: "error", message: error.message }));
+    //   console.log(error);
+    // }
     setIsLoading(false);
   };
 

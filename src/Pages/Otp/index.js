@@ -22,23 +22,25 @@ const OtpScreen = ({ navigation, route }) => {
 
   const onSubmitOtp = async () => {
     setLoading(true);
-    try {
-      console.log("email", email);
-      const response = await Api.post("auth/signup", {
-        email: email,
-        otp: otp,
-      });
-      // console.log(response);
-      if (response.ack) {
-        console.log(response.token);
-        dispatch(login({ clientToken: response.token }));
-        navigation.navigate("docUpload");
-      } else {
-        throw new Error(response.message);
-      }
-    } catch (error) {
-      dispatch(notify({ type: "error", message: error.message }));
-    }
+    navigation.navigate("docUpload");
+
+    // try {
+    //   console.log("email", email);
+    //   const response = await Api.post("auth/signup", {
+    //     email: email,
+    //     otp: otp,
+    //   });
+    //   // console.log(response);
+    //   if (response.ack) {
+    //     console.log(response.token);
+    //     dispatch(login({ clientToken: response.token }));
+    //     navigation.navigate("docUpload");
+    //   } else {
+    //     throw new Error(response.message);
+    //   }
+    // } catch (error) {
+    //   dispatch(notify({ type: "error", message: error.message }));
+    // }
     setLoading(false);
   };
 

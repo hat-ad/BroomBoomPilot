@@ -8,26 +8,25 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   const auth = useSelector((state) => state.auth);
-  console.log("auth", auth);
   return (
     <Stack.Navigator>
-      {auth.clientToken ? (
-        <Stack.Screen
-          name="Drawer"
-          component={DrawerNavigation}
-          options={{
-            header: () => null,
-          }}
-        />
-      ) : (
-        <Stack.Screen
-          name="nonAuthStack"
-          component={NonAuthStackNavigation}
-          options={{
-            header: () => null,
-          }}
-        />
-      )}
+      <Stack.Screen
+        name="Drawer"
+        component={DrawerNavigation}
+        options={{
+          header: () => null,
+        }}
+      />
+      {/* {auth.clientToken ? (
+      ) : ( */}
+      <Stack.Screen
+        name="nonAuthStack"
+        component={NonAuthStackNavigation}
+        options={{
+          header: () => null,
+        }}
+      />
+      {/* )} */}
     </Stack.Navigator>
   );
 };
