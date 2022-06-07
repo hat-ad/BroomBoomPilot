@@ -7,15 +7,19 @@ import * as DocumentPicker from "expo-document-picker";
 
 const AppDocumentPicker = ({
   title,
+  onDocumentPicked,
   containerStyle,
   buttonStyle,
-  onDocumentPicked,
 }) => {
   const handleDocumentSelection = async () => {
     console.log("handleDocumentSelection");
-    let result = await DocumentPicker.getDocumentAsync({});
-
-    console.log(result);
+    let result = await DocumentPicker.getDocumentAsync({
+      type: "*/*",
+      copyToCacheDirectory: true,
+    }).then((response) => {
+      console.log(response);
+    });
+    // console.log(result);
   };
   return (
     <View style={containerStyle}>

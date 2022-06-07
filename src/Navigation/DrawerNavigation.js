@@ -5,6 +5,7 @@ import {
   ReferAndEarn,
   RiderDetails,
   ContactUs,
+  Faq,
 } from "../Pages";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -31,6 +32,7 @@ const DrawerNavigation = () => {
           <Drawer.Screen name="RiderDetails" component={RiderDetails} />
           <Drawer.Screen name="Support" component={HelpAndSupport} />
           <Drawer.Screen name="ContactUs" component={ContactUs} />
+          <Drawer.Screen name="Faq" component={Faq} />
         </Drawer.Navigator>
       </SafeAreaView>
     </SafeAreaProvider>
