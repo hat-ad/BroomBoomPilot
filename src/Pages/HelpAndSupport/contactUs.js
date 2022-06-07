@@ -1,11 +1,5 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-} from "react-native";
-import React, { useState } from "react";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import React from "react";
 import styles from "./style";
 import metrics from "../../Utility/metrics";
 import { SearchIcon, ArrowRight } from "../../Utility/iconLibrary";
