@@ -47,13 +47,7 @@ const StackNavigation = () => {
         },
       }}
     >
-      {/* <Stack.Screen
-        name="drivingLicense"
-        options={{ headerTitle: "Driving License" }}
-        component={DrivingLicense}
-      /> */}
-
-      {/* <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen
@@ -81,8 +75,12 @@ const StackNavigation = () => {
           headerTitle: "",
         }}
         component={DocUpload}
-      /> */}
-
+      />
+      <Stack.Screen
+        name="drivingLicense"
+        options={{ headerTitle: "Driving License" }}
+        component={DrivingLicense}
+      />
       <Stack.Screen
         name="vehicleRc"
         options={{ headerTitle: "Vehicle RC" }}

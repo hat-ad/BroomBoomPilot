@@ -7,6 +7,8 @@ import {
   RiderDetails,
   ContactUs,
   Faq,
+  PrivacyPolicy,
+  TermsAndConditions,
 } from "../Pages";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -59,11 +61,11 @@ const DrawerNavigation = () => {
           }}
         >
           <Drawer.Screen
-            name="referAndEarn"
+            name="Refer and Earn"
             component={ReferAndEarn}
             options={{ headerTitle: "Refer And Earn" }}
           />
-          <Drawer.Screen name="RiderDetails" component={RiderDetails} />
+          <Drawer.Screen name="Rider Details" component={RiderDetails} />
           {/* <Drawer.Screen
             name="Support"
             options={{
@@ -72,7 +74,7 @@ const DrawerNavigation = () => {
             component={SupportStack}
           /> */}
           <Drawer.Screen
-            name="support"
+            name="Support"
             options={{
               headerTitle: "Help and Support",
             }}
@@ -80,6 +82,11 @@ const DrawerNavigation = () => {
           />
           <Drawer.Screen name="ContactUs" component={ContactUs} />
           <Drawer.Screen name="Faq" component={Faq} />
+          <Drawer.Screen name="Privacy Policy" component={PrivacyPolicy} />
+          <Drawer.Screen
+            name="Terms and Conditions"
+            component={TermsAndConditions}
+          />
         </Drawer.Navigator>
       </SafeAreaView>
     </SafeAreaProvider>

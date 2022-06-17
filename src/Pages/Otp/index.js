@@ -73,6 +73,7 @@ const OtpScreen = ({ navigation, route }) => {
         <Text style={{ fontSize: 14, fontWeight: "500", textAlign: "right" }}>
           Resend OTP in 10s
         </Text>
+        <Button onPress={onSubmitOtp}>next</Button>
       </View>
     </View>
   );
