@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { TextInput } from "react-native-paper";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import styles from "../../Pages/SearchCity/style/styleForInitialScreen";
 import { SearchIcon } from "../../Utility/iconLibrary";
 
@@ -17,7 +16,7 @@ const InitialScreen = ({ setState }) => {
           <TextInput
             placeholder="search city"
             style={styles.input}
-            onFocus={() => setState(true)}
+            onChangeText={(val) => setInput(val)}
           />
         </View>
       </View>

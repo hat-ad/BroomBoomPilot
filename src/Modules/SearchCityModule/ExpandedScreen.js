@@ -28,8 +28,8 @@ const ExpandedScreen = () => {
   const [input, setInput] = useState("");
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity>
-      <Text>{item.title}</Text>
+    <TouchableOpacity style={styles.item}>
+      <Text style={{ fontWeight: "500" }}>{item.title}</Text>
     </TouchableOpacity>
   );
 

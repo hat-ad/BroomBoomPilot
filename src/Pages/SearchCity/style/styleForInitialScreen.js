@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
+import metrics from "../../../Utility/metrics";
 export default styleForInitialScreen = StyleSheet.create({
   container: {
-    height: "100%",
-    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   imageContainer: {
     width: "100%",
@@ -23,24 +24,23 @@ export default styleForInitialScreen = StyleSheet.create({
     fontWeight: "700",
   },
   searchbox: {
-    width: "83%",
-    height: 45,
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 22,
-    backgroundColor: "#DDDDDD",
-    marginTop: 35,
+    borderRadius: 50,
+    backgroundColor: "#F5C00133",
+    paddingHorizontal: metrics.scale(30),
+    paddingVertical: metrics.verticalScale(10),
+    marginHorizontal: metrics.scale(30),
+    marginTop: metrics.verticalScale(20),
   },
+
   searchIcon: {
-    margin: 10,
+    margin: metrics.verticalScale(10),
   },
   input: {
-    width: "80%",
-    height: 35,
-    backgroundColor: "#DDDDDD",
-    outlineWidth: 1,
+    width: "100%",
   },
+
   selectedCityText: {
     textAlign: "center",
     fontSize: 17,
@@ -48,12 +48,11 @@ export default styleForInitialScreen = StyleSheet.create({
     marginTop: 45,
   },
   button: {
-    width: "83%",
-    padding: 12,
+    paddingVertical: metrics.scale(15),
+    marginTop: metrics.verticalScale(25),
+    marginHorizontal: metrics.scale(15),
     borderRadius: 22,
     alignItems: "center",
     backgroundColor: "#DDDDDD",
-    marginLeft: 25,
-    marginTop: 35,
   },
 });

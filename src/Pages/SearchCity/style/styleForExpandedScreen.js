@@ -5,7 +5,7 @@ export default styleForExpandedScreen = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: metrics.scale(20),
   },
   searchbox: {
     flexDirection: "row",
@@ -14,6 +14,7 @@ export default styleForExpandedScreen = StyleSheet.create({
     backgroundColor: "#F5C00133",
     paddingHorizontal: metrics.scale(30),
     paddingVertical: metrics.verticalScale(10),
+    marginHorizontal: metrics.scale(10),
   },
 
   searchIcon: {
@@ -24,15 +25,14 @@ export default styleForExpandedScreen = StyleSheet.create({
   },
 
   searchItems: {
-    width: "85%",
+    width: "100%",
     height: "80%",
-    backgroundColor: "#DDDDDD",
-    marginTop: 20,
+    marginTop: metrics.verticalScale(20),
+    margin: metrics.scale(10),
   },
   item: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#696969",
-    backgroundColor: "#C0C0C0",
+    padding: metrics.scale(10),
+    borderBottomWidth: metrics.verticalScale(1),
+    borderBottomColor: "#ACA5A5",
   },
 });
