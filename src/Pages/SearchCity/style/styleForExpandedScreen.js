@@ -1,29 +1,26 @@
 import { StyleSheet } from "react-native";
+import metrics from "../../../Utility/metrics";
 export default styleForExpandedScreen = StyleSheet.create({
   container: {
     height: "100%",
-    width: "100%",
-    display: "flex",
+    justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 20,
   },
   searchbox: {
-    width: "85%",
-    height: 45,
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 22,
-    backgroundColor: "#DDDDDD",
-    marginTop: 35,
+    borderRadius: 50,
+    backgroundColor: "#F5C00133",
+    paddingHorizontal: metrics.scale(30),
+    paddingVertical: metrics.verticalScale(10),
   },
 
   searchIcon: {
-    margin: 10,
+    margin: metrics.verticalScale(10),
   },
   input: {
-    width: "82%",
-    height: 35,
-    backgroundColor: "#DDDDDD",
+    width: "100%",
   },
 
   searchItems: {

@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { FlatList, TouchableOpacity, Text, View } from "react-native";
-import { TextInput } from "react-native-paper";
-import { SearchIcon } from "../../Utility/iconLibrary";
+import {
+  FlatList,
+  TouchableOpacity,
+  Text,
+  View,
+  TextInput,
+} from "react-native";
 
-const ExpandedScreen = ({ styles }) => {
+import { SearchIcon } from "../../Utility/iconLibrary";
+import styles from "../../Pages/SearchCity/style/styleForExpandedScreen";
+
+const ExpandedScreen = () => {
   const DATA = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -20,7 +27,7 @@ const ExpandedScreen = ({ styles }) => {
   ];
   const [input, setInput] = useState("");
 
-  const renderItem = (item) => (
+  const renderItem = ({ item }) => (
     <TouchableOpacity>
       <Text>{item.title}</Text>
     </TouchableOpacity>

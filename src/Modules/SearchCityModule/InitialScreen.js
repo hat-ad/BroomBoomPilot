@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
-import { Image } from "react-native-svg";
+import styles from "../../Pages/SearchCity/style/styleForInitialScreen";
 import { SearchIcon } from "../../Utility/iconLibrary";
-const InitialScreen = ({ setState, styles }) => {
+
+const InitialScreen = ({ setState }) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}></View>
