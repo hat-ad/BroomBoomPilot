@@ -10,13 +10,13 @@ const Navigation = () => {
   const auth = useSelector((state) => state.auth);
   return (
     <Stack.Navigator>
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Drawer"
         component={DrawerNavigation}
         options={{
           header: () => null,
         }}
-      />
+      /> */}
       {/* {auth.clientToken ? (
       ) : ( */}
       <Stack.Screen

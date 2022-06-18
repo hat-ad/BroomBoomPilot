@@ -1,13 +1,19 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View } from "react-native";
+import InitialScreen from "../../Modules/SearchCityModule/InitialScreen";
+import ExpandedScreen from "../../Modules/SearchCityModule/ExpandedScreen";
+import styleForInitialScreen from "./style/styleForInitialScreen";
+import styleForExpandedScreen from "./style/styleForExpandedScreen";
+
 const SearchCity = () => {
+  const [state, setState] = useState(false);
   return (
     <View>
-      <View></View>
-      <View>
-        <Text>Choose you city where you want to ride ?</Text>
-      </View>
-      <View></View>
+      {state ? (
+        <ExpandedScreen styles={styleForExpandedScreen} />
+      ) : (
+        <InitialScreen setState={setState} styles={styleForInitialScreen} />
+      )}
     </View>
   );
 };

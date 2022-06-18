@@ -47,7 +47,12 @@ const StackNavigation = () => {
         },
       }}
     >
-      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen
+        name="searchCity"
+        component={SearchCity}
+        options={{ headerTitle: "Search City" }}
+      />
+      {/* <Stack.Screen name="Welcome" component={Welcome} /> */}
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen
@@ -57,11 +62,11 @@ const StackNavigation = () => {
         }}
         component={OtpScreen}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="searchCity"
         component={SearchCity}
         options={{ headerTitle: "Search City" }}
-      />
+      /> */}
       <Stack.Screen
         name="GetReady"
         options={{

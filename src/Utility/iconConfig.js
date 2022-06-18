@@ -21,6 +21,7 @@ library.add(
   faCircleCheck,
   faLocationDot,
   faArrowRight,
+  faSearch,
   faGift,
   faCopy
 );
