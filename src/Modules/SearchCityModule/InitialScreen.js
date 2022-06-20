@@ -16,7 +16,7 @@ const InitialScreen = ({ setState }) => {
           <TextInput
             placeholder="search city"
             style={styles.input}
-            onChangeText={(val) => setInput(val)}
+            onFocus={() => setState(true)}
           />
         </View>
       </View>

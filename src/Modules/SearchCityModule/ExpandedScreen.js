@@ -24,8 +24,13 @@ const ExpandedScreen = () => {
       id: "58694a0f-3da1-471f-bd96-145571e29d72",
       title: "Third Item",
     },
+    {
+      id: "58694a0f-3da1-471f-bd96-145571e29d50",
+      title: "fourth Item",
+    },
   ];
-  const [input, setInput] = useState("");
+
+  const [list, setList] = useState(DATA);
 
   const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.item}>
@@ -33,19 +38,16 @@ const ExpandedScreen = () => {
     </TouchableOpacity>
   );
 
-  // const filter = array.filter((value) => {
-  //   value.title.toLowerCase().includes(input.toLowerCase());
-  // });
-  // const newData = array.filter((item) => {
-  //   return item.title.toLowerCase().includes(input.toLocaleLowerCase);
-  // });
-  // console.log(newData);
-
-  // const regex = new RegExp("[a-z]+");
-  // const val = array.filter((val) => {
-  //   .match(regex);
-  // });
-  // console.log(val);
+  const onSearch = (val) => {
+    if (val === "") {
+      setList(DATA);
+    } else {
+      const filteredList = DATA.filter((item) =>
+        item.title.toLowerCase().includes(val.toLowerCase())
+      );
+      setList(filteredList);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -54,13 +56,13 @@ const ExpandedScreen = () => {
         <TextInput
           placeholder="search city"
           style={styles.input}
-          onChangeText={(val) => setInput(val)}
+          onChangeText={(val) => onSearch(val)}
         />
       </View>
 
       <View style={styles.searchItems}>
         <FlatList
-          data={DATA}
+          data={list}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
