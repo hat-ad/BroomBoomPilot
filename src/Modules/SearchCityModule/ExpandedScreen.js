@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FlatList,
   TouchableOpacity,
@@ -9,45 +9,40 @@ import {
 
 import { SearchIcon } from "../../Utility/iconLibrary";
 import styles from "../../Pages/SearchCity/style/styleForExpandedScreen";
+import Api from "../../Services";
+import { useDispatch } from "react-redux";
+import { notify } from "../../Redux/Actions";
 
-const ExpandedScreen = () => {
-  const DATA = [
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      title: "First Item",
-    },
-    {
-      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-      title: "Second Item",
-    },
-    {
-      id: "58694a0f-3da1-471f-bd96-145571e29d72",
-      title: "Third Item",
-    },
-    {
-      id: "58694a0f-3da1-471f-bd96-145571e29d50",
-      title: "fourth Item",
-    },
-  ];
+const ExpandedScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const [list, setList] = useState({});
+  useEffect(() => {
+    getCity("");
+  }, []);
 
-  const [list, setList] = useState(DATA);
+  //api request
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.item}>
-      <Text style={{ fontWeight: "500" }}>{item.title}</Text>
-    </TouchableOpacity>
-  );
-
-  const onSearch = (val) => {
-    if (val === "") {
-      setList(DATA);
-    } else {
-      const filteredList = DATA.filter((item) =>
-        item.title.toLowerCase().includes(val.toLowerCase())
-      );
-      setList(filteredList);
+  const getCity = async (val) => {
+    try {
+      const response = await Api.get(`/pilot/get-cities?query=${val}`);
+      if (response.status === 1) {
+        setList(response.data);
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
     }
   };
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      style={styles.item}
+      onPress={() => navigation.navigate("docUpload")}
+    >
+      <Text style={{ fontWeight: "500" }}>{item.name}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <View style={styles.container}>
@@ -56,7 +51,7 @@ const ExpandedScreen = () => {
         <TextInput
           placeholder="search city"
           style={styles.input}
-          onChangeText={(val) => onSearch(val)}
+          onChangeText={(val) => getCity(val)}
         />
       </View>
 
