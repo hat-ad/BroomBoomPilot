@@ -25,6 +25,7 @@ const ExpandedScreen = ({ navigation }) => {
   const getCity = async (val) => {
     try {
       const response = await Api.get(`/pilot/get-cities?query=${val}`);
+      console.log(response);
       if (response.status === 1) {
         setList(response.data);
       } else {

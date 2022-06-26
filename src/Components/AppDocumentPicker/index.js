@@ -10,17 +10,14 @@ const AppDocumentPicker = ({
   onDocumentPicked,
   containerStyle,
   buttonStyle,
-  setIsChoosenFile,
 }) => {
-  const handleDocumentSelection = async () => {
-    console.log("handleDocumentSelection");
-    let result = await DocumentPicker.getDocumentAsync({
+  const handleDocumentSelection = () => {
+    DocumentPicker.getDocumentAsync({
       type: "*/*",
       copyToCacheDirectory: true,
     }).then((response) => {
       console.log(response);
-      onDocumentPicked(response.uri);
-      setIsChoosenFile(response.mimeType);
+      onDocumentPicked(response);
     });
   };
   return (

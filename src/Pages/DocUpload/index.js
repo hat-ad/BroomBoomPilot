@@ -8,15 +8,16 @@ import { MapMarkerIcon, ArrowRight } from "../../Utility/iconLibrary";
 const DocUpload = ({ navigation, route }) => {
   const [visible, setVisible] = useState(false);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingRight: metrics.scale(20) }]}>
       <View
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
           marginBottom: metrics.verticalScale(20),
-          paddingBottom: 8,
+          paddingBottom: metrics.verticalScale(10),
           borderBottomWidth: 1,
           borderBottomColor: "#828282",
+          alignItems: "center",
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>

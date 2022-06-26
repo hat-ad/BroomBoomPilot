@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    paddingLeft: metrics.scale(30),
     paddingTop: metrics.verticalScale(10),
     flex: 1,
   },
@@ -52,11 +52,10 @@ export default styles = StyleSheet.create({
     borderRadius: 50,
     padding: 10,
     alignSelf: "center",
-    position: "absolute",
-    bottom: 20,
+    // bottom: 0,
     width: "100%",
     backgroundColor: "#347EEA",
-    marginTop: 5,
+    marginTop: metrics.verticalScale(40),
   },
 
   centerText: {
@@ -85,9 +84,9 @@ export default styles = StyleSheet.create({
   iconText: { textAlign: "center", fontSize: 14, fontWeight: "600" },
   box: {
     alignSelf: "center",
-    marginLeft: 30,
+    marginLeft: metrics.scale(20),
     marginRight: "auto",
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "700",
   },
   boxBtn: {
