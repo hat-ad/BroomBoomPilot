@@ -10,6 +10,7 @@ const AppDocumentPicker = ({
   onDocumentPicked,
   containerStyle,
   buttonStyle,
+  setIsChoosenFile,
 }) => {
   const handleDocumentSelection = async () => {
     console.log("handleDocumentSelection");
@@ -18,8 +19,9 @@ const AppDocumentPicker = ({
       copyToCacheDirectory: true,
     }).then((response) => {
       console.log(response);
+      onDocumentPicked(response.uri);
+      setIsChoosenFile(response.mimeType);
     });
-    // console.log(result);
   };
   return (
     <View style={containerStyle}>

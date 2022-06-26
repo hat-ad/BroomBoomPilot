@@ -38,7 +38,7 @@ const ExpandedScreen = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.item}
-      onPress={() => navigation.navigate("docUpload")}
+      onPress={() => navigation.navigate("docUpload", { city: item.name })}
     >
       <Text style={{ fontWeight: "500" }}>{item.name}</Text>
     </TouchableOpacity>

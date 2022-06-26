@@ -9,6 +9,10 @@ import { useDispatch } from "react-redux";
 import { notify } from "../../Redux/Actions/notificationActions";
 
 const DrivingLicense = ({ navigation }) => {
+  const [isChoosenFrontFile, setIsChoosenFrontFile] =
+    useState("No choosen file");
+  const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
+
   const [licenseCreds, setLicenseCreds] = useState({
     licenseNumber: "",
     front: "",
@@ -18,6 +22,7 @@ const DrivingLicense = ({ navigation }) => {
   const dispatch = useDispatch();
   const onDocumentPicked = (type, uri) => {
     if (type === "FRONT") {
+      console.log("---", uri);
       setLicenseCreds({
         ...licenseCreds,
         front: uri,
@@ -32,6 +37,7 @@ const DrivingLicense = ({ navigation }) => {
 
   const onSubmit = async () => {
     try {
+      console.log(licenseCreds);
       const response = await Api.post("auth/driving-license", licenseCreds);
       if (response.ack) {
         navigation.navigate("vehicleRc");
@@ -39,6 +45,16 @@ const DrivingLicense = ({ navigation }) => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const deleteImage = (type) => {
+    if (type === "FRONT") {
+      setLicenseCreds({ ...licenseCreds, front: "" });
+      setIsChoosenFrontFile("No choosen file");
+    } else {
+      setLicenseCreds({ ...licenseCreds, back: "" });
+      setIsChoosenBackFile("No choosen file");
     }
   };
 
@@ -54,11 +70,15 @@ const DrivingLicense = ({ navigation }) => {
             onDocumentPicked={(e) => onDocumentPicked("FRONT", e)}
             buttonStyle={styles.pickerButton}
             containerStyle={styles.pickerContainer}
+            setIsChoosenFile={setIsChoosenFrontFile}
           />
-          <Text style={{ fontSize: 16, marginRight: 5, fontWeight: "600" }}>
-            image1.jpg
+          <Text style={{ fontSize: 16, marginRight: 5, fontWeight: "300" }}>
+            {isChoosenFrontFile}
           </Text>
-          <TouchableOpacity style={{ marginLeft: 20 }}>
+          <TouchableOpacity
+            style={{ marginLeft: 20 }}
+            onPress={() => deleteImage("FRONT")}
+          >
             <DeleteIcon />
           </TouchableOpacity>
         </View>
@@ -72,11 +92,15 @@ const DrivingLicense = ({ navigation }) => {
             onDocumentPicked={(e) => onDocumentPicked("BACK", e)}
             buttonStyle={styles.pickerButton}
             containerStyle={styles.pickerContainer}
+            setIsChoosenFile={setIsChoosenBackFile}
           />
-          <Text style={{ fontSize: 16, marginRight: 5, fontWeight: "600" }}>
-            image1.jpg
+          <Text style={{ fontSize: 16, marginRight: 5, fontWeight: "300" }}>
+            {isChoosenBackFile}
           </Text>
-          <TouchableOpacity style={{ marginLeft: 20 }}>
+          <TouchableOpacity
+            style={{ marginLeft: 20 }}
+            onPress={() => deleteImage("BACK")}
+          >
             <DeleteIcon />
           </TouchableOpacity>
         </View>
