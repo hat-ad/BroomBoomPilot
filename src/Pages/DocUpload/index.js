@@ -5,7 +5,7 @@ import styles from "./styles";
 import metrics from "../../Utility/metrics";
 import { MapMarkerIcon, ArrowRight } from "../../Utility/iconLibrary";
 
-const DocUpload = ({ navigation }) => {
+const DocUpload = ({ navigation, route }) => {
   const [visible, setVisible] = useState(false);
   return (
     <View style={styles.container}>
@@ -25,7 +25,7 @@ const DocUpload = ({ navigation }) => {
             size={24}
             color={"#828282"}
           />
-          <Text>Kolkata</Text>
+          <Text>{route.params.city}</Text>
         </View>
         <TouchableOpacity onPress={() => setVisible(true)}>
           <Text style={{ color: "#347EEA" }}>Change</Text>
