@@ -44,18 +44,18 @@ const DrivingLicense = ({ navigation }) => {
   };
 
   const onSubmit = async () => {
-    try {
-      console.log(licenseCreds);
-      const response = await Api.post("auth/driving-license", licenseCreds);
-      if (response.status === 1) {
-        navigation.navigate("vehicleRc");
-        dispatch(notify({ type: "success", message: response.message }));
-      } else {
-        throw new Error(response.message);
-      }
-    } catch (error) {
-      dispatch(notify({ type: "error", message: error.message }));
-    }
+    // try {
+    //   console.log(licenseCreds);
+    //   const response = await Api.post("auth/driving-license", licenseCreds);
+    //   if (response.status === 1) {
+    //     navigation.navigate("vehicleRc");
+    //     dispatch(notify({ type: "success", message: response.message }));
+    //   } else {
+    //     throw new Error(response.message);
+    //   }
+    // } catch (error) {
+    //   dispatch(notify({ type: "error", message: error.message }));
+    // }
   };
 
   const deleteImage = (type) => {

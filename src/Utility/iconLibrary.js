@@ -46,3 +46,7 @@ export const SteeringIcon = ({ size, color, style }) => (
     style={style}
   />
 );
+
+export const ProfileIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"user"} color={color} style={style} size={size} />
+);

@@ -56,7 +56,7 @@ export default class API {
           headers: header
             ? header
             : {
-                Authorization: clientToken ? `Bearer ${clientToken}` : null,
+                authorization: clientToken ? `Bearer ${clientToken}` : null,
                 "Content-Type": "application/json",
               },
           method: method,
@@ -67,7 +67,7 @@ export default class API {
           headers: header
             ? header
             : {
-                Authorization: clientToken ? `Bearer ${clientToken}` : null,
+                authorization: clientToken ? `Bearer ${clientToken}` : null,
                 "Content-Type": "application/json",
               },
           method: method,
@@ -97,7 +97,7 @@ export default class API {
         url: url,
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: clientToken ? `Bearer ${clientToken}` : null,
+          authorization: clientToken ? `Bearer ${clientToken}` : null,
         },
         method: method,
         body: params,

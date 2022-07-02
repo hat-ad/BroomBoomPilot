@@ -4,6 +4,7 @@ import React, { useCallback } from "react";
 
 import { UploadIcon } from "../../Utility/iconLibrary";
 import * as DocumentPicker from "expo-document-picker";
+import Api from "../../Services";
 
 const AppDocumentPicker = ({
   title,
@@ -13,10 +14,24 @@ const AppDocumentPicker = ({
 }) => {
   const handleDocumentSelection = () => {
     DocumentPicker.getDocumentAsync({
-      type: "*/*",
+      type: ["image/jpeg", "image/jpg", "application/pdf"],
       copyToCacheDirectory: true,
-    }).then((response) => {
-      console.log(response);
+    }).then(async (response) => {
+      let { name, size, uri, mimeType } = response;
+      let nameParts = name.split(".");
+      let fileType = nameParts[nameParts.length - 1];
+      const fileToUpload = {
+        name: name,
+        size: size,
+        uri: uri,
+        type: mimeType,
+      };
+
+      const formData = new FormData();
+      formData.append("file", fileToUpload, uri);
+      const uploadedFile = await Api.postForm("/upload/single", formData);
+      console.log(formData, uploadedFile);
+
       onDocumentPicked(response);
     });
   };

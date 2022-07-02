@@ -6,7 +6,6 @@ import { hide } from "../../Redux/Actions/notificationActions";
 
 const SnackBar = () => {
   const notification = useSelector((state) => state.notification);
-  console.log("SnackBar", notification);
   const dispatch = useDispatch();
 
   const onDismissSnackBar = () => {

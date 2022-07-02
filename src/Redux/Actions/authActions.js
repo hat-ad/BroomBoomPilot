@@ -1,5 +1,5 @@
 import Api from "../../Services";
-import { ADD_TOKEN, LOGOUT } from "../actionTypes";
+import { ADD_TOKEN, LOGOUT, UPDATE_USER } from "../actionTypes";
 import { store } from "../store";
 import { notify } from "./notificationActions";
 
@@ -14,4 +14,27 @@ export const logout = () => {
   return {
     type: LOGOUT,
   };
+};
+
+export const updateUserDetails = (payload, showNotif = false) => {
+  return async (dispatch) => {
+    let obj = {};
+    if (payload.city) obj.city = payload.city;
+    try {
+      const response = await Api.update("/pilot/update-pilot-details", payload);
+      if (response.status === 1) {
+        showNotif &&
+          dispatch(notify({ type: "success", message: response.message }));
+        dispatch(updateUser(response.data));
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
+};
+
+export const updateUser = (payload) => {
+  return { type: UPDATE_USER, user: payload };
 };

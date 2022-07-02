@@ -11,7 +11,7 @@ import { SearchIcon } from "../../Utility/iconLibrary";
 import styles from "../../Pages/SearchCity/style/styleForExpandedScreen";
 import Api from "../../Services";
 import { useDispatch } from "react-redux";
-import { notify } from "../../Redux/Actions";
+import { notify, updateUser } from "../../Redux/Actions";
 
 const ExpandedScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -21,11 +21,27 @@ const ExpandedScreen = ({ navigation }) => {
   }, []);
 
   //api request
+  const updateCity = async (city) => {
+    console.log(city);
+    try {
+      const response = await Api.update("/pilot/update-pilot-details", {
+        city: city,
+      });
+      if (response.status === 1) {
+        // dispatch(notify({ type: "success", message: response.message }));
+        dispatch(updateUser(response.data));
+        navigation.navigate("docUpload");
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
 
   const getCity = async (val) => {
     try {
       const response = await Api.get(`/pilot/get-cities?query=${val}`);
-      console.log(response);
       if (response.status === 1) {
         setList(response.data);
       } else {
@@ -39,7 +55,10 @@ const ExpandedScreen = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.item}
-      onPress={() => navigation.navigate("docUpload", { city: item.name })}
+      onPress={
+        () => updateCity(item.name)
+        // navigation.navigate("docUpload", { city: item.name })
+      }
     >
       <Text style={{ fontWeight: "500" }}>{item.name}</Text>
     </TouchableOpacity>

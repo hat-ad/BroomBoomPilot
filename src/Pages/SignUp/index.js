@@ -12,28 +12,26 @@ const SignUp = ({ navigation }) => {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
     email: "",
-    phone: "",
+    mobile: "",
   });
 
   const onSubmit = async () => {
     setIsLoading(true);
-    navigation.navigate("otp", { email: credentials.email });
 
-    // console.log("credentials", credentials);
-    // try {
-    //   const response = await Api.post(`/register`, {
-    //     email: credentials.email,
-    //   });
-    //   if (response.status) {
-    //     dispatch(notify({ type: "success", message: response.message }));
-    //     navigation.navigate("otp", { email: credentials.email });
-    //     return;
-    //   }
-    //   throw new Error(response.message);
-    // } catch (error) {
-    //   dispatch(notify({ type: "error", message: error.message }));
-    //   console.log(error);
-    // }
+    try {
+      const response = await Api.post(`/pilot/register`, {
+        mobile: credentials.mobile,
+      });
+      if (response.status === 1) {
+        dispatch(notify({ type: "success", message: response.message }));
+        navigation.navigate("otp", { mobile: credentials.mobile });
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+      console.log(error);
+    }
     setIsLoading(false);
   };
 
@@ -87,15 +85,18 @@ const SignUp = ({ navigation }) => {
             backgroundColor: "#fff",
             borderRadius: 5,
           }}
+          onChangeText={(text) =>
+            setCredentials({ ...credentials, mobile: text })
+          }
         />
-        <Text style={{ textAlign: "center", marginVertical: 10 }}>Or</Text>
+        {/* <Text style={{ textAlign: "center", marginVertical: 10 }}>Or</Text>
         <TextInput
           label="Email"
           onChangeText={(text) =>
             setCredentials({ ...credentials, email: text })
           }
           style={{ backgroundColor: "#fff" }}
-        />
+        /> */}
       </View>
       <View
         style={{

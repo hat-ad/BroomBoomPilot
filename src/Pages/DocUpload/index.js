@@ -4,8 +4,10 @@ import styles from "./styles";
 // import { SteeringIcon } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
 import { MapMarkerIcon, ArrowRight } from "../../Utility/iconLibrary";
+import { useSelector } from "react-redux";
 
 const DocUpload = ({ navigation, route }) => {
+  const user = useSelector((state) => state.auth.user);
   const [visible, setVisible] = useState(false);
   return (
     <View style={[styles.container, { paddingRight: metrics.scale(20) }]}>
@@ -26,9 +28,9 @@ const DocUpload = ({ navigation, route }) => {
             size={24}
             color={"#828282"}
           />
-          <Text>{route.params.city}</Text>
+          <Text>{user.city}</Text>
         </View>
-        <TouchableOpacity onPress={() => setVisible(true)}>
+        <TouchableOpacity onPress={() => navigation.navigate("searchCity")}>
           <Text style={{ color: "#347EEA" }}>Change</Text>
         </TouchableOpacity>
       </View>

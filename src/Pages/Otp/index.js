@@ -10,37 +10,34 @@ import { notify } from "../../Redux/Actions/notificationActions";
 const OtpScreen = ({ navigation, route }) => {
   const [otp, setOtp] = React.useState("");
   const [isLoading, setLoading] = React.useState(false);
-  const { email } = route.params;
+  const { mobile } = route.params;
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (otp.length === 4) {
-      console.log("here");
       onSubmitOtp();
     }
   }, [otp]);
 
   const onSubmitOtp = async () => {
     setLoading(true);
-    navigation.navigate("docUpload");
+    try {
+      const response = await Api.post("/pilot/verify-otp", {
+        mobile: mobile,
+        otp: otp,
+      });
 
-    // try {
-    //   console.log("email", email);
-    //   const response = await Api.post("auth/signup", {
-    //     email: email,
-    //     otp: otp,
-    //   });
-    //   // console.log(response);
-    //   if (response.ack) {
-    //     console.log(response.token);
-    //     dispatch(login({ clientToken: response.token }));
-    //     navigation.navigate("docUpload");
-    //   } else {
-    //     throw new Error(response.message);
-    //   }
-    // } catch (error) {
-    //   dispatch(notify({ type: "error", message: error.message }));
-    // }
+      if (response.status === 1) {
+        dispatch(
+          login({ clientToken: response.data.pilot.token, user: response.data })
+        );
+        navigation.navigate("searchCity");
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
     setLoading(false);
   };
 
