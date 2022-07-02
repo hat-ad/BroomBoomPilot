@@ -15,6 +15,7 @@ import {
   Error,
   Pending,
   SearchCity,
+  ProfileDetails,
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
@@ -44,7 +45,12 @@ const StackNavigation = () => {
         },
       }}
     >
-      {auth.clientToken ? (
+      <Stack.Screen
+        name="profileDetails"
+        component={ProfileDetails}
+        options={{ headerTitle: "Profile Details" }}
+      />
+      {/* {auth.clientToken ? (
         <>
           <Stack.Screen
             name="searchCity"
@@ -106,7 +112,7 @@ const StackNavigation = () => {
             component={OtpScreen}
           />
         </>
-      )}
+      )} */}
     </Stack.Navigator>
   );
 };

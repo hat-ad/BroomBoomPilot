@@ -18,6 +18,7 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import SearchCity from "./SearchCity";
 import ReferAndEarn from "./ReferAndEarn";
 import Faq from "./Faq";
+import ProfileDetails from "./ProfileDetails";
 
 export {
   Welcome,
@@ -40,4 +41,5 @@ export {
   SearchCity,
   ReferAndEarn,
   Faq,
+  ProfileDetails,
 };
