@@ -45,6 +45,12 @@ const StackNavigation = () => {
         },
       }}
     >
+      <Stack.Screen
+        name="adhaar"
+        options={{ headerTitle: "Adhaar Or Pan Upload" }}
+        component={AadharOrPanUpload}
+      />
+
       {auth.clientToken ? (
         <>
           <Stack.Screen
@@ -52,13 +58,13 @@ const StackNavigation = () => {
             component={SearchCity}
             options={{ headerTitle: "Search City" }}
           />
-          {/* <Stack.Screen
+          <Stack.Screen
             name="GetReady"
             options={{
               headerTitle: "",
             }}
             component={GetReady}
-          /> */}
+          />
           <Stack.Screen
             name="docUpload"
             options={{
@@ -76,11 +82,7 @@ const StackNavigation = () => {
             options={{ headerTitle: "Vehicle RC" }}
             component={vehicleRC}
           />
-          <Stack.Screen
-            name="adhaar"
-            options={{ headerTitle: "Adhaar Or Pan Upload" }}
-            component={AadharOrPanUpload}
-          />
+
           <Stack.Screen
             name="pending"
             options={{ headerTitle: "" }}

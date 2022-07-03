@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./styles";
+import { RadioButton } from "react-native-paper";
 
 const ProfileDetails = () => {
   const [firstName, setFirstName] = useState("");
@@ -20,11 +21,7 @@ const ProfileDetails = () => {
   const [gender, setGender] = useState("");
   const [genderError, setGenderError] = useState("");
 
-  const [radioButtons, setRadioButtons] = useState("male");
-  const setValue = (value) => {
-    var newArray = value.filter((item) => item.selected === true);
-    setRadioButtons(newArray[0].value);
-  };
+  const [checked, setChecked] = useState("first");
 
   const handleSubmit = () => {
     var firstNameValid = false;
@@ -133,11 +130,16 @@ const ProfileDetails = () => {
       />
       {emailError.length > 0 && <Text>{emailError}</Text>}
       <Text>Gender</Text>
-      {/* <RadioGroup
-        radioButtons={radioButtonsData}
-        onPress={(value) => setValue(value)}
-        style={styles.radio}
-      /> */}
+      <RadioButton
+        value="first"
+        status={checked === "first" ? "checked" : "unchecked"}
+        onPress={() => setChecked("first")}
+      />
+      <RadioButton
+        value="second"
+        status={checked === "second" ? "checked" : "unchecked"}
+        onPress={() => setChecked("second")}
+      />
       {genderError.length > 0 && <Text>{genderError}</Text>}
       <View style={styles.countContainer}></View>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>

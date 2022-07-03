@@ -10,12 +10,15 @@ import { AppDocumentPicker } from "../../Components";
 import styles from "./styles";
 import { DeleteIcon } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
+import { RadioButton } from "react-native-paper";
 
 // import matrics from "../../Utility/metrics";
 
 const AadharOrPanUpload = () => {
   const [isChoosenFrontFile, setIsChoosenFrontFile] =
     useState("No choosen file");
+  const [checked, setChecked] = React.useState("first");
+
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
   const [adhaarOrPan, setAdhaarOrPan] = useState({
     front: "",
@@ -30,7 +33,44 @@ const AadharOrPanUpload = () => {
       setAdhaarOrPan({ ...vehicleRc, back: uri });
     }
   };
-  const onSubmit = () => {};
+  const onSubmit = async () => {
+    try {
+      console.log(adhaarOrPan);
+      if (adhaarOrPan.front === "") {
+        dispatch(
+          notify({ type: "error", message: "Please upload front file" })
+        );
+        return;
+      } else if (adhaarOrPan.back === "") {
+        dispatch(notify({ type: "error", message: "Please upload back file" }));
+        return;
+      } else if (adhaarOrPan.adhaarOrPanNumber === "") {
+        dispatch(
+          notify({
+            type: "error",
+            message: "Please add adhaar Or PanNumber number",
+          })
+        );
+        return;
+      }
+      const payload = {
+        frontImageUrl: adhaarOrPan.front,
+        backImageUrl: adhaarOrPan.back,
+        DL_number: adhaarOrPan.adhaarOrPanNumber,
+        doc_type: "DL",
+      };
+
+      const response = await Api.post("/pilot/doc-upload", payload);
+      if (response.status === 1) {
+        navigation.navigate("vehicleRc");
+        dispatch(notify({ type: "success", message: response.message }));
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
   const deleteImage = (type) => {
     if (type === "FRONT") {
       setAdhaarOrPan({ ...vehicleRc, front: "" });
@@ -49,6 +89,18 @@ const AadharOrPanUpload = () => {
     >
       <View style={styles.container}>
         <Text style={styles.heading}>Upload Aadhar or Pan Number</Text>
+
+        <RadioButton
+          value="first"
+          status={checked === "first" ? "checked" : "unchecked"}
+          onPress={() => setChecked("first")}
+        />
+        <RadioButton
+          value="second"
+          status={checked === "second" ? "checked" : "unchecked"}
+          onPress={() => setChecked("second")}
+        />
+
         <View style={{ marginTop: 20 }}>
           <Text style={styles.title}>Front</Text>
           <Text style={styles.muted}>Supported files PDF, JPG, PNG</Text>
@@ -100,7 +152,7 @@ const AadharOrPanUpload = () => {
           <Text style={styles.heading}>Enter Aadhar or Pan Number</Text>
           <TextInput placeholder="Enter Aadhar or Pan Number" mode="outlined" />
         </View>
-        <TouchableOpacity style={styles.submit}>
+        <TouchableOpacity style={styles.submit} onPress={onSubmit}>
           <Text style={styles.centerText}>Submit</Text>
         </TouchableOpacity>
       </View>
