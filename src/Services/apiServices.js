@@ -42,7 +42,7 @@ export default class API {
   }
 
   postForm(endpoint, params, header) {
-    return this.httpRequestForFormData("POST", endpoint, params, header);
+    return this.httpRequestForFormData(endpoint, params, header);
   }
 
   async httpRequest(method, url, params, header = null) {
@@ -76,33 +76,6 @@ export default class API {
       }
       this.axiosInstance
         .request(options)
-        .then((response) => {
-          resolve({
-            status: response.status,
-            ...response.data,
-          });
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  }
-
-  async httpRequestForFormData(method, url, params) {
-    let state = store.getState();
-    let clientToken = state.auth.clientToken;
-
-    return new Promise((resolve, reject) => {
-      let options = {
-        url: url,
-        headers: {
-          "Content-Type": "multipart/form-data",
-          authorization: clientToken ? `Bearer ${clientToken}` : null,
-        },
-        method: method,
-        body: params,
-      };
-      this.axiosInstance(options)
         .then((response) => {
           resolve({
             status: response.status,

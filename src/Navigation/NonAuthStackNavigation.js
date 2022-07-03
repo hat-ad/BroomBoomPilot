@@ -45,25 +45,20 @@ const StackNavigation = () => {
         },
       }}
     >
-      <Stack.Screen
-        name="profileDetails"
-        component={ProfileDetails}
-        options={{ headerTitle: "Profile Details" }}
-      />
-      {/* {auth.clientToken ? (
+      {auth.clientToken ? (
         <>
           <Stack.Screen
             name="searchCity"
             component={SearchCity}
             options={{ headerTitle: "Search City" }}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="GetReady"
             options={{
               headerTitle: "",
             }}
             component={GetReady}
-          />
+          /> */}
           <Stack.Screen
             name="docUpload"
             options={{
@@ -96,6 +91,11 @@ const StackNavigation = () => {
             name="aadharOrPanUpload"
             component={AadharOrPanUpload}
           />
+          <Stack.Screen
+            name="profileDetails"
+            component={ProfileDetails}
+            options={{ headerTitle: "Profile Details" }}
+          />
           <Stack.Screen name="approve" component={Approve} />
           <Stack.Screen name="error" component={Error} />
         </>
@@ -112,7 +112,7 @@ const StackNavigation = () => {
             component={OtpScreen}
           />
         </>
-      )} */}
+      )}
     </Stack.Navigator>
   );
 };

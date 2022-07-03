@@ -28,34 +28,55 @@ const DrivingLicense = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const onDocumentPicked = (type, doc) => {
-    if (!doc.uri) return;
-    setIsChoosenFrontFile(doc.name);
     if (type === "FRONT") {
+      setIsChoosenFrontFile(doc.key);
       setLicenseCreds({
         ...licenseCreds,
-        front: doc.uri,
+        front: doc.Location,
       });
     } else if (type === "BACK") {
+      setIsChoosenBackFile(doc.key);
       setLicenseCreds({
         ...licenseCreds,
-        back: doc.uri,
+        back: doc.Location,
       });
     }
   };
 
   const onSubmit = async () => {
-    // try {
-    //   console.log(licenseCreds);
-    //   const response = await Api.post("auth/driving-license", licenseCreds);
-    //   if (response.status === 1) {
-    //     navigation.navigate("vehicleRc");
-    //     dispatch(notify({ type: "success", message: response.message }));
-    //   } else {
-    //     throw new Error(response.message);
-    //   }
-    // } catch (error) {
-    //   dispatch(notify({ type: "error", message: error.message }));
-    // }
+    try {
+      console.log(licenseCreds);
+      if (licenseCreds.front === "") {
+        dispatch(
+          notify({ type: "error", message: "Please upload front file" })
+        );
+        return;
+      } else if (licenseCreds.back === "") {
+        dispatch(notify({ type: "error", message: "Please upload back file" }));
+        return;
+      } else if (licenseCreds.licenseNumber === "") {
+        dispatch(
+          notify({ type: "error", message: "Please add license number" })
+        );
+        return;
+      }
+      const payload = {
+        frontImageUrl: licenseCreds.front,
+        backImageUrl: licenseCreds.back,
+        DL_number: licenseCreds.licenseNumber,
+        doc_type: "DL",
+      };
+
+      const response = await Api.post("/pilot/doc-upload", payload);
+      if (response.status === 1) {
+        navigation.navigate("vehicleRc");
+        dispatch(notify({ type: "success", message: response.message }));
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
   };
 
   const deleteImage = (type) => {
@@ -98,12 +119,14 @@ const DrivingLicense = ({ navigation }) => {
             >
               {isChoosenFrontFile}
             </Text>
-            <TouchableOpacity
-              style={{ marginLeft: 20 }}
-              onPress={() => deleteImage("FRONT")}
-            >
-              <DeleteIcon />
-            </TouchableOpacity>
+            {isChoosenFrontFile !== "No choosen file" && (
+              <TouchableOpacity
+                style={{ marginLeft: 20 }}
+                onPress={() => deleteImage("FRONT")}
+              >
+                <DeleteIcon />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
         <View style={{ marginTop: 20 }}>
@@ -118,18 +141,25 @@ const DrivingLicense = ({ navigation }) => {
               setIsChoosenFile={setIsChoosenBackFile}
             />
             <Text
-              style={{ fontSize: 16, marginRight: 5, fontWeight: "300" }}
+              style={{
+                fontSize: 16,
+                marginRight: 5,
+                fontWeight: "300",
+                width: metrics.scale(120),
+              }}
               numberOfLines={1}
               ellipsizeMode="tail"
             >
               {isChoosenBackFile}
             </Text>
-            <TouchableOpacity
-              style={{ marginLeft: 20 }}
-              onPress={() => deleteImage("BACK")}
-            >
-              <DeleteIcon />
-            </TouchableOpacity>
+            {isChoosenBackFile !== "No choosen file" && (
+              <TouchableOpacity
+                style={{ marginLeft: 20 }}
+                onPress={() => deleteImage("BACK")}
+              >
+                <DeleteIcon />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
 
