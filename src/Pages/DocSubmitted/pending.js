@@ -18,9 +18,9 @@ const Pending = () => {
           We are now verifying your submitted details
         </Text>
       </View>
-      <View style={styles.loader}>
+      {/* <View style={styles.loader}>
         <Image source={require("../../../assets/BigLoader.png")} />
-      </View> 
+      </View>  */}
     </View>
   );
 };

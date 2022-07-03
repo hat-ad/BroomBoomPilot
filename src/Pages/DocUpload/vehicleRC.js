@@ -16,10 +16,14 @@ import {
   InfoCircle,
 } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
+import { useDispatch } from "react-redux";
+import { notify } from "../../Redux/Actions";
+import Api from "../../Services";
 
 const VehicleRC = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(true);
-  const [vehicleType, setVehicleType] = useState("Car/Four Wheeler");
+  const [vehicleType, setVehicleType] = useState("");
   const [isChoosenFrontFile, setIsChoosenFrontFile] =
     useState("No choosen file");
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
@@ -29,18 +33,65 @@ const VehicleRC = ({ navigation }) => {
     vehicleRcNumber: "",
   });
 
+  const vehicleTypeEnum = Object.freeze({
+    CAR: "Car",
+    SCOOTY: "Scooty",
+    "MOTOR-BIKE": "Motor Bike",
+    "AUTO-RICKSHAW": "Auto Rickshaw",
+    TOTO: "Toto",
+  });
+
   const handleModal = (type, wheel) => {
-    setVehicleType(`${type}/${wheel} Wheeler`);
+    setVehicleType(type);
     setVisible(false);
   };
-  const onDocumentPicked = (type, uri) => {
+
+  const onDocumentPicked = (type, doc) => {
     if (type === "FRONT") {
-      setVehicleRc({ ...vehicleRc, front: uri });
-    } else {
-      setVehicleRc({ ...vehicleRc, back: uri });
+      setIsChoosenFrontFile(doc.key);
+      setVehicleRc({ ...vehicleRc, front: doc.Location });
+    } else if (type === "BACK") {
+      setIsChoosenBackFile(doc.key);
+      setVehicleRc({ ...vehicleRc, back: doc.Location });
     }
   };
-  const onSubmit = () => {};
+
+  const onSubmit = async () => {
+    try {
+      if (vehicleRc.front === "") {
+        dispatch(
+          notify({ type: "error", message: "Please upload front file" })
+        );
+        return;
+      } else if (vehicleRc.back === "") {
+        dispatch(notify({ type: "error", message: "Please upload back file" }));
+        return;
+      } else if (vehicleRc.vehicleRcNumber === "") {
+        dispatch(
+          notify({ type: "error", message: "Please add vehicle rc number" })
+        );
+        return;
+      }
+      const payload = {
+        frontImageUrl: vehicleRc.front,
+        backImageUrl: vehicleRc.back,
+        DL_number: vehicleRc.vehicleRcNumber,
+        vehicle_type: vehicleType,
+        doc_type: "RC",
+      };
+
+      const response = await Api.post("/pilot/doc-upload", payload);
+      if (response.status === 1) {
+        navigation.navigate("docUpload");
+        dispatch(notify({ type: "success", message: response.message }));
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
+
   const deleteImage = (type) => {
     if (type === "FRONT") {
       setVehicleRc({ ...vehicleRc, front: "" });
@@ -76,7 +127,7 @@ const VehicleRC = ({ navigation }) => {
           >
             <SteeringIcon />
             <Text>Vehicle type : </Text>
-            <Text>{vehicleType}</Text>
+            <Text>{vehicleTypeEnum[vehicleType]}</Text>
           </View>
           <TouchableOpacity onPress={() => setVisible(true)}>
             <Text>Change</Text>
@@ -94,15 +145,26 @@ const VehicleRC = ({ navigation }) => {
               containerStyle={styles.pickerContainer}
               setIsChoosenFile={setIsChoosenFrontFile}
             />
-            <Text style={{ fontSize: 16, marginRight: 5, fontWeight: "300" }}>
+            <Text
+              style={{
+                fontSize: 16,
+                marginRight: 5,
+                fontWeight: "300",
+                width: metrics.scale(120),
+              }}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
               {isChoosenFrontFile}
             </Text>
-            <TouchableOpacity
-              style={{ marginLeft: 20 }}
-              onPress={() => deleteImage("FRONT")}
-            >
-              <DeleteIcon />
-            </TouchableOpacity>
+            {isChoosenFrontFile !== "No choosen file" && (
+              <TouchableOpacity
+                style={{ marginLeft: 20 }}
+                onPress={() => deleteImage("FRONT")}
+              >
+                <DeleteIcon />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
         <View style={{ marginTop: 15 }}>
@@ -116,15 +178,26 @@ const VehicleRC = ({ navigation }) => {
               containerStyle={styles.pickerContainer}
               setIsChoosenFile={setIsChoosenBackFile}
             />
-            <Text style={{ fontSize: 16, marginRight: 5, fontWeight: "300" }}>
+            <Text
+              style={{
+                fontSize: 16,
+                marginRight: 5,
+                fontWeight: "300",
+                width: metrics.scale(120),
+              }}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
               {isChoosenBackFile}
             </Text>
-            <TouchableOpacity
-              style={{ marginLeft: 20 }}
-              onPress={() => deleteImage("BACK")}
-            >
-              <DeleteIcon />
-            </TouchableOpacity>
+            {isChoosenBackFile !== "No choosen file" && (
+              <TouchableOpacity
+                style={{ marginLeft: 20 }}
+                onPress={() => deleteImage("BACK")}
+              >
+                <DeleteIcon />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
 
@@ -134,7 +207,13 @@ const VehicleRC = ({ navigation }) => {
           }}
         >
           <Text style={styles.heading}>Enter Vehicle RC number</Text>
-          <TextInput placeholder="Enter DL number" mode="outlined" />
+          <TextInput
+            placeholder="Enter DL number"
+            mode="outlined"
+            onChangeText={(text) =>
+              setVehicleRc({ ...vehicleRc, vehicleRcNumber: text })
+            }
+          />
           {/* < InfoCircle /> */}
         </View>
         <TouchableOpacity style={styles.submit} onPress={() => onSubmit()}>
@@ -154,7 +233,7 @@ const VehicleRC = ({ navigation }) => {
             <View style={styles.row}>
               <TouchableOpacity
                 style={[styles.modalImageContainer]}
-                onPress={() => handleModal("Car", 4)}
+                onPress={() => handleModal("CAR", 4)}
               >
                 <Image
                   style={styles.image}
@@ -165,7 +244,7 @@ const VehicleRC = ({ navigation }) => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.modalImageContainer}
-                onPress={() => handleModal("Scooty", 2)}
+                onPress={() => handleModal("SCOOTY", 2)}
               >
                 <Image
                   style={styles.image}
@@ -178,7 +257,7 @@ const VehicleRC = ({ navigation }) => {
             <View style={styles.row}>
               <TouchableOpacity
                 style={[styles.modalImageContainer, styles.selected]}
-                onPress={() => handleModal("Auto Rickshaw", 3)}
+                onPress={() => handleModal("AUTO-RICKSHAW", 3)}
               >
                 <Image
                   style={styles.image}
@@ -189,7 +268,7 @@ const VehicleRC = ({ navigation }) => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.modalImageContainer}
-                onPress={() => handleModal("Motorbike", 2)}
+                onPress={() => handleModal("MOTOR-BIKE", 2)}
               >
                 <Image
                   style={styles.image}
@@ -197,6 +276,19 @@ const VehicleRC = ({ navigation }) => {
                   source={require("../../../assets/bike.png")}
                 />
                 <Text style={styles.iconText}>Motorbike</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{ alignItems: "center" }}>
+              <TouchableOpacity
+                style={[styles.modalImageContainer]}
+                onPress={() => handleModal("TOTO", 3)}
+              >
+                <Image
+                  style={styles.image}
+                  resizeMode={"contain"}
+                  source={require("../../../assets/toto.png")}
+                />
+                <Text style={styles.iconText}>Toto</Text>
               </TouchableOpacity>
             </View>
           </Modal>

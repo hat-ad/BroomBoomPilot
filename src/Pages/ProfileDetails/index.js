@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./styles";
-import RadioGroup from "react-native-radio-buttons-group";
+
 const ProfileDetails = () => {
   const [firstName, setFirstName] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
@@ -133,11 +133,11 @@ const ProfileDetails = () => {
       />
       {emailError.length > 0 && <Text>{emailError}</Text>}
       <Text>Gender</Text>
-      <RadioGroup
+      {/* <RadioGroup
         radioButtons={radioButtonsData}
         onPress={(value) => setValue(value)}
         style={styles.radio}
-      />
+      /> */}
       {genderError.length > 0 && <Text>{genderError}</Text>}
       <View style={styles.countContainer}></View>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>

@@ -4,11 +4,28 @@ import styles from "./styles";
 // import { SteeringIcon } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
 import { MapMarkerIcon, ArrowRight } from "../../Utility/iconLibrary";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Api from "../../Services";
+import { notify } from "../../Redux/Actions";
 
 const DocUpload = ({ navigation, route }) => {
   const user = useSelector((state) => state.auth.user);
   const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
+  const onSubmit = async () => {
+    try {
+      const response = await Api.get("/pilot/submit-document");
+      if (response.status === 1) {
+        navigation.navigate("pending");
+        dispatch(notify({ type: "success", message: response.message }));
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
+
   return (
     <View style={[styles.container, { paddingRight: metrics.scale(20) }]}>
       <View
@@ -75,10 +92,7 @@ const DocUpload = ({ navigation, route }) => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-        style={styles.submit}
-        onPress={() => navigation.navigate("approve")}
-      >
+      <TouchableOpacity style={styles.submit} onPress={onSubmit}>
         <Text style={styles.centerText}>Proceed</Text>
       </TouchableOpacity>
     </View>

@@ -45,7 +45,6 @@ const DrivingLicense = ({ navigation }) => {
 
   const onSubmit = async () => {
     try {
-      console.log(licenseCreds);
       if (licenseCreds.front === "") {
         dispatch(
           notify({ type: "error", message: "Please upload front file" })
@@ -69,7 +68,7 @@ const DrivingLicense = ({ navigation }) => {
 
       const response = await Api.post("/pilot/doc-upload", payload);
       if (response.status === 1) {
-        navigation.navigate("vehicleRc");
+        navigation.navigate("docUpload");
         dispatch(notify({ type: "success", message: response.message }));
       } else {
         throw new Error(response.message);

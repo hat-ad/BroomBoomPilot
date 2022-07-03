@@ -10,6 +10,15 @@ const Navigation = () => {
   const auth = useSelector((state) => state.auth);
   return (
     <Stack.Navigator>
+      {auth.user.isVerified && auth.clientToken && (
+        <Stack.Screen
+          name="Drawer"
+          component={BottomNavigation}
+          options={{
+            header: () => null,
+          }}
+        />
+      )}
       <Stack.Screen
         name="nonAuthStack"
         component={NonAuthStackNavigation}
@@ -17,17 +26,16 @@ const Navigation = () => {
           header: () => null,
         }}
       />
-      <Stack.Screen
-        name="Drawer"
-        component={BottomNavigation}
-        options={{
-          header: () => null,
-        }}
-      />
-      {/* {auth.clientToken ? (
-      ) : ( */}
 
-      {/* )} */}
+      {auth.user.isVerified && auth.clientToken && (
+        <Stack.Screen
+          name="Drawer"
+          component={BottomNavigation}
+          options={{
+            header: () => null,
+          }}
+        />
+      )}
     </Stack.Navigator>
   );
 };
