@@ -10,7 +10,7 @@ import {
 } from "../../Utility/iconLibrary";
 import { useDispatch, useSelector } from "react-redux";
 import Api from "../../Services";
-import { notify } from "../../Redux/Actions";
+import { getUserDetails, notify } from "../../Redux/Actions";
 
 const DocUpload = ({ navigation, route }) => {
   const user = useSelector((state) => state.auth.user);
@@ -20,8 +20,9 @@ const DocUpload = ({ navigation, route }) => {
     try {
       const response = await Api.get("/pilot/submit-document");
       if (response.status === 1) {
-        navigation.navigate("pending");
+        // navigation.navigate("pending");
         dispatch(notify({ type: "success", message: response.message }));
+        dispatch(getUserDetails());
       } else {
         throw new Error(response.message);
       }

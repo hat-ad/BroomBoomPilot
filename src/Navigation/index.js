@@ -16,12 +16,12 @@ const Navigation = () => {
       auth.user.documents
     );
     auth.clientToken &&
-      auth.user.documents.verification_status === 0 &&
+      auth.user.documents?.verification_status === 0 &&
       dispatch(getUserDetails());
   }, []);
   return (
     <Stack.Navigator>
-      {auth.user?.documents?.verification_status === 1 && auth.clientToken && (
+      {auth.user?.documents?.verification_status === 1 && auth.clientToken ? (
         <Stack.Screen
           name="tab"
           component={BottomNavigation}
@@ -29,14 +29,17 @@ const Navigation = () => {
             header: () => null,
           }}
         />
+      ) : (
+        <>
+          <Stack.Screen
+            name="nonAuthStack"
+            component={NonAuthStackNavigation}
+            options={{
+              header: () => null,
+            }}
+          />
+        </>
       )}
-      <Stack.Screen
-        name="nonAuthStack"
-        component={NonAuthStackNavigation}
-        options={{
-          header: () => null,
-        }}
-      />
     </Stack.Navigator>
   );
 };

@@ -26,7 +26,7 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   const auth = useSelector((state) => state.auth);
-
+  console.log("auth", auth);
   return (
     <Stack.Navigator
       screenOptions={{
@@ -49,7 +49,7 @@ const StackNavigation = () => {
     >
       {auth.clientToken ? (
         <>
-          {auth.user.documents.verification_status === 0 && (
+          {auth.user.documents?.verification_status === 0 && (
             <Stack.Screen
               name="pending"
               options={{ header: () => null }}
@@ -57,59 +57,58 @@ const StackNavigation = () => {
             />
           )}
 
-          {auth.user.documents.verification_status === -1 && (
+          {auth.user.documents?.verification_status === -1 && (
             <Stack.Screen name="error" component={Error} />
           )}
 
-          {auth.user.documents.verification_status === null && (
-            <>
-              <Stack.Screen
-                name="searchCity"
-                component={SearchCity}
-                options={{ headerTitle: "Search City" }}
-              />
-              <Stack.Screen
-                name="GetReady"
-                options={{
-                  headerTitle: "",
-                }}
-                component={GetReady}
-              />
-              <Stack.Screen
-                name="docUpload"
-                options={{
-                  headerTitle: "Document Upload",
-                }}
-                component={DocUpload}
-              />
-              <Stack.Screen
-                name="drivingLicense"
-                options={{ headerTitle: "Driving License" }}
-                component={DrivingLicense}
-              />
-              <Stack.Screen
-                name="vehicleRc"
-                options={{ headerTitle: "Vehicle RC" }}
-                component={vehicleRC}
-              />
+          {/* {!auth.user.documents && ( */}
+          <>
+            <Stack.Screen
+              name="searchCity"
+              component={SearchCity}
+              options={{ headerTitle: "Search City" }}
+            />
+            <Stack.Screen
+              name="GetReady"
+              options={{
+                headerTitle: "",
+              }}
+              component={GetReady}
+            />
+            <Stack.Screen
+              name="docUpload"
+              options={{
+                headerTitle: "Document Upload",
+              }}
+              component={DocUpload}
+            />
+            <Stack.Screen
+              name="drivingLicense"
+              options={{ headerTitle: "Driving License" }}
+              component={DrivingLicense}
+            />
+            <Stack.Screen
+              name="vehicleRc"
+              options={{ headerTitle: "Vehicle RC" }}
+              component={vehicleRC}
+            />
 
-              <Stack.Screen
-                name="aadharOrPanUpload"
-                component={AadharOrPanUpload}
-              />
-              <Stack.Screen
-                name="profileDetails"
-                component={ProfileDetails}
-                options={{ headerTitle: "Profile Details" }}
-              />
-            </>
-          )}
-          {/* <Stack.Screen name="approve" component={Approve} /> */}
+            <Stack.Screen
+              name="aadharOrPanUpload"
+              component={AadharOrPanUpload}
+            />
+            <Stack.Screen
+              name="profileDetails"
+              component={ProfileDetails}
+              options={{ headerTitle: "Profile Details" }}
+            />
+          </>
+          {/* )} */}
         </>
       ) : (
         <>
           <Stack.Screen name="Welcome" component={Welcome} />
-          <Stack.Screen name="Language" component={Language} />
+          {/* <Stack.Screen name="Language" component={Language} /> */}
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen
             name="otp"

@@ -124,7 +124,7 @@ const Welcome = ({ navigation }) => {
             paddingVertical: 15,
             borderRadius: 20,
           }}
-          onPress={() => navigation.navigate("Language")}
+          onPress={() => navigation.navigate("SignUp")}
         >
           <Text style={{ textAlign: "center" }}>Get Started</Text>
         </TouchableOpacity>

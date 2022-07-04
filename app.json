@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Broom-Broom",
-    "slug": "Broom-Broom",
+    "name": "BroomBoom",
+    "slug": "BroomBoom",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logoSmall.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/Icon/splash.png",
@@ -20,9 +20,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logoSmall.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.hatad.BroomBroom"
     },
     "web": {
       "favicon": "./assets/favicon.png"

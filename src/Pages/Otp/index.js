@@ -34,9 +34,10 @@ const OtpScreen = ({ navigation, route }) => {
             user: response.data,
           })
         );
-        if (response.data.pilot.isVerified) {
-          navigation.navigate("tab");
-        }
+        console.log(response);
+        // if (response.data.documents.verification_status === 1) {
+        // navigation.navigate("searchCity");
+        // }
         // } else navigation.navigate("searchCity");
       } else {
         throw new Error(response.message);
