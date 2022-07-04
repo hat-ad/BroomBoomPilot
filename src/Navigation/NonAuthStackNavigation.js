@@ -76,16 +76,7 @@ const StackNavigation = () => {
             options={{ headerTitle: "Vehicle RC" }}
             component={vehicleRC}
           />
-          <Stack.Screen
-            name="adhaar"
-            options={{ headerTitle: "Adhaar Or Pan Upload" }}
-            component={AadharOrPanUpload}
-          />
-          <Stack.Screen
-            name="profileDetails"
-            component={ProfileDetails}
-            options={{ headerTitle: "Profile Details" }}
-          />
+
           <Stack.Screen
             name="pending"
             options={{ headerTitle: "" }}
