@@ -30,14 +30,15 @@ const AadharOrPanUpload = () => {
 
   const onDocumentPicked = (type, uri) => {
     if (type === "FRONT") {
-      setAdhaarOrPan({ ...vehicleRc, front: uri });
+      setIsChoosenFrontFile(uri.key);
+      setAdhaarOrPan({ ...adhaarOrPan, front: uri.Location });
     } else {
-      setAdhaarOrPan({ ...vehicleRc, back: uri });
+      setIsChoosenBackFile(uri.key);
+      setAdhaarOrPan({ ...adhaarOrPan, back: uri.Location });
     }
   };
   const onSubmit = async () => {
     try {
-      console.log(adhaarOrPan);
       if (adhaarOrPan.front === "") {
         dispatch(
           notify({ type: "error", message: "Please upload front file" })
@@ -59,12 +60,12 @@ const AadharOrPanUpload = () => {
         frontImageUrl: adhaarOrPan.front,
         backImageUrl: adhaarOrPan.back,
         DL_number: adhaarOrPan.adhaarOrPanNumber,
-        doc_type: "DL",
+        doc_type: docType,
       };
 
       const response = await Api.post("/pilot/doc-upload", payload);
       if (response.status === 1) {
-        navigation.navigate("vehicleRc");
+        navigation.navigate("docUpload");
         dispatch(notify({ type: "success", message: response.message }));
       } else {
         throw new Error(response.message);
@@ -73,12 +74,13 @@ const AadharOrPanUpload = () => {
       dispatch(notify({ type: "error", message: error.message }));
     }
   };
+  console.log("adhaarOrPan", adhaarOrPan);
   const deleteImage = (type) => {
     if (type === "FRONT") {
-      setAdhaarOrPan({ ...vehicleRc, front: "" });
+      setAdhaarOrPan({ ...adhaarOrPan, front: "" });
       setIsChoosenFrontFile("No choosen file");
     } else {
-      setAdhaarOrPan({ ...vehicleRc, back: "" });
+      setAdhaarOrPan({ ...adhaarOrPan, back: "" });
       setIsChoosenBackFile("No chosen file");
     }
   };
@@ -164,6 +166,9 @@ const AadharOrPanUpload = () => {
             placeholder={
               docType === "PAN" ? "Enter Pan Number" : "Enter Aadhaar Number"
             }
+            onChangeText={(e) => {
+              setAdhaarOrPan({ ...adhaarOrPan, adhaarOrPanNumber: e });
+            }}
             mode="outlined"
           />
         </View>

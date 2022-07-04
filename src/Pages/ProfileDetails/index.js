@@ -22,7 +22,6 @@ const ProfileDetails = ({ navigation }) => {
   const [lastNameError, setLastNameError] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [dob, setDob] = useState("");
   const [dobError, setDobError] = useState("");
   const [gender, setGender] = useState("");
   const [genderError, setGenderError] = useState("");
@@ -53,7 +52,7 @@ const ProfileDetails = ({ navigation }) => {
     }
 
     var dobValid = false;
-    if (dob.length == 0) {
+    if (!date) {
       setDobError("dob is required");
     } else {
       setDobError("");
@@ -75,26 +74,27 @@ const ProfileDetails = ({ navigation }) => {
       dobValid &&
       genderValid
     ) {
-      alert("Email: " + email);
+      onSubmit();
+      // dispatch(notify({ type: "error", message: "success" }));
       setFirstName("");
       setLastName("");
       setEmail("");
-      setDob("");
+      setDate("");
       setGender("");
     }
   };
-  const radioButtonsData = [
-    {
-      id: "1",
-      label: "Male",
-      value: "male",
-    },
-    {
-      id: "2",
-      label: "Female",
-      value: "female",
-    },
-  ];
+  // const radioButtonsData = [
+  //   {
+  //     id: "1",
+  //     label: "Male",
+  //     value: "male",
+  //   },
+  //   {
+  //     id: "2",
+  //     label: "Female",
+  //     value: "female",
+  //   },
+  // ];
 
   const [date, setDate] = useState(null);
 
@@ -183,7 +183,7 @@ const ProfileDetails = ({ navigation }) => {
                 date ? { color: "black", fontSize: 16 } : styles.datePickerText
               }
             >
-              {date ? moment(date).format("DD/mm/yyyy") : "Select Date"}
+              {date ? moment(date).format("L") : "Select Date"}
             </Text>
           </View>
           {/* <TextInput
@@ -195,7 +195,7 @@ const ProfileDetails = ({ navigation }) => {
             disabled={true}
           /> */}
         </TouchableWithoutFeedback>
-        {dobError.length > 0 && <Text style={styles.error}>{dobError}</Text>}
+        {!date && <Text style={styles.error}>{dobError}</Text>}
       </View>
       <View style={styles.row}>
         <Text style={styles.title}>Email</Text>
