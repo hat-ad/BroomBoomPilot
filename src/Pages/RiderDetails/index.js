@@ -71,7 +71,7 @@ const RiderDetails = () => {
             fontWeight: "600",
           }}
         >
-          {user.details.pilot?.name}
+          {user.pilot?.name}
         </Text>
         <Text
           style={{

@@ -30,7 +30,7 @@ const OtpScreen = ({ navigation, route }) => {
       if (response.status === 1) {
         dispatch(
           login({
-            clientToken: response.data.details.pilot.token,
+            clientToken: response.data.pilot.token,
             user: response.data,
           })
         );

@@ -17,7 +17,7 @@ const Navigation = () => {
           header: () => null,
         }}
       />
-      {/* {auth.user?.details?.pilot?.isVerified && auth.clientToken && ( */}
+      {/* {auth.user?.pilot?.isVerified && auth.clientToken && ( */}
       <Stack.Screen
         name="tab"
         component={BottomNavigation}
