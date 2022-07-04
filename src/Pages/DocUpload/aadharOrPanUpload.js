@@ -11,13 +11,16 @@ import styles from "./styles";
 import { DeleteIcon } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
 import { RadioButton } from "react-native-paper";
+import { useDispatch } from "react-redux";
+import { notify } from "../../Redux/Actions";
+import Api from "../../Services";
 
 // import matrics from "../../Utility/metrics";
 
-const AadharOrPanUpload = () => {
+const AadharOrPanUpload = ({ navigation }) => {
   const [isChoosenFrontFile, setIsChoosenFrontFile] =
     useState("No choosen file");
-  const [checked, setChecked] = React.useState("first");
+  const dispatch = useDispatch();
 
   const [docType, setDocType] = useState("AADHAAR");
 
@@ -59,7 +62,7 @@ const AadharOrPanUpload = () => {
       const payload = {
         frontImageUrl: adhaarOrPan.front,
         backImageUrl: adhaarOrPan.back,
-        DL_number: adhaarOrPan.adhaarOrPanNumber,
+        other_doc_number: adhaarOrPan.adhaarOrPanNumber,
         doc_type: docType,
       };
 
@@ -121,7 +124,16 @@ const AadharOrPanUpload = () => {
               buttonStyle={styles.pickerButton}
               containerStyle={styles.pickerContainer}
             />
-            <Text style={{ fontSize: 16, marginRight: 5, fontWeight: "300" }}>
+            <Text
+              style={{
+                fontSize: 16,
+                marginRight: 5,
+                fontWeight: "300",
+                width: metrics.scale(120),
+              }}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
               {isChoosenFrontFile}
             </Text>
             <TouchableOpacity
@@ -142,7 +154,16 @@ const AadharOrPanUpload = () => {
               buttonStyle={styles.pickerButton}
               containerStyle={styles.pickerContainer}
             />
-            <Text style={{ fontSize: 16, marginRight: 5, fontWeight: "300" }}>
+            <Text
+              style={{
+                fontSize: 16,
+                marginRight: 5,
+                fontWeight: "300",
+                width: metrics.scale(120),
+              }}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
               {isChoosenBackFile}
             </Text>
             <TouchableOpacity

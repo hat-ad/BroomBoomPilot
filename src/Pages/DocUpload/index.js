@@ -88,7 +88,7 @@ const DocUpload = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.boxBtn}
-          onPress={() => navigation.navigate("adhaar")}
+          onPress={() => navigation.navigate("aadharOrPanUpload")}
         >
           <Image source={require("../../../assets/Icon/Aadhar.png")} />
           <Text style={styles.box}>Aadhaar/PAN Card</Text>

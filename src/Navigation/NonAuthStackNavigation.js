@@ -87,7 +87,11 @@ const StackNavigation = () => {
             name="aadharOrPanUpload"
             component={AadharOrPanUpload}
           />
-
+          <Stack.Screen
+            name="profileDetails"
+            component={ProfileDetails}
+            options={{ headerTitle: "Profile Details" }}
+          />
           <Stack.Screen name="approve" component={Approve} />
           <Stack.Screen name="error" component={Error} />
         </>
