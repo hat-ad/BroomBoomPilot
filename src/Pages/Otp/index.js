@@ -31,7 +31,11 @@ const OtpScreen = ({ navigation, route }) => {
         dispatch(
           login({ clientToken: response.data.pilot.token, user: response.data })
         );
-        navigation.navigate("searchCity");
+        if (response.data.pilot.isVerified) {
+          console.log(response.data.pilot.isVerified);
+          navigation.navigate("tab");
+        }
+        // } else navigation.navigate("searchCity");
       } else {
         throw new Error(response.message);
       }

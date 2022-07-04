@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import styles from "./styles";
 // import { SteeringIcon } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
-import { MapMarkerIcon, ArrowRight } from "../../Utility/iconLibrary";
+import {
+  MapMarkerIcon,
+  ArrowRight,
+  AddressCardIcon,
+} from "../../Utility/iconLibrary";
 import { useDispatch, useSelector } from "react-redux";
 import Api from "../../Services";
 import { notify } from "../../Redux/Actions";
@@ -88,6 +92,14 @@ const DocUpload = ({ navigation, route }) => {
         >
           <Image source={require("../../../assets/Icon/Aadhar.png")} />
           <Text style={styles.box}>Aadhaar/PAN Card</Text>
+          <ArrowRight style={{ alignSelf: "center" }} size={20} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.boxBtn}
+          onPress={() => navigation.navigate("adhaar")}
+        >
+          <AddressCardIcon />
+          <Text style={styles.box}>Profile Details</Text>
           <ArrowRight style={{ alignSelf: "center" }} size={20} />
         </TouchableOpacity>
       </View>

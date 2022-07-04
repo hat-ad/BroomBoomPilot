@@ -2,10 +2,10 @@ import { StyleSheet } from "react-native";
 import metrics from "../../../Utility/metrics";
 export default styleForExpandedScreen = StyleSheet.create({
   container: {
-    height: "100%",
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: metrics.scale(20),
+    paddingVertical: metrics.verticalScale(20),
   },
   searchbox: {
     flexDirection: "row",

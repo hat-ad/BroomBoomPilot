@@ -30,6 +30,14 @@ export const ArrowRight = ({ size, color, style }) => (
     size={size}
   />
 );
+export const ArrowLeft = ({ size, color, style }) => (
+  <FontAwesomeIcon
+    icon={"arrow-left"}
+    color={color}
+    style={style}
+    size={size}
+  />
+);
 export const SearchIcon = ({ size, color, style }) => (
   <FontAwesomeIcon icon={"search"} color={color} style={style} size={size} />
 );
@@ -49,4 +57,13 @@ export const SteeringIcon = ({ size, color, style }) => (
 
 export const ProfileIcon = ({ size, color, style }) => (
   <FontAwesomeIcon icon={"user"} color={color} style={style} size={size} />
+);
+
+export const AddressCardIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon
+    icon={"address-card"}
+    color={color}
+    style={style}
+    size={size}
+  />
 );

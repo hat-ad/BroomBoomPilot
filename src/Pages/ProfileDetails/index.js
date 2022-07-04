@@ -1,15 +1,21 @@
 import {
   View,
   Text,
-  TextInput,
-  SafeAreaView,
   TouchableOpacity,
+  ScrollView,
+  TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./styles";
-import { RadioButton } from "react-native-paper";
+import { RadioButton, TextInput } from "react-native-paper";
+import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+import moment from "moment";
+import Api from "../../Services";
+import { useDispatch } from "react-redux";
+import { notify, updateUser } from "../../Redux/Actions/";
 
-const ProfileDetails = () => {
+const ProfileDetails = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,8 +26,6 @@ const ProfileDetails = () => {
   const [dobError, setDobError] = useState("");
   const [gender, setGender] = useState("");
   const [genderError, setGenderError] = useState("");
-
-  const [checked, setChecked] = useState("first");
 
   const handleSubmit = () => {
     var firstNameValid = false;
@@ -50,7 +54,7 @@ const ProfileDetails = () => {
 
     var dobValid = false;
     if (dob.length == 0) {
-      setDobError("dob name is required");
+      setDobError("dob is required");
     } else {
       setDobError("");
       dobValid = true;
@@ -91,61 +95,156 @@ const ProfileDetails = () => {
       value: "female",
     },
   ];
+
+  const [date, setDate] = useState(null);
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    DateTimePickerAndroid.open({
+      value: date || new Date(),
+      onChange,
+      mode: currentMode,
+      is24Hour: true,
+    });
+  };
+
+  const showDatepicker = () => {
+    showMode("date");
+  };
+
+  const onSubmit = async () => {
+    try {
+      const payload = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        dob: moment(date),
+        gender: gender,
+      };
+      console.log(payload);
+      const response = await Api.update("/pilot/update-pilot-details", payload);
+      if (response.staus === 1) {
+        dispatch(updateUser(response.data));
+        navigation.navigate("docUpload");
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
+
   return (
-    <SafeAreaView>
-      <Text style={styles.text}>First Name</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter First Name"
-        keyboardType="string"
-        onChangeText={(text) => setFirstName(text)}
-        value={firstName}
-      />
-      {firstNameError.length > 0 && <Text>{firstNameError}</Text>}
-      <Text style={styles.text}>Last Name</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter Last Name"
-        keyboardType="string"
-        onChangeText={(text) => setLastName(text)}
-        value={lastName}
-      />
-      {lastNameError.length > 0 && <Text>{lastNameError}</Text>}
-      <Text style={styles.text}>Date of Birth</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter Date of Birth"
-        keyboardType="string"
-        onChangeText={(text) => setDob(text)}
-        value={dob}
-      />
-      {dobError.length > 0 && <Text>{dobError}</Text>}
-      <Text style={styles.text}>Email Id</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter Email Id"
-        keyboardType="string"
-        onChangeText={(text) => setEmail(text)}
-        value={email}
-      />
-      {emailError.length > 0 && <Text>{emailError}</Text>}
-      <Text>Gender</Text>
-      <RadioButton
-        value="first"
-        status={checked === "first" ? "checked" : "unchecked"}
-        onPress={() => setChecked("first")}
-      />
-      <RadioButton
-        value="second"
-        status={checked === "second" ? "checked" : "unchecked"}
-        onPress={() => setChecked("second")}
-      />
-      {genderError.length > 0 && <Text>{genderError}</Text>}
-      <View style={styles.countContainer}></View>
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text>Submit</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <ScrollView style={styles.container}>
+      <View style={styles.row}>
+        <Text style={styles.title}>First Name</Text>
+        <TextInput
+          mode="outlined"
+          placeholder="Enter First Name"
+          onChangeText={(text) => setFirstName(text)}
+          value={firstName}
+          error={firstNameError.length > 0}
+          style={styles.input}
+        />
+        {firstNameError.length > 0 && (
+          <Text style={styles.error}>{firstNameError}</Text>
+        )}
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.title}>Last Name</Text>
+        <TextInput
+          mode="outlined"
+          placeholder="Enter Last Name"
+          onChangeText={(text) => setLastName(text)}
+          value={lastName}
+          error={lastNameError.length > 0}
+          style={styles.input}
+        />
+        {lastNameError.length > 0 && (
+          <Text style={styles.error}>{lastNameError}</Text>
+        )}
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.title}>DOB</Text>
+        <TouchableWithoutFeedback onPress={showDatepicker}>
+          <View
+            style={[
+              styles.datePickerContainer,
+              dobError.length > 0 && { borderColor: "red" },
+            ]}
+          >
+            <Text
+              style={
+                date ? { color: "black", fontSize: 16 } : styles.datePickerText
+              }
+            >
+              {date ? moment(date).format("DD/mm/yyyy") : "Select Date"}
+            </Text>
+          </View>
+          {/* <TextInput
+            mode="outlined"
+            placeholder="Enter Date of Birth"
+            onChangeText={(text) => setDob(text)}
+            value={dob}
+            error={dobError.length > 0}
+            disabled={true}
+          /> */}
+        </TouchableWithoutFeedback>
+        {dobError.length > 0 && <Text style={styles.error}>{dobError}</Text>}
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.title}>Email</Text>
+        <TextInput
+          mode="outlined"
+          placeholder="Enter Email"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+          error={emailError.length > 0}
+          style={styles.input}
+        />
+        {emailError.length > 0 && (
+          <Text style={styles.error}>{emailError}</Text>
+        )}
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.title}>Gender</Text>
+
+        <RadioButton.Group
+          onValueChange={(value) => setGender(value)}
+          value={gender}
+        >
+          <View style={{ flexDirection: "row" }}>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginRight: 30,
+              }}
+            >
+              <RadioButton value="male" />
+              <Text>Male</Text>
+            </View>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <RadioButton value="female" />
+              <Text>Female</Text>
+            </View>
+          </View>
+        </RadioButton.Group>
+        {genderError.length > 0 && (
+          <Text style={styles.error}>{genderError}</Text>
+        )}
+      </View>
+      <View style={styles.submit}>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={{ textAlign: "center" }}>Submit</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 

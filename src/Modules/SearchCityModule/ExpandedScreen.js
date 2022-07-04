@@ -7,13 +7,13 @@ import {
   TextInput,
 } from "react-native";
 
-import { SearchIcon } from "../../Utility/iconLibrary";
+import { ArrowLeft } from "../../Utility/iconLibrary";
 import styles from "../../Pages/SearchCity/style/styleForExpandedScreen";
 import Api from "../../Services";
 import { useDispatch } from "react-redux";
 import { notify, updateUser } from "../../Redux/Actions";
 
-const ExpandedScreen = ({ navigation }) => {
+const ExpandedScreen = ({ setState, setCity }) => {
   const dispatch = useDispatch();
   const [list, setList] = useState({});
   useEffect(() => {
@@ -28,9 +28,10 @@ const ExpandedScreen = ({ navigation }) => {
         city: city,
       });
       if (response.status === 1) {
+        setCity(city);
         // dispatch(notify({ type: "success", message: response.message }));
         dispatch(updateUser(response.data));
-        navigation.navigate("docUpload");
+        setState(false);
       } else {
         throw new Error(response.message);
       }
@@ -67,7 +68,9 @@ const ExpandedScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchbox}>
-        <SearchIcon style={styles.searchIcon} />
+        <TouchableOpacity onPress={() => setState(false)}>
+          <ArrowLeft style={styles.searchIcon} />
+        </TouchableOpacity>
         <TextInput
           placeholder="search city"
           style={styles.input}

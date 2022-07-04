@@ -5,12 +5,21 @@ import ExpandedScreen from "../../Modules/SearchCityModule/ExpandedScreen";
 
 const SearchCity = ({ navigation }) => {
   const [state, setState] = useState(false);
+  const [city, setCity] = useState("");
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       {state ? (
-        <ExpandedScreen navigation={navigation} />
+        <ExpandedScreen
+          navigation={navigation}
+          setState={setState}
+          setCity={setCity}
+        />
       ) : (
-        <InitialScreen setState={setState} />
+        <InitialScreen
+          setState={setState}
+          city={city}
+          navigation={navigation}
+        />
       )}
     </View>
   );

@@ -28,15 +28,15 @@ const StackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerRight: () => (
-          <Pressable
-            onPress={() => console.log("press")}
-            style={{ flexDirection: "row", alignItems: "center" }}
-          >
-            <QuestionIcon color={"white"} />
-            <Text style={{ color: "white", marginLeft: 5 }}>Help</Text>
-          </Pressable>
-        ),
+        // headerRight: () => (
+        //   <Pressable
+        //     onPress={() => console.log("press")}
+        //     style={{ flexDirection: "row", alignItems: "center" }}
+        //   >
+        //     <QuestionIcon color={"white"} />
+        //     <Text style={{ color: "white", marginLeft: 5 }}>Help</Text>
+        //   </Pressable>
+        // ),
         // headerTitle: () => null,
         headerTintColor: "white",
         headerStyle: {
@@ -45,13 +45,7 @@ const StackNavigation = () => {
         },
       }}
     >
-      <Stack.Screen
-        name="adhaar"
-        options={{ headerTitle: "Adhaar Or Pan Upload" }}
-        component={AadharOrPanUpload}
-      />
-
-      {auth.clientToken ? (
+      {auth.clientToken && !auth.user.pilot.isVerfied ? (
         <>
           <Stack.Screen
             name="searchCity"
@@ -82,7 +76,16 @@ const StackNavigation = () => {
             options={{ headerTitle: "Vehicle RC" }}
             component={vehicleRC}
           />
-
+          <Stack.Screen
+            name="adhaar"
+            options={{ headerTitle: "Adhaar Or Pan Upload" }}
+            component={AadharOrPanUpload}
+          />
+          <Stack.Screen
+            name="profileDetails"
+            component={ProfileDetails}
+            options={{ headerTitle: "Profile Details" }}
+          />
           <Stack.Screen
             name="pending"
             options={{ headerTitle: "" }}
@@ -93,11 +96,7 @@ const StackNavigation = () => {
             name="aadharOrPanUpload"
             component={AadharOrPanUpload}
           />
-          <Stack.Screen
-            name="profileDetails"
-            component={ProfileDetails}
-            options={{ headerTitle: "Profile Details" }}
-          />
+
           <Stack.Screen name="approve" component={Approve} />
           <Stack.Screen name="error" component={Error} />
         </>
