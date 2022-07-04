@@ -5,12 +5,12 @@ import metrics from "../../Utility/metrics";
 const ProfileSettings = ({ navigation }) => {
   return (
     <View style={{ paddingHorizontal: metrics.scale(30) }}>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={{ paddingVertical: metrics.verticalScale(20) }}
         onPress={() => navigation.navigate("riderDetails")}
       >
         <Text style={{ fontSize: 16 }}>Rider Details</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity
         style={{ paddingVertical: metrics.verticalScale(20) }}
         onPress={() => navigation.navigate("referAndEarn")}
