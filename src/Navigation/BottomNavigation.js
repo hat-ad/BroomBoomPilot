@@ -34,11 +34,11 @@ const ProfileStack = () => {
         component={ProfileSettings}
         options={{ headerTitle: "Profile" }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="riderDetails"
         component={RiderDetails}
         options={{ headerTitle: "Rider Details" }}
-      />
+      /> */}
       <Stack.Screen
         name="referAndEarn"
         component={ReferAndEarn}

@@ -86,7 +86,7 @@ const RiderDetails = () => {
       <View style={styles.boxCard}>
         <View style={styles.cardCont}>
           <Text style={styles.cardText}>Mobile</Text>
-          <Text style={styles.cardHead}>+91 9852136548</Text>
+          <Text style={styles.cardHead}>+91 {user.pilot.mobile}</Text>
         </View>
         <View style={styles.cardCont}>
           <Text style={styles.cardText}>License validity</Text>
@@ -94,13 +94,15 @@ const RiderDetails = () => {
         </View>
         <View style={styles.cardCont}>
           <Text style={styles.cardText}>Vehicle number</Text>
-          <Text style={styles.cardHead}>WB5543</Text>
+          <Text style={styles.cardHead}>
+            {user.documents.vehicle_RC_Number}
+          </Text>
         </View>
         <View
           style={[styles.driveCont, { borderBottomWidth: 0, marginBottom: 0 }]}
         >
           <Text style={styles.cardText}>Driver License</Text>
-          <Text style={styles.cardHead}>KGB541FHSKJLS</Text>
+          <Text style={styles.cardHead}>{user.documents.DL_number}</Text>
         </View>
       </View>
       <View
@@ -131,6 +133,7 @@ const RiderDetails = () => {
             borderRadius: 50,
             backgroundColor: "#347EEA",
           }}
+          onPress={onShare}
         >
           <Text style={{ color: "#fff" }}>Share</Text>
         </TouchableOpacity>
