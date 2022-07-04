@@ -7,7 +7,7 @@ export default styles = StyleSheet.create({
     paddingTop: metrics.verticalScale(10),
     alignItems: "center",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   loader: {
     position: "absolute",

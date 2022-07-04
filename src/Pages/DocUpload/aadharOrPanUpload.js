@@ -63,6 +63,7 @@ const AadharOrPanUpload = ({ navigation }) => {
         frontImageUrl: adhaarOrPan.front,
         backImageUrl: adhaarOrPan.back,
         other_doc_number: adhaarOrPan.adhaarOrPanNumber,
+        other_doc_type: docType,
         doc_type: docType,
       };
 
@@ -77,7 +78,7 @@ const AadharOrPanUpload = ({ navigation }) => {
       dispatch(notify({ type: "error", message: error.message }));
     }
   };
-  console.log("adhaarOrPan", adhaarOrPan);
+  // console.log("adhaarOrPan", adhaarOrPan);
   const deleteImage = (type) => {
     if (type === "FRONT") {
       setAdhaarOrPan({ ...adhaarOrPan, front: "" });

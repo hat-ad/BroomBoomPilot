@@ -38,3 +38,22 @@ export const updateUserDetails = (payload, showNotif = false) => {
 export const updateUser = (payload) => {
   return { type: UPDATE_USER, user: payload };
 };
+
+export const getUserDetails = () => {
+  const token = store.getState().auth.clientToken;
+  if (token) {
+    return async (dispatch) => {
+      try {
+        const response = await Api.get("/pilot/get-user-details");
+        if (response.status === 1) {
+          dispatch(updateUser(response.data));
+        } else {
+          throw new Error(response.message);
+        }
+      } catch (error) {
+        dispatch(notify({ type: "error", message: error.message }));
+      }
+    };
+  }
+  return;
+};

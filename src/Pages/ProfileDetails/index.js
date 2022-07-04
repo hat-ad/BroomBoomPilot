@@ -127,7 +127,8 @@ const ProfileDetails = ({ navigation }) => {
       };
       console.log(payload);
       const response = await Api.update("/pilot/update-pilot-details", payload);
-      if (response.staus === 1) {
+
+      if (response.status === 1) {
         dispatch(updateUser(response.data));
         navigation.navigate("docUpload");
       } else {

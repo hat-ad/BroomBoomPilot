@@ -75,7 +75,7 @@ const VehicleRC = ({ navigation }) => {
       const payload = {
         frontImageUrl: vehicleRc.front,
         backImageUrl: vehicleRc.back,
-        DL_number: vehicleRc.vehicleRcNumber,
+        vehicle_RC_Number: vehicleRc.vehicleRcNumber,
         vehicle_type: vehicleType,
         doc_type: "RC",
       };
