@@ -62,7 +62,7 @@ const StackNavigation = () => {
           <Stack.Screen
             name="docUpload"
             options={{
-              headerTitle: "",
+              headerTitle: "Document Upload",
             }}
             component={DocUpload}
           />

@@ -19,6 +19,8 @@ const AadharOrPanUpload = () => {
     useState("No choosen file");
   const [checked, setChecked] = React.useState("first");
 
+  const [docType, setDocType] = useState("AADHAAR");
+
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
   const [adhaarOrPan, setAdhaarOrPan] = useState({
     front: "",
@@ -88,18 +90,24 @@ const AadharOrPanUpload = () => {
       keyboardVerticalOffset={metrics.verticalScale(150)}
     >
       <View style={styles.container}>
-        <Text style={styles.heading}>Upload Aadhar or Pan Number</Text>
-
-        <RadioButton
-          value="first"
-          status={checked === "first" ? "checked" : "unchecked"}
-          onPress={() => setChecked("first")}
-        />
-        <RadioButton
-          value="second"
-          status={checked === "second" ? "checked" : "unchecked"}
-          onPress={() => setChecked("second")}
-        />
+        <Text style={styles.heading}>Select One</Text>
+        <RadioButton.Group
+          onValueChange={(value) => setDocType(value)}
+          value={docType}
+        >
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <RadioButton value="AADHAAR" />
+              <Text>Aadhar Card</Text>
+            </View>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <RadioButton value="PAN" />
+              <Text>Pan Card</Text>
+            </View>
+          </View>
+        </RadioButton.Group>
 
         <View style={{ marginTop: 20 }}>
           <Text style={styles.title}>Front</Text>
@@ -149,8 +157,15 @@ const AadharOrPanUpload = () => {
             marginTop: 30,
           }}
         >
-          <Text style={styles.heading}>Enter Aadhar or Pan Number</Text>
-          <TextInput placeholder="Enter Aadhar or Pan Number" mode="outlined" />
+          <Text style={styles.heading}>
+            {docType === "PAN" ? "Enter Pan Number" : "Enter Aadhaar Number"}
+          </Text>
+          <TextInput
+            placeholder={
+              docType === "PAN" ? "Enter Pan Number" : "Enter Aadhaar Number"
+            }
+            mode="outlined"
+          />
         </View>
         <TouchableOpacity style={styles.submit} onPress={onSubmit}>
           <Text style={styles.centerText}>Submit</Text>

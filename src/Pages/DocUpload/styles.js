@@ -14,7 +14,7 @@ export default styles = StyleSheet.create({
   title: {
     fontWeight: "400",
     fontSize: 22,
-    marginBottom: 20,
+    marginBottom: metrics.verticalScale(10),
   },
   muted: {
     fontWeight: "500",
@@ -24,7 +24,7 @@ export default styles = StyleSheet.create({
   pickerButton: {
     borderRadius: 50,
     backgroundColor: "#347EEA",
-    paddingVertical: 10,
+    paddingVertical: metrics.verticalScale(10),
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
@@ -86,7 +86,7 @@ export default styles = StyleSheet.create({
     alignSelf: "center",
     marginLeft: metrics.scale(20),
     marginRight: "auto",
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "700",
   },
   boxBtn: {

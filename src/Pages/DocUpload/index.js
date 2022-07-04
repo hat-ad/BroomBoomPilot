@@ -57,11 +57,11 @@ const DocUpload = ({ navigation, route }) => {
       </View>
       <Text
         style={{
-          fontSize: 24,
+          fontSize: 22,
           fontWeight: "700",
           textAlign: "center",
           width: "100%",
-          marginBottom: metrics.scale(50),
+          marginBottom: metrics.scale(40),
         }}
       >
         Let's upload the following documents to activate your account
@@ -96,9 +96,9 @@ const DocUpload = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.boxBtn}
-          onPress={() => navigation.navigate("adhaar")}
+          onPress={() => navigation.navigate("profileDetails")}
         >
-          <AddressCardIcon />
+          <AddressCardIcon size={43} />
           <Text style={styles.box}>Profile Details</Text>
           <ArrowRight style={{ alignSelf: "center" }} size={20} />
         </TouchableOpacity>
