@@ -49,7 +49,7 @@ const DocUpload = ({ navigation, route }) => {
             size={24}
             color={"#828282"}
           />
-          <Text>{user.city}</Text>
+          <Text>{user.details.city}</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate("searchCity")}>
           <Text style={{ color: "#347EEA" }}>Change</Text>

@@ -45,7 +45,7 @@ const StackNavigation = () => {
         },
       }}
     >
-      {auth.clientToken && !auth.user.pilot.isVerfied ? (
+      {auth.clientToken && !auth.user.details.pilot.isVerfied ? (
         <>
           <Stack.Screen
             name="searchCity"

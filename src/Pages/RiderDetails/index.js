@@ -1,9 +1,51 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Share } from "react-native";
 import React from "react";
 import metrics from "../../Utility/metrics";
 import styles from "./style";
+import { useDispatch, useSelector } from "react-redux";
+import { notify } from "../../Redux/Actions";
+import Api from "../../Services";
 
 const RiderDetails = () => {
+  const dispatch = useDispatch();
+  const [referralCode, setReferralCode] = React.useState("");
+  const user = useSelector((state) => state.auth.user);
+
+  React.useEffect(() => {
+    getReferralCode();
+  }, []);
+
+  const getReferralCode = async () => {
+    try {
+      const response = await Api.get("/refer/get-refer-token/");
+      if (response.status === 1) {
+        console.log(response.data.referral_code);
+        setReferralCode(response.data.referral_code);
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: referralCode,
+      });
+      // if (result.action === Share.sharedAction) {
+      //   if (result.activityType) {
+      //     // shared with activity type of result.activityType
+      //   } else {
+      //     // shared
+      //   }
+      // } else if (result.action === Share.dismissedAction) {
+      //   // dismissed
+      // }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
@@ -29,7 +71,7 @@ const RiderDetails = () => {
             fontWeight: "600",
           }}
         >
-          Ramesh Kr. Paul
+          {user.details.pilot?.name}
         </Text>
         <Text
           style={{

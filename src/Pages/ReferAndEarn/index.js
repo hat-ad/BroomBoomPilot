@@ -1,9 +1,62 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  Share,
+} from "react-native";
 import React from "react";
 import styles from "./styles";
 import { CopyIcon, GiftIcon } from "../../Utility/iconLibrary";
+import { useDispatch } from "react-redux";
+import { notify } from "../../Redux/Actions";
+import Api from "../../Services";
+import * as Clipboard from "expo-clipboard";
 
 const ReferAndEarn = () => {
+  const dispatch = useDispatch();
+  const [referralCode, setReferralCode] = React.useState("");
+  React.useEffect(() => {
+    getReferralCode();
+  }, []);
+  const getReferralCode = async () => {
+    try {
+      const response = await Api.get("/refer/get-refer-token/");
+      if (response.status === 1) {
+        console.log(response.data.referral_code);
+        setReferralCode(response.data.referral_code);
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
+
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync(referralCode);
+  };
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: referralCode,
+      });
+      // if (result.action === Share.sharedAction) {
+      //   if (result.activityType) {
+      //     // shared with activity type of result.activityType
+      //   } else {
+      //     // shared
+      //   }
+      // } else if (result.action === Share.dismissedAction) {
+      //   // dismissed
+      // }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+  };
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>
@@ -18,8 +71,8 @@ const ReferAndEarn = () => {
         Copy the code and send it to friend and earn both
       </Text>
       <View style={styles.copyCodeContainer}>
-        <Text style={styles.copyCodeText}>CHRHS</Text>
-        <TouchableOpacity>
+        <Text style={styles.copyCodeText}>{referralCode}</Text>
+        <TouchableOpacity onPress={copyToClipboard}>
           <CopyIcon />
         </TouchableOpacity>
       </View>
@@ -28,7 +81,7 @@ const ReferAndEarn = () => {
           <GiftIcon />
           <Text style={styles.inviteText}>Invite Friends to Broom Boom</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onShare}>
           <Text style={styles.link}>Invite</Text>
         </TouchableOpacity>
       </View>
