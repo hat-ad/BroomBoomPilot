@@ -7,7 +7,7 @@ import { SearchIcon, ArrowRight } from "../../Utility/iconLibrary";
 const HelpAndSupport = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.search}>
+      {/* <TouchableOpacity style={styles.search}>
         <SearchIcon
           size={24}
           style={{ paddingHorizontal: metrics.scale(20) }}
@@ -15,7 +15,7 @@ const HelpAndSupport = ({ navigation }) => {
         <Text style={{ fontSize: 16, color: "#828282", fontWeight: "600" }}>
           Search Issue
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <View style={styles.cardCont}>
         <View style={styles.cards}>
@@ -41,7 +41,7 @@ const HelpAndSupport = ({ navigation }) => {
           />
         </View>
 
-        <View style={styles.cards}>
+        {/* <View style={styles.cards}>
           <View>
             <Text style={{ fontSize: 16, color: "#333", fontWeight: "700" }}>
               Payment and Wallets
@@ -85,7 +85,7 @@ const HelpAndSupport = ({ navigation }) => {
             source={require("../../../assets/Icon/contactIcon.png")}
             style={{ width: 44, height: 44, marginLeft: "auto" }}
           />
-        </View>
+        </View> */}
       </View>
 
       <Text style={styles.anchorTag}>

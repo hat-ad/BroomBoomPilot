@@ -12,7 +12,7 @@ import {
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import ProfileSettings from "../Pages/ProfileSettings";
 import { Pressable, Text } from "react-native";
-import { ProfileIcon } from "../Utility/iconLibrary";
+import { FileIcon, ProfileIcon } from "../Utility/iconLibrary";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -77,11 +77,18 @@ export default function BottomNavigation() {
             headerShown: false,
           }}
         >
-          <Tab.Screen name="RiderDetails" component={RiderDetails} />
+          <Tab.Screen
+            name="RiderDetails"
+            component={RiderDetails}
+            options={{
+              tabBarIcon: FileIcon,
+              title: "Rider Details",
+            }}
+          />
           <Tab.Screen
             name="Profile"
             component={ProfileStack}
-            options={{ tabBarIcon: ProfileIcon }}
+            options={{ tabBarIcon: ProfileIcon, title: "Profile" }}
           />
         </Tab.Navigator>
       </SafeAreaView>

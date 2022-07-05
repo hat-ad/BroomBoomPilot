@@ -5,7 +5,7 @@ import styles from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { notify } from "../../Redux/Actions";
 import Api from "../../Services";
-
+import moment from "moment";
 const RiderDetails = () => {
   const dispatch = useDispatch();
   const [referralCode, setReferralCode] = React.useState("");
@@ -80,7 +80,7 @@ const RiderDetails = () => {
             color: "#347EEA",
           }}
         >
-          Pulser 250
+          {user.documents.vehicle_type}
         </Text>
       </View>
       <View style={styles.boxCard}>
@@ -90,7 +90,9 @@ const RiderDetails = () => {
         </View>
         <View style={styles.cardCont}>
           <Text style={styles.cardText}>License validity</Text>
-          <Text style={styles.cardHead}>20/06/2036</Text>
+          <Text style={styles.cardHead}>
+            {moment(user.documents.createdAt).format("L")}
+          </Text>
         </View>
         <View style={styles.cardCont}>
           <Text style={styles.cardText}>Vehicle number</Text>
@@ -113,7 +115,7 @@ const RiderDetails = () => {
           justifyContent: "center",
         }}
       >
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Text
             style={{
               color: "#347EEA",
@@ -124,7 +126,7 @@ const RiderDetails = () => {
           >
             View more
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity
           style={{
             marginLeft: "auto",

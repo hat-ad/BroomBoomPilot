@@ -28,7 +28,7 @@ const Welcome = ({ navigation }) => {
       >
         <Image
           source={{ uri: item.imgUrl }}
-          style={{ height: 150, width: ITEM_WIDTH }}
+          style={{ height: 200, width: ITEM_WIDTH, backgroundColor: "white" }}
         />
         <View
           style={{
@@ -38,9 +38,9 @@ const Welcome = ({ navigation }) => {
           }}
         >
           <Text style={{ fontSize: 22, fontWeight: "700", marginBottom: 10 }}>
-            Welcome Note
+            {item.title}
           </Text>
-          <Text
+          {/* <Text
             style={{
               fontSize: 16,
               fontWeight: "500",
@@ -50,7 +50,7 @@ const Welcome = ({ navigation }) => {
           >
             risus tincidunt maximus Vestibulum odio scelerisque sollicitudin.
             sed tincidunt eget non. elit In vitae Vestibulum tortor.
-          </Text>
+          </Text> */}
         </View>
       </View>
     );
@@ -59,17 +59,19 @@ const Welcome = ({ navigation }) => {
     {
       title: "Bengal's Own cab",
       // body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
-      imgUrl: "https://broomboomimages.s3.ap-south-1.amazonaws.com/note1.svg",
+      imgUrl: "https://broomboomimages.s3.ap-south-1.amazonaws.com/Group.png",
     },
     {
       title: "Bengal's Own Bike Taxi",
       // body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu. Proin faucibus arcu quis ante. Curabitur at lacus ac velit ornare lobortis. ",
-      imgUrl: "https://broomboomimages.s3.ap-south-1.amazonaws.com/note3.svg",
+      imgUrl:
+        "https://broomboomimages.s3.ap-south-1.amazonaws.com/Order+Done+1.png",
     },
     {
       title: "Be a BroomBoom Pilot",
       // body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.",
-      imgUrl: "https://broomboomimages.s3.ap-south-1.amazonaws.com/note2.svg",
+      imgUrl:
+        "https://broomboomimages.s3.ap-south-1.amazonaws.com/Contact+Befor+Order+Received+1.png",
     },
   ];
 
@@ -80,7 +82,10 @@ const Welcome = ({ navigation }) => {
           alignItems: "center",
         }}
       >
-        <Image style={{ height: 54, width: 54 }} source={LogoSmall} />
+        <Image
+          style={{ height: 54, width: 54, backgroundColor: "white" }}
+          source={LogoSmall}
+        />
       </View>
 
       <View style={{ marginTop: 32, alignItems: "center" }}>

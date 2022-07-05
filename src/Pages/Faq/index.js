@@ -5,7 +5,7 @@ import styles from "./styles";
 const Faq = () => {
   return (
     <ScrollView style={styles.container}>
-      <TextInput
+      {/* <TextInput
         placeholder="Search Issue"
         style={{
           width: "100%",
@@ -17,7 +17,7 @@ const Faq = () => {
           marginTop: 20,
           marginBottom: 30,
         }}
-      />
+      /> */}
       <View style={styles.accordionContainer}>
         <List.AccordionGroup>
           <List.Accordion

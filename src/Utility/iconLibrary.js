@@ -41,6 +41,9 @@ export const ArrowLeft = ({ size, color, style }) => (
 export const SearchIcon = ({ size, color, style }) => (
   <FontAwesomeIcon icon={"search"} color={color} style={style} size={size} />
 );
+export const FileIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"file"} color={color} style={style} size={size} />
+);
 export const GiftIcon = ({ size, color, style }) => (
   <FontAwesomeIcon icon={"gift"} color={color} style={style} size={size} />
 );
