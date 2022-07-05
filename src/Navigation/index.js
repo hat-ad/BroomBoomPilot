@@ -54,7 +54,7 @@ const Navigation = () => {
     } else {
       navigation.navigate("Welcome");
     }
-  }, []);
+  }, [auth]);
 
   const getUserDetails = async () => {
     try {

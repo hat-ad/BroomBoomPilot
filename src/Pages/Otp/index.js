@@ -34,23 +34,23 @@ const OtpScreen = ({ navigation, route }) => {
             user: response.data,
           })
         );
-        const user = response.data;
-        if (!user.documents || !user.documents?.verification_status !== null) {
-          navigation.navigate("searchCity");
-          return;
-        } else if (user.documents?.verification_status === 0) {
-          navigation.navigate("pending");
-          return;
-        } else if (user.documents?.verification_status === -1) {
-          navigation.navigate("error");
-          return;
-        } else if (user.documents?.verification_status === 1) {
-          navigation.navigate("tab");
-          return;
-        } else if (user.documents?.verification_status === 2) {
-          navigation.navigate("tab");
-          return;
-        }
+        // const user = response.data;
+        // if (!user.documents || !user.documents?.verification_status !== null) {
+        // navigation.navigate("searchCity");
+        //   return;
+        // } else if (user.documents?.verification_status === 0) {
+        //   navigation.navigate("pending");
+        //   return;
+        // } else if (user.documents?.verification_status === -1) {
+        //   navigation.navigate("error");
+        //   return;
+        // } else if (user.documents?.verification_status === 1) {
+        //   navigation.navigate("tab");
+        //   return;
+        // } else if (user.documents?.verification_status === 2) {
+        //   navigation.navigate("tab");
+        //   return;
+        // }
       } else {
         throw new Error(response.message);
       }
