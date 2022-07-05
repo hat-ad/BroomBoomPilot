@@ -20,7 +20,7 @@ const DocUpload = ({ navigation, route }) => {
     try {
       const response = await Api.get("/pilot/submit-document");
       if (response.status === 1) {
-        // navigation.navigate("pending");
+        navigation.navigate("pending");
         dispatch(notify({ type: "success", message: response.message }));
         dispatch(getUserDetails());
       } else {
