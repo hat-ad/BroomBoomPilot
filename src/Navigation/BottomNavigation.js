@@ -59,6 +59,11 @@ const ProfileStack = () => {
         component={TermsAndConditions}
         options={{ headerTitle: "Terms and Conditions" }}
       />
+      <Stack.Screen
+        name="faq"
+        component={Faq}
+        options={{ headerTitle: "Faq" }}
+      />
     </Stack.Navigator>
   );
 };

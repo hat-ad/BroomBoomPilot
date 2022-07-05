@@ -1,10 +1,10 @@
 import React from "react";
-import { View, TextInput } from "react-native";
+import { View, TextInput, ScrollView } from "react-native";
 import { List } from "react-native-paper";
 import styles from "./styles";
 const Faq = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <TextInput
         placeholder="Search Issue"
         style={{
@@ -23,14 +23,20 @@ const Faq = () => {
           <List.Accordion
             title="HOW CAN I BOOK A RIDE ??"
             id="First"
+            titleNumberOfLines={5}
             style={styles.accordion}
           >
-            <List.Item title="PICKUP LOCATION > DESTINATION > REQUEST BB > BOOKED (NOTIFIED WHEN ACCEPTED BY PILOT)" />
+            <List.Item
+              // title="PICKUP LOCATION > DESTINATION > REQUEST BB > BOOKED (NOTIFIED WHEN ACCEPTED BY PILOT)"
+              description="PICKUP LOCATION > DESTINATION > REQUEST BB > BOOKED (NOTIFIED WHEN ACCEPTED BY PILOT)"
+              descriptionNumberOfLines={5}
+            />
           </List.Accordion>
 
           <List.Accordion
             title="HOW CAN I BOOK LATER A RIDE ??"
             id="Second"
+            titleNumberOfLines={5}
             style={styles.accordion}
           >
             <List.Item title="PICKUP LOCATION > DESTINATION > {STOPPAGE IN BETWEEN IF NEEDED CLICK} > DAY >TIME > BOOK > PAY NOW/LATER/ADVANCE PAYMENT" />
@@ -40,6 +46,7 @@ const Faq = () => {
             title="HOW DO I TURN OFF THE NOTIFICATION ??"
             id="Third"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="LEFT MENU > SETTINGS > PREFERENCE ENABLE/DISABLE MAIL,SMS OR PUSH NOTIFICATION AS REQUIRED" />
           </List.Accordion>
@@ -47,6 +54,7 @@ const Faq = () => {
             title="HOW CAN I UPDATE THE MOBILE NO/EMAIL ID ??"
             id="fourth"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="LEFT MENU > SETTINGS > PROFILE > EDIT YOUR MAIL ID/PHONE NO." />
           </List.Accordion>
@@ -54,6 +62,7 @@ const Faq = () => {
             title="HOW CAN I CHANGE LANGUAGE ??"
             id="fifth"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="MENU > SETTINGS > LANGUAGE CHOOSE" />
           </List.Accordion>
@@ -61,6 +70,7 @@ const Faq = () => {
             title="HOW TO UPDATE MY WORK/HOME/FAV. LOCATION ??"
             id="sixth"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="MENU > SETTINGS > FAVORITES." />
           </List.Accordion>
@@ -69,6 +79,7 @@ const Faq = () => {
             title="HOW TO GIVE FEEDBACK ??"
             id="seventh"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="LEFT MENU > SETTINGS > PROFILE > RIDE HITORY > FEEDBACK (BOTH FOR PILOT AND RIDE)." />
           </List.Accordion>
@@ -76,6 +87,7 @@ const Faq = () => {
             title="HOW CAN I CHECK THE FARE OF THE RIDE ??"
             id="eight"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="PICKUP LOCATION > DESTINATION > CHECK PRICE {VARIES DEPENDING ON THE LOCATION,TIME & AVAILABILITY OF  PILOT}" />
           </List.Accordion>
@@ -83,6 +95,7 @@ const Faq = () => {
             title="HOW CAN I CHECK THE FARE BREAK UP ??"
             id="nineth"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="CLICK ON ICON BESIDE FARE > CHART OPENS (IT INCLUDES BASE FARE,RIDE TIME FARE,DISCOUNT)." />
           </List.Accordion>
@@ -90,6 +103,7 @@ const Faq = () => {
             title="HOW TO APPLY COUPON CODE ?"
             id="tenth"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="WHILE BOOKING > APPLY COUPON CODE > APPLY (READ T & C)." />
           </List.Accordion>
@@ -97,6 +111,7 @@ const Faq = () => {
             title="WHERE CAN I FIND MY PILOT DETAILS ?"
             id="eleventh"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="BOOK > CONFORM BY PILOT ><PILOT DETAILS {INCLUDE CONTACT INFORMATION} > CHAT/CALL OPTION" />
           </List.Accordion>
@@ -104,6 +119,7 @@ const Faq = () => {
             title="HOW MUCH TIME PILOT TAKES TO ARRIVE AT YOUR PICKUP LOCATION ?"
             id="twelveth"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="BOOK > CHECK PRICE RANGE ,(AN ICON IS THERE)>ESRTIMATED TIME (VARIES ON TRAFIC,CONGESTION,WEATHER)" />
           </List.Accordion>
@@ -111,6 +127,7 @@ const Faq = () => {
             title="HOW DO I USE PIN TO START MY RIDE ?"
             id="thirteenth"
             style={styles.accordion}
+            titleNumberOfLines={5}
           >
             <List.Item title="AFTER BOOKING > PIN GENERATED > TRACK RIDE PAGE (SHARE PIN WITH PILOT > START TRIP)" />
           </List.Accordion>
@@ -306,7 +323,7 @@ const Faq = () => {
           </List.Accordion>
         </List.AccordionGroup>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
