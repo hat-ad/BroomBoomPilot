@@ -37,7 +37,14 @@ const Welcome = ({ navigation }) => {
             backgroundColor: "white",
           }}
         >
-          <Text style={{ fontSize: 22, fontWeight: "700", marginBottom: 10 }}>
+          <Text
+            style={{
+              fontSize: 22,
+              fontWeight: "700",
+              marginBottom: 10,
+              padding: metrics.scale(10),
+            }}
+          >
             {item.title}
           </Text>
           {/* <Text

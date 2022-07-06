@@ -14,13 +14,13 @@ import { getUserDetails, notify } from "../../Redux/Actions";
 
 const DocUpload = ({ navigation, route }) => {
   const user = useSelector((state) => state.auth.user);
-  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const onSubmit = async () => {
     try {
       const response = await Api.get("/pilot/submit-document");
       if (response.status === 1) {
-        navigation.navigate("pending");
+        navigation.popToTop();
+        navigation.replace("pending");
         dispatch(notify({ type: "success", message: response.message }));
         dispatch(getUserDetails());
       } else {

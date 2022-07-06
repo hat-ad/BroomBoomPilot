@@ -13,6 +13,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import ProfileSettings from "../Pages/ProfileSettings";
 import { Pressable, Text } from "react-native";
 import { FileIcon, ProfileIcon } from "../Utility/iconLibrary";
+import { useEffect } from "react";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -68,7 +69,7 @@ const ProfileStack = () => {
   );
 };
 
-export default function BottomNavigation() {
+export default function BottomNavigation({ navigation }) {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>

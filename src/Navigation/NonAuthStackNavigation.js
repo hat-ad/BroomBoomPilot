@@ -1,5 +1,5 @@
 import { Text } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   Welcome,
@@ -21,12 +21,63 @@ import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "../Redux/Actions";
+import Api from "../Services";
 
 const Stack = createNativeStackNavigator();
 
-const StackNavigation = () => {
+const StackNavigation = ({ navigation }) => {
+  const initialRender = useRef(true);
   const auth = useSelector((state) => state.auth);
-  console.log("I landed here stack");
+
+  useEffect(() => {
+    if (auth.clientToken && initialRender.current) {
+      initialRender.current = false;
+      getUserDetails()
+        .then((res) => {
+          const { data: user } = res;
+          if (!user.documents || user.documents?.verification_status === null) {
+            console.log(
+              "auth",
+              !user.documents || !user.documents?.verification_status !== null
+            );
+            navigation.replace("searchCity");
+            return;
+          } else if (user.documents?.verification_status === 0) {
+            navigation.replace("pending");
+            return;
+          } else if (user.documents?.verification_status === -1) {
+            navigation.replace("error");
+            return;
+          } else if (user.documents?.verification_status === 1) {
+            navigation.replace("tab");
+            return;
+          } else if (user.documents?.verification_status === 2) {
+            navigation.replace("tab");
+            return;
+          }
+        })
+        .catch((err) => {
+          dispatch(
+            notify({
+              message: "Cannot get user details!Please try again later",
+              type: "error",
+            })
+          );
+        });
+    } else {
+      navigation.navigate("Welcome");
+    }
+  }, [auth]);
+
+  const getUserDetails = async () => {
+    try {
+      const user = await Api.get("/pilot/get-user-details");
+      return user;
+    } catch (error) {
+      return 0;
+    }
+  };
+
   return (
     <Stack.Navigator
       screenOptions={{

@@ -256,7 +256,7 @@ const VehicleRC = ({ navigation }) => {
             </View>
             <View style={styles.row}>
               <TouchableOpacity
-                style={[styles.modalImageContainer, styles.selected]}
+                style={[styles.modalImageContainer]}
                 onPress={() => handleModal("AUTO-RICKSHAW", 3)}
               >
                 <Image
