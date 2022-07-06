@@ -17,7 +17,7 @@ import {
 } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
 import { useDispatch } from "react-redux";
-import { notify } from "../../Redux/Actions";
+import { getUserDetails, notify } from "../../Redux/Actions";
 import Api from "../../Services";
 
 const VehicleRC = ({ navigation }) => {
@@ -82,6 +82,7 @@ const VehicleRC = ({ navigation }) => {
 
       const response = await Api.post("/pilot/doc-upload", payload);
       if (response.status === 1) {
+        dispatch(getUserDetails());
         navigation.navigate("docUpload");
         dispatch(notify({ type: "success", message: response.message }));
       } else {

@@ -92,7 +92,7 @@ const HelpAndSupport = ({ navigation }) => {
         For more information read our{" "}
         <Text style={{ color: "#347EEA" }}> terms and condition </Text>
         and <Text style={{ color: "#347EEA" }}> privacy policy </Text>
-        of Broom Boom
+        of Broomboom
       </Text>
     </View>
   );

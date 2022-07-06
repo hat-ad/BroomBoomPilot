@@ -89,7 +89,7 @@ const RiderDetails = () => {
           <Text style={styles.cardHead}>+91 {user.pilot.mobile}</Text>
         </View>
         <View style={styles.cardCont}>
-          <Text style={styles.cardText}>License validity</Text>
+          <Text style={styles.cardText}>Created at</Text>
           <Text style={styles.cardHead}>
             {moment(user.documents.createdAt).format("L")}
           </Text>

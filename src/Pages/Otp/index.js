@@ -66,7 +66,7 @@ const OtpScreen = ({ navigation, route }) => {
         Enter OTP
       </Text>
       <Text style={{ fontSize: 14, fontWeight: "500", textAlign: "center" }}>
-        We have sent an OTP to 8961458521
+        We have sent an OTP to {mobile}
       </Text>
       <OTPTextInput inputCount={4} handleTextChange={(e) => setOtp(e)} />
 
@@ -86,9 +86,9 @@ const OtpScreen = ({ navigation, route }) => {
             </Text>
           </>
         )}
-        <Text style={{ fontSize: 14, fontWeight: "500", textAlign: "right" }}>
+        {/* <Text style={{ fontSize: 14, fontWeight: "500", textAlign: "right" }}>
           Resend OTP in 10s
-        </Text>
+        </Text> */}
         <Button onPress={onSubmitOtp}>next</Button>
       </View>
     </View>

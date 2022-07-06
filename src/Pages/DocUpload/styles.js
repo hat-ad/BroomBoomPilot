@@ -96,5 +96,6 @@ export default styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     marginBottom: metrics.scale(20),
+    alignItems: "center",
   },
 });

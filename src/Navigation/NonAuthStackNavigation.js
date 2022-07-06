@@ -35,11 +35,8 @@ const StackNavigation = ({ navigation }) => {
       getUserDetails()
         .then((res) => {
           const { data: user } = res;
+          console.log(user.documents?.verification_status);
           if (!user.documents || user.documents?.verification_status === null) {
-            console.log(
-              "auth",
-              !user.documents || !user.documents?.verification_status !== null
-            );
             navigation.replace("searchCity");
             return;
           } else if (user.documents?.verification_status === 0) {
@@ -72,6 +69,8 @@ const StackNavigation = ({ navigation }) => {
   const getUserDetails = async () => {
     try {
       const user = await Api.get("/pilot/get-user-details");
+      console.log(user);
+
       return user;
     } catch (error) {
       return 0;

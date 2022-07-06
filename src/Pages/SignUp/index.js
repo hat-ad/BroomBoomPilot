@@ -112,7 +112,7 @@ const SignUp = ({ navigation }) => {
           <Text style={{ color: "blue" }} onPress={() => Linking.openURL("#")}>
             privacy policy{" "}
           </Text>
-          of Broom Boom Pilot
+          of Broomboom Pilot
         </Text>
         <TouchableOpacity
           style={{

@@ -7,6 +7,7 @@ import {
   MapMarkerIcon,
   ArrowRight,
   AddressCardIcon,
+  CircleCheckIcon,
 } from "../../Utility/iconLibrary";
 import { useDispatch, useSelector } from "react-redux";
 import Api from "../../Services";
@@ -77,7 +78,15 @@ const DocUpload = ({ navigation, route }) => {
             source={require("../../../assets/Icon/DriveLic.png")}
           />
           <Text style={styles.box}>Driving License</Text>
-          <ArrowRight style={{ alignSelf: "center" }} size={20} />
+          {user.documents?.DL_upload_status ? (
+            <CircleCheckIcon
+              style={{ alignSelf: "center" }}
+              color="green"
+              size={20}
+            />
+          ) : (
+            <ArrowRight style={{ alignSelf: "center" }} size={20} />
+          )}
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.boxBtn}
@@ -85,7 +94,15 @@ const DocUpload = ({ navigation, route }) => {
         >
           <Image source={require("../../../assets/Icon/VehicleRC.png")} />
           <Text style={styles.box}>Vehicle RC</Text>
-          <ArrowRight style={{ alignSelf: "center" }} size={20} />
+          {user.documents?.RC_upload_status ? (
+            <CircleCheckIcon
+              style={{ alignSelf: "center" }}
+              color="green"
+              size={20}
+            />
+          ) : (
+            <ArrowRight style={{ alignSelf: "center" }} size={20} />
+          )}
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.boxBtn}
@@ -93,15 +110,31 @@ const DocUpload = ({ navigation, route }) => {
         >
           <Image source={require("../../../assets/Icon/Aadhar.png")} />
           <Text style={styles.box}>Aadhaar/PAN Card</Text>
-          <ArrowRight style={{ alignSelf: "center" }} size={20} />
+          {user.documents?.other_doc_upload_status ? (
+            <CircleCheckIcon
+              style={{ alignSelf: "center" }}
+              color="green"
+              size={20}
+            />
+          ) : (
+            <ArrowRight style={{ alignSelf: "center" }} size={20} />
+          )}
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.boxBtn}
           onPress={() => navigation.navigate("profileDetails")}
         >
-          <AddressCardIcon size={43} />
+          <Image source={require("../../../assets/Icon/profile.png")} />
           <Text style={styles.box}>Profile Details</Text>
-          <ArrowRight style={{ alignSelf: "center" }} size={20} />
+          {user.pilot?.profile_upload_status ? (
+            <CircleCheckIcon
+              style={{ alignSelf: "center" }}
+              color="green"
+              size={20}
+            />
+          ) : (
+            <ArrowRight style={{ alignSelf: "center" }} size={20} />
+          )}
         </TouchableOpacity>
       </View>
 

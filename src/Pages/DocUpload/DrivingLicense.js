@@ -14,6 +14,7 @@ import Api from "../../Services";
 import { useDispatch } from "react-redux";
 import { notify } from "../../Redux/Actions/notificationActions";
 import metrics from "../../Utility/metrics";
+import { getUserDetails } from "../../Redux/Actions";
 
 const DrivingLicense = ({ navigation }) => {
   const [isChoosenFrontFile, setIsChoosenFrontFile] =
@@ -68,6 +69,7 @@ const DrivingLicense = ({ navigation }) => {
 
       const response = await Api.post("/pilot/doc-upload", payload);
       if (response.status === 1) {
+        dispatch(getUserDetails());
         navigation.navigate("docUpload");
         dispatch(notify({ type: "success", message: response.message }));
       } else {

@@ -15,6 +15,7 @@ import {
   faAddressCard,
   faArrowLeft,
   faFile,
+  // faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -32,4 +33,5 @@ library.add(
   faAddressCard,
   faArrowLeft,
   faFile
+  // faCheckCircle
 );
