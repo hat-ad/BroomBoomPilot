@@ -16,13 +16,13 @@ import { notify, updateUser } from "../../Redux/Actions";
 const ExpandedScreen = ({ setState, setCity }) => {
   const dispatch = useDispatch();
   const [list, setList] = useState({});
+  const [search, setSearch] = useState("");
   useEffect(() => {
     getCity("");
   }, []);
 
   //api request
   const updateCity = async (city) => {
-    console.log(city);
     try {
       const response = await Api.update("/pilot/update-pilot-details", {
         city: city,
@@ -74,16 +74,23 @@ const ExpandedScreen = ({ setState, setCity }) => {
         <TextInput
           placeholder="search city"
           style={styles.input}
-          onChangeText={(val) => getCity(val)}
+          onChangeText={(val) => {
+            getCity(val);
+            setSearch(val);
+          }}
         />
       </View>
 
       <View style={styles.searchItems}>
-        <FlatList
-          data={list}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
+        {list.length > 0 ? (
+          <FlatList
+            data={list}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        ) : (
+          renderItem({ item: { name: search } })
+        )}
       </View>
     </View>
   );

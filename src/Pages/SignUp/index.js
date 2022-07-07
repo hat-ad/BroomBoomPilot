@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { View, Text, Button, Linking, TouchableOpacity } from "react-native";
-import { TextInput, ActivityIndicator } from "react-native-paper";
+import { TextInput, ActivityIndicator, Checkbox } from "react-native-paper";
 import PhoneInput from "react-native-phone-number-input";
 import { useDispatch } from "react-redux";
 import { notify } from "../../Redux/Actions/notificationActions";
@@ -14,6 +14,8 @@ const SignUp = ({ navigation }) => {
     email: "",
     mobile: "",
   });
+
+  const [checked, setChecked] = useState(true);
 
   const onSubmit = async () => {
     setIsLoading(true);
@@ -103,25 +105,41 @@ const SignUp = ({ navigation }) => {
           marginBottom: 30,
         }}
       >
-        <Text style={{ textAlign: "center", marginBottom: 15 }}>
-          By continuing,you agree to the{" "}
-          <Text style={{ color: "blue" }} onPress={() => Linking.openURL("#")}>
-            terms{" "}
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+          <Checkbox
+            status={checked ? "checked" : "unchecked"}
+            onPress={() => {
+              setChecked(!checked);
+            }}
+          />
+          <Text style={{ marginBottom: 15, textAlign: "auto" }}>
+            By continuing,you agree to the{" "}
+            <Text
+              style={{ color: "blue" }}
+              onPress={() => Linking.openURL("#")}
+            >
+              terms{" "}
+            </Text>
+            and{" "}
+            <Text
+              style={{ color: "blue" }}
+              onPress={() => Linking.openURL("#")}
+            >
+              privacy policy{" "}
+            </Text>
+            of Broomboom Pilot
           </Text>
-          and{" "}
-          <Text style={{ color: "blue" }} onPress={() => Linking.openURL("#")}>
-            privacy policy{" "}
-          </Text>
-          of Broomboom Pilot
-        </Text>
+        </View>
         <TouchableOpacity
           style={{
             width: "100%",
             padding: 10,
             borderWidth: 1,
             borderRadius: 50,
+            backgroundColor:
+              !checked || !credentials.mobile || isLoading ? "#ddd" : "#fff",
           }}
-          disabled={isLoading}
+          disabled={!checked || !credentials.mobile || isLoading}
           onPress={onSubmit}
         >
           {isLoading ? (

@@ -209,7 +209,7 @@ const VehicleRC = ({ navigation }) => {
         >
           <Text style={styles.heading}>Enter Vehicle RC number</Text>
           <TextInput
-            placeholder="Enter DL number"
+            placeholder="Enter Vehicle RC number"
             mode="outlined"
             onChangeText={(text) =>
               setVehicleRc({ ...vehicleRc, vehicleRcNumber: text })

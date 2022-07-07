@@ -43,7 +43,8 @@ export default styles = StyleSheet.create({
   cardCont: {
     height: "50%",
     position: "absolute",
-    top: "15%",
+    // top: "15%",
+    marginTop: metrics.verticalScale(20),
   },
   viewAll: {
     marginLeft: "auto",
