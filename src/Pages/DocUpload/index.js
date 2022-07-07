@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React, { useState } from "react";
 import styles from "./styles";
 // import { SteeringIcon } from "../../Utility/iconLibrary";
@@ -57,90 +57,110 @@ const DocUpload = ({ navigation, route }) => {
           <Text style={{ color: "#347EEA" }}>Change</Text>
         </TouchableOpacity>
       </View>
-      <Text
-        style={{
-          fontSize: 22,
-          fontWeight: "700",
-          textAlign: "center",
-          width: "100%",
-          marginBottom: metrics.scale(40),
-        }}
-      >
-        Let's upload the following documents to activate your account
-      </Text>
-      <View>
-        <TouchableOpacity
-          style={styles.boxBtn}
-          onPress={() => navigation.navigate("drivingLicense")}
-        >
-          <Image
-            style={{ width: 50, height: 32 }}
-            source={require("../../../assets/Icon/DriveLic.png")}
-          />
-          <Text style={styles.box}>Driving License</Text>
-          {user.documents?.DL_upload_status ? (
-            <CircleCheckIcon
-              style={{ alignSelf: "center" }}
-              color="green"
-              size={20}
-            />
-          ) : (
-            <ArrowRight style={{ alignSelf: "center" }} size={20} />
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.boxBtn}
-          onPress={() => navigation.navigate("vehicleRc")}
-        >
-          <Image source={require("../../../assets/Icon/VehicleRC.png")} />
-          <Text style={styles.box}>Vehicle RC</Text>
-          {user.documents?.RC_upload_status ? (
-            <CircleCheckIcon
-              style={{ alignSelf: "center" }}
-              color="green"
-              size={20}
-            />
-          ) : (
-            <ArrowRight style={{ alignSelf: "center" }} size={20} />
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.boxBtn}
-          onPress={() => navigation.navigate("aadharOrPanUpload")}
-        >
-          <Image source={require("../../../assets/Icon/Aadhar.png")} />
-          <Text style={styles.box}>Aadhaar/PAN Card</Text>
-          {user.documents?.other_doc_upload_status ? (
-            <CircleCheckIcon
-              style={{ alignSelf: "center" }}
-              color="green"
-              size={20}
-            />
-          ) : (
-            <ArrowRight style={{ alignSelf: "center" }} size={20} />
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.boxBtn}
-          onPress={() => navigation.navigate("profileDetails")}
-        >
-          <Image source={require("../../../assets/Icon/profile.png")} />
-          <Text style={styles.box}>Profile Details</Text>
-          {user.pilot?.profile_upload_status ? (
-            <CircleCheckIcon
-              style={{ alignSelf: "center" }}
-              color="green"
-              size={20}
-            />
-          ) : (
-            <ArrowRight style={{ alignSelf: "center" }} size={20} />
-          )}
-        </TouchableOpacity>
-      </View>
 
-      <TouchableOpacity style={styles.submit} onPress={onSubmit}>
-        <Text style={styles.centerText}>Proceed</Text>
-      </TouchableOpacity>
+      <ScrollView>
+        <Text
+          style={{
+            fontSize: 22,
+            fontWeight: "700",
+            textAlign: "center",
+            width: "100%",
+            marginBottom: metrics.scale(40),
+          }}
+        >
+          Let's upload the following documents to activate your account
+        </Text>
+        <View>
+          <TouchableOpacity
+            style={styles.boxBtn}
+            onPress={() => navigation.navigate("drivingLicense")}
+          >
+            <Image
+              style={{ width: 50, height: 32 }}
+              source={require("../../../assets/Icon/DriveLic.png")}
+            />
+            <Text style={styles.box}>Driving License</Text>
+            {user.documents?.DL_upload_status ? (
+              <CircleCheckIcon
+                style={{ alignSelf: "center" }}
+                color="green"
+                size={20}
+              />
+            ) : (
+              <ArrowRight style={{ alignSelf: "center" }} size={20} />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.boxBtn}
+            onPress={() => navigation.navigate("vehicleRc")}
+          >
+            <Image source={require("../../../assets/Icon/VehicleRC.png")} />
+            <Text style={styles.box}>Vehicle RC</Text>
+            {user.documents?.RC_upload_status ? (
+              <CircleCheckIcon
+                style={{ alignSelf: "center" }}
+                color="green"
+                size={20}
+              />
+            ) : (
+              <ArrowRight style={{ alignSelf: "center" }} size={20} />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.boxBtn}
+            onPress={() => navigation.navigate("aadharUpload")}
+          >
+            <Image source={require("../../../assets/Icon/Aadhar.png")} />
+            <Text style={styles.box}>Aadhaar Card</Text>
+            {user.documents?.other_doc_upload_status ? (
+              <CircleCheckIcon
+                style={{ alignSelf: "center" }}
+                color="green"
+                size={20}
+              />
+            ) : (
+              <ArrowRight style={{ alignSelf: "center" }} size={20} />
+            )}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.boxBtn}
+            onPress={() => navigation.navigate("panUpload")}
+          >
+            <Image source={require("../../../assets/Icon/Aadhar.png")} />
+            <Text style={styles.box}>Pan Card</Text>
+            {user.documents?.other_doc_upload_status ? (
+              <CircleCheckIcon
+                style={{ alignSelf: "center" }}
+                color="green"
+                size={20}
+              />
+            ) : (
+              <ArrowRight style={{ alignSelf: "center" }} size={20} />
+            )}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.boxBtn}
+            onPress={() => navigation.navigate("profileDetails")}
+          >
+            <Image source={require("../../../assets/Icon/profile.png")} />
+            <Text style={styles.box}>Profile Details</Text>
+            {user.pilot?.profile_upload_status ? (
+              <CircleCheckIcon
+                style={{ alignSelf: "center" }}
+                color="green"
+                size={20}
+              />
+            ) : (
+              <ArrowRight style={{ alignSelf: "center" }} size={20} />
+            )}
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity style={styles.submit} onPress={onSubmit}>
+          <Text style={styles.centerText}>Proceed</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };

@@ -7,7 +7,8 @@ import {
   DrivingLicense,
   GetReady,
   vehicleRC,
-  AadharOrPanUpload,
+  AadharUpload,
+  PanUpload,
   DocUpload,
   Language,
   OtpScreen,
@@ -144,8 +145,14 @@ const StackNavigation = ({ navigation }) => {
             component={vehicleRC}
           />
           <Stack.Screen
-            name="aadharOrPanUpload"
-            component={AadharOrPanUpload}
+            name="aadharUpload"
+            options={{ headerTitle: "Aadhar Upload" }}
+            component={AadharUpload}
+          />
+          <Stack.Screen
+            name="panUpload"
+            options={{ headerTitle: "Pan Upload" }}
+            component={PanUpload}
           />
           <Stack.Screen
             name="profileDetails"

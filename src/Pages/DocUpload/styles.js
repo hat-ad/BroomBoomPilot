@@ -56,6 +56,7 @@ export default styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#347EEA",
     marginTop: metrics.verticalScale(40),
+    marginBottom: metrics.verticalScale(30),
   },
 
   centerText: {

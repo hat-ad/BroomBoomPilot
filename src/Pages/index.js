@@ -4,7 +4,8 @@ import Language from "./Language/";
 import SignUp from "./SignUp/";
 import GetReady from "./DocUpload/GetReady";
 import vehicleRC from "./DocUpload/vehicleRC";
-import AadharOrPanUpload from "./DocUpload/aadharOrPanUpload";
+import AadharUpload from "./DocUpload/aadharUpload";
+import PanUpload from "./DocUpload/panUpload";
 import RiderDetails from "./RiderDetails";
 import DocUpload from "./DocUpload";
 import OtpScreen from "./Otp";
@@ -27,7 +28,8 @@ export {
   DrivingLicense,
   GetReady,
   vehicleRC,
-  AadharOrPanUpload,
+  AadharUpload,
+  PanUpload,
   RiderDetails,
   DocUpload,
   OtpScreen,

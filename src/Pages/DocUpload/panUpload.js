@@ -22,8 +22,6 @@ const AadharOrPanUpload = ({ navigation }) => {
     useState("No choosen file");
   const dispatch = useDispatch();
 
-  const [docType, setDocType] = useState("AADHAAR");
-
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
   const [adhaarOrPan, setAdhaarOrPan] = useState({
     front: "",
@@ -54,7 +52,7 @@ const AadharOrPanUpload = ({ navigation }) => {
         dispatch(
           notify({
             type: "error",
-            message: "Please add adhaar Or PanNumber number",
+            message: "Please add PanNumber number",
           })
         );
         return;
@@ -63,8 +61,8 @@ const AadharOrPanUpload = ({ navigation }) => {
         frontImageUrl: adhaarOrPan.front,
         backImageUrl: adhaarOrPan.back,
         other_doc_number: adhaarOrPan.adhaarOrPanNumber,
-        other_doc_type: docType,
-        doc_type: docType,
+        // other_doc_type: docType,
+        // doc_type: docType,
       };
 
       const response = await Api.post("/pilot/doc-upload", payload);
@@ -98,23 +96,6 @@ const AadharOrPanUpload = ({ navigation }) => {
     >
       <View style={styles.container}>
         <Text style={styles.heading}>Select One</Text>
-        <RadioButton.Group
-          onValueChange={(value) => setDocType(value)}
-          value={docType}
-        >
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <RadioButton value="AADHAAR" />
-              <Text>Aadhar Card</Text>
-            </View>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <RadioButton value="PAN" />
-              <Text>Pan Card</Text>
-            </View>
-          </View>
-        </RadioButton.Group>
 
         <View style={{ marginTop: 20 }}>
           <Text style={styles.title}>Front</Text>
@@ -182,13 +163,9 @@ const AadharOrPanUpload = ({ navigation }) => {
             marginTop: 30,
           }}
         >
-          <Text style={styles.heading}>
-            {docType === "PAN" ? "Enter Pan Number" : "Enter Aadhaar Number"}
-          </Text>
+          <Text style={styles.heading}>Enter Pan Number</Text>
           <TextInput
-            placeholder={
-              docType === "PAN" ? "Enter Pan Number" : "Enter Aadhaar Number"
-            }
+            placeholder="Enter Pan Number"
             onChangeText={(e) => {
               setAdhaarOrPan({ ...adhaarOrPan, adhaarOrPanNumber: e });
             }}
