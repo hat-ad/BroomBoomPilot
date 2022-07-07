@@ -35,13 +35,15 @@ const ReferAndEarn = () => {
   };
 
   const copyToClipboard = async () => {
-    await Clipboard.setStringAsync(referralCode);
+    await Clipboard.setStringAsync(
+      `Hurry! You're invited to be a Broomboom Pilot.Please use the below coupon code during registration and earn broomboom coins.Referral Code: ${referralCode}`
+    );
   };
 
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message: referralCode,
+        message: `Hurry! You're invited to be a Broomboom Pilot.Please use the below coupon code during registration and earn broomboom coins.Referral Code: ${referralCode}`,
       });
       // if (result.action === Share.sharedAction) {
       //   if (result.activityType) {

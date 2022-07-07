@@ -112,7 +112,7 @@ const DocUpload = ({ navigation, route }) => {
           >
             <Image source={require("../../../assets/Icon/Aadhar.png")} />
             <Text style={styles.box}>Aadhaar Card</Text>
-            {user.documents?.other_doc_upload_status ? (
+            {user.documents?.AADHAAR_upload_status ? (
               <CircleCheckIcon
                 style={{ alignSelf: "center" }}
                 color="green"
@@ -129,7 +129,7 @@ const DocUpload = ({ navigation, route }) => {
           >
             <Image source={require("../../../assets/Icon/Aadhar.png")} />
             <Text style={styles.box}>Pan Card</Text>
-            {user.documents?.other_doc_upload_status ? (
+            {user.documents?.PAN_CARD_upload_status ? (
               <CircleCheckIcon
                 style={{ alignSelf: "center" }}
                 color="green"

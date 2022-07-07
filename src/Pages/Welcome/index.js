@@ -97,7 +97,7 @@ const Welcome = ({ navigation }) => {
 
       <View style={{ marginTop: 32, alignItems: "center" }}>
         <Carousel
-          layout="stack"
+          layout="tinder"
           loop={true}
           autoplay={true}
           layoutCardOffset={9}

@@ -60,9 +60,8 @@ const AadharOrPanUpload = ({ navigation }) => {
       const payload = {
         frontImageUrl: adhaarOrPan.front,
         backImageUrl: adhaarOrPan.back,
-        other_doc_number: adhaarOrPan.adhaarOrPanNumber,
-        // other_doc_type: docType,
-        // doc_type: docType,
+        aadhaar_number: adhaarOrPan.adhaarOrPanNumber,
+        doc_type: "AADHAAR",
       };
 
       const response = await Api.post("/pilot/doc-upload", payload);

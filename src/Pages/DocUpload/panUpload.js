@@ -52,7 +52,7 @@ const AadharOrPanUpload = ({ navigation }) => {
         dispatch(
           notify({
             type: "error",
-            message: "Please add PanNumber number",
+            message: "Please add Pan number",
           })
         );
         return;
@@ -60,9 +60,9 @@ const AadharOrPanUpload = ({ navigation }) => {
       const payload = {
         frontImageUrl: adhaarOrPan.front,
         backImageUrl: adhaarOrPan.back,
-        other_doc_number: adhaarOrPan.adhaarOrPanNumber,
+        pancard_number: adhaarOrPan.adhaarOrPanNumber,
         // other_doc_type: docType,
-        // doc_type: docType,
+        doc_type: "PAN",
       };
 
       const response = await Api.post("/pilot/doc-upload", payload);
