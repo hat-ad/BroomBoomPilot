@@ -110,7 +110,11 @@ const DocUpload = ({ navigation, route }) => {
             style={styles.boxBtn}
             onPress={() => navigation.navigate("aadharUpload")}
           >
-            <Image source={require("../../../assets/Icon/Aadhar.png")} />
+            <Image
+              source={{
+                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315122_Aadhar.png",
+              }}
+            />
             <Text style={styles.box}>Aadhaar Card</Text>
             {user.documents?.AADHAAR_upload_status ? (
               <CircleCheckIcon
@@ -127,7 +131,11 @@ const DocUpload = ({ navigation, route }) => {
             style={styles.boxBtn}
             onPress={() => navigation.navigate("panUpload")}
           >
-            <Image source={require("../../../assets/Icon/Aadhar.png")} />
+            <Image
+              source={{
+                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315122_Aadhar.png",
+              }}
+            />
             <Text style={styles.box}>Pan Card</Text>
             {user.documents?.PAN_CARD_upload_status ? (
               <CircleCheckIcon

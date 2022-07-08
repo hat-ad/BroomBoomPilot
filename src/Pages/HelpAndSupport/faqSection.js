@@ -73,7 +73,9 @@ const HelpAndSupport = () => {
             </TouchableOpacity>
           </View>
           <Image
-            source={require("../../../assets/Icon/contactIcon.png")}
+            source={{
+              uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315133_contactIcon.png",
+            }}
             style={{ width: 44, height: 44, marginLeft: "auto" }}
           />
         </View>
