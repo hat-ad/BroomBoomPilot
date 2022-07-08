@@ -65,7 +65,9 @@ const ReferAndEarn = () => {
         Earn upto ₹100 per friend you invite to Broomboom
       </Text>
       <Image
-        source={require("../../../assets/referAndEarn.png")}
+        source={{
+          uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315253_referAndEarn.png",
+        }}
         style={styles.img}
         resizeMode="contain"
       />

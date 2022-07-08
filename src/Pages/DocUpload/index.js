@@ -77,7 +77,9 @@ const DocUpload = ({ navigation, route }) => {
           >
             <Image
               style={{ width: 50, height: 32 }}
-              source={require("../../../assets/Icon/DriveLic.png")}
+              source={{
+                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315139_DriveLic.png",
+              }}
             />
             <Text style={styles.box}>Driving License</Text>
             {user.documents?.DL_upload_status ? (
@@ -94,7 +96,11 @@ const DocUpload = ({ navigation, route }) => {
             style={styles.boxBtn}
             onPress={() => navigation.navigate("vehicleRc")}
           >
-            <Image source={require("../../../assets/Icon/VehicleRC.png")} />
+            <Image
+              source={{
+                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315292_VehicleRC.png",
+              }}
+            />
             <Text style={styles.box}>Vehicle RC</Text>
             {user.documents?.RC_upload_status ? (
               <CircleCheckIcon
@@ -152,7 +158,11 @@ const DocUpload = ({ navigation, route }) => {
             style={styles.boxBtn}
             onPress={() => navigation.navigate("profileDetails")}
           >
-            <Image source={require("../../../assets/Icon/profile.png")} />
+            <Image
+              source={{
+                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315185_profile.png",
+              }}
+            />
             <Text style={styles.box}>Profile Details</Text>
             {user.pilot?.profile_upload_status ? (
               <CircleCheckIcon

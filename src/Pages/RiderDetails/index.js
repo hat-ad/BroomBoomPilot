@@ -55,14 +55,18 @@ const RiderDetails = () => {
             width: metrics.scale(150),
           }}
           resizeMode="contain"
-          source={require("../../../assets/logoBigBlack.png")}
+          source={{
+            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315172_logoBigBlack.png",
+          }}
         />
         <Image
           style={{
             height: metrics.verticalScale(130),
             width: metrics.scale(125),
           }}
-          source={require("../../../assets/Icon/UserIcon.png")}
+          source={{
+            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315295_UserIcon.png",
+          }}
         />
         <Text
           style={{

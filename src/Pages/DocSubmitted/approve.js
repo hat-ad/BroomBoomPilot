@@ -8,7 +8,9 @@ const Approve = ({ navigation }) => {
       <View style={{ width: "100%", alignItems: "center" }}>
         <Image
           style={styles.GreenImg}
-          source={require("../../../assets/greenMark.png")}
+          source={{
+            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315157_greenMark.png",
+          }}
         />
         <Text style={styles.approveText}>You're ready to go</Text>
         <Text style={styles.approveP}>
@@ -17,7 +19,9 @@ const Approve = ({ navigation }) => {
         </Text>
         <Image
           style={styles.ApprovedImg}
-          source={require("../../../assets/Approved.png")}
+          source={{
+            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315128_Approved.png",
+          }}
         />
       </View>
       <TouchableOpacity

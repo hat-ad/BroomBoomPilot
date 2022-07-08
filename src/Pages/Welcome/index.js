@@ -2,7 +2,7 @@ import { Image, View, Text, TouchableOpacity, Dimensions } from "react-native";
 import Carousel from "react-native-snap-carousel";
 
 import React from "react";
-import LogoSmall from "../../../assets/logoSmall.png";
+
 import metrics from "../../Utility/metrics";
 
 export const SLIDER_WIDTH = Dimensions.get("window").width + 80;
@@ -91,7 +91,9 @@ const Welcome = ({ navigation }) => {
       >
         <Image
           style={{ height: 54, width: 54, backgroundColor: "white" }}
-          source={LogoSmall}
+          source={{
+            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315179_logoSmall.png",
+          }}
         />
       </View>
 

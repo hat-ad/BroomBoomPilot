@@ -33,7 +33,9 @@ const HelpAndSupport = () => {
             </TouchableOpacity>
           </View>
           <Image
-            source={require("../../../assets/Icon/faqIcon.png")}
+            source={{
+              uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315146_faqIcon.png",
+            }}
             style={{ width: 44, height: 44, marginLeft: "auto" }}
           />
         </View>
@@ -53,7 +55,9 @@ const HelpAndSupport = () => {
             </TouchableOpacity>
           </View>
           <Image
-            source={require("../../../assets/Icon/walletIcon.png")}
+            source={{
+              url: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315300_walletIcon.png",
+            }}
             style={{ width: 44, height: 44, marginLeft: "auto" }}
           />
         </View>

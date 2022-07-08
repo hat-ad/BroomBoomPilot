@@ -239,7 +239,9 @@ const VehicleRC = ({ navigation }) => {
                 <Image
                   style={styles.image}
                   resizeMode={"contain"}
-                  source={require("../../../assets/car.png")}
+                  source={{
+                    uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315152_car.png",
+                  }}
                 />
                 <Text style={styles.iconText}>Car</Text>
               </TouchableOpacity>
@@ -250,7 +252,9 @@ const VehicleRC = ({ navigation }) => {
                 <Image
                   style={styles.image}
                   resizeMode={"contain"}
-                  source={require("../../../assets/scooty.png")}
+                  source={{
+                    uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315229_scooty.png",
+                  }}
                 />
                 <Text style={styles.iconText}>Scooty</Text>
               </TouchableOpacity>
@@ -263,7 +267,9 @@ const VehicleRC = ({ navigation }) => {
                 <Image
                   style={styles.image}
                   resizeMode={"contain"}
-                  source={require("../../../assets/auto.png")}
+                  source={require({
+                    uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315168_auto.png",
+                  })}
                 />
                 <Text style={styles.iconText}>Auto Rickshaw</Text>
               </TouchableOpacity>
@@ -289,7 +295,9 @@ const VehicleRC = ({ navigation }) => {
                 <Image
                   style={styles.image}
                   resizeMode={"contain"}
-                  source={require("../../../assets/toto.png")}
+                  source={{
+                    uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315287_toto.png",
+                  }}
                 />
                 <Text style={styles.iconText}>Toto</Text>
               </TouchableOpacity>

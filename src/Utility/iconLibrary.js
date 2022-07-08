@@ -53,7 +53,9 @@ export const CopyIcon = ({ size, color, style }) => (
 
 export const SteeringIcon = ({ size, color, style }) => (
   <Image
-    source={require("../../assets/Icon/steeringWheel.png")}
+    source={{
+      uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315273_steeringWheel.png",
+    }}
     style={style}
   />
 );
