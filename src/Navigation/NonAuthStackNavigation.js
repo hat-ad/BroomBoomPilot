@@ -37,7 +37,7 @@ const StackNavigation = ({ navigation }) => {
         getUserDetails()
           .then((res) => {
             const { data: user } = res;
-            console.log(user.documents?.verification_status);
+
             if (
               !user.documents ||
               user.documents?.verification_status === null
@@ -75,8 +75,6 @@ const StackNavigation = ({ navigation }) => {
   const getUserDetails = async () => {
     try {
       const user = await Api.get("/pilot/get-user-details");
-      console.log(user);
-
       return user;
     } catch (error) {
       return 0;

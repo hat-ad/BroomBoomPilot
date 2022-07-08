@@ -125,7 +125,6 @@ const ProfileDetails = ({ navigation }) => {
         dob: moment(date),
         gender: gender,
       };
-      console.log(payload);
       const response = await Api.update("/pilot/update-pilot-details", payload);
 
       if (response.status === 1) {
@@ -135,7 +134,6 @@ const ProfileDetails = ({ navigation }) => {
         throw new Error(response.message);
       }
     } catch (error) {
-      console.log(error);
       dispatch(notify({ type: "error", message: error.message }));
     }
   };

@@ -267,9 +267,9 @@ const VehicleRC = ({ navigation }) => {
                 <Image
                   style={styles.image}
                   resizeMode={"contain"}
-                  source={require({
+                  source={{
                     uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315168_auto.png",
-                  })}
+                  }}
                 />
                 <Text style={styles.iconText}>Auto Rickshaw</Text>
               </TouchableOpacity>

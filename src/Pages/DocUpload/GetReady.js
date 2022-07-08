@@ -50,9 +50,9 @@ const GetReady = () => {
           </View>
         </View>
       </View>
-      <View style={{ marginBottom: 50 }}>
+      {/* <View style={{ marginBottom: 50 }}>
         <Image source={require("../../../assets/BigLoader.png")} />
-      </View>
+      </View> */}
     </View>
   );
 };

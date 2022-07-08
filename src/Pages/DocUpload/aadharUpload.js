@@ -76,7 +76,7 @@ const AadharOrPanUpload = ({ navigation }) => {
       dispatch(notify({ type: "error", message: error.message }));
     }
   };
-  // console.log("adhaarOrPan", adhaarOrPan);
+
   const deleteImage = (type) => {
     if (type === "FRONT") {
       setAdhaarOrPan({ ...adhaarOrPan, front: "" });

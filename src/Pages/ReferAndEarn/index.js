@@ -24,7 +24,6 @@ const ReferAndEarn = () => {
     try {
       const response = await Api.get("/refer/get-refer-token/");
       if (response.status === 1) {
-        console.log(response.data.referral_code);
         setReferralCode(response.data.referral_code);
       } else {
         throw new Error(response.message);

@@ -32,7 +32,6 @@ const SignUp = ({ navigation }) => {
       }
     } catch (error) {
       dispatch(notify({ type: "error", message: error.message }));
-      console.log(error);
     }
     setIsLoading(false);
   };
