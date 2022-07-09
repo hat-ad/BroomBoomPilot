@@ -11,9 +11,7 @@ const Pending = () => {
         </Text>
         <Image
           style={styles.img}
-          source={{
-            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315285_success.png",
-          }}
+          source={require("../../../assets/pending.png")}
         />
         <Text style={styles.textP}>
           {" "}

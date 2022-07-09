@@ -77,9 +77,7 @@ const DocUpload = ({ navigation, route }) => {
           >
             <Image
               style={{ width: 50, height: 32 }}
-              source={{
-                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315139_DriveLic.png",
-              }}
+              source={require("../../../assets/Icon/license.png")}
             />
             <Text style={styles.box}>Driving License</Text>
             {user.documents?.DL_upload_status ? (
@@ -96,11 +94,7 @@ const DocUpload = ({ navigation, route }) => {
             style={styles.boxBtn}
             onPress={() => navigation.navigate("vehicleRc")}
           >
-            <Image
-              source={{
-                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315292_VehicleRC.png",
-              }}
-            />
+            <Image source={require("../../../assets/Icon/rc.png")} />
             <Text style={styles.box}>Vehicle RC</Text>
             {user.documents?.RC_upload_status ? (
               <CircleCheckIcon
@@ -116,11 +110,7 @@ const DocUpload = ({ navigation, route }) => {
             style={styles.boxBtn}
             onPress={() => navigation.navigate("aadharUpload")}
           >
-            <Image
-              source={{
-                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315122_Aadhar.png",
-              }}
-            />
+            <Image source={require("../../../assets/Icon/aadhaar.png")} />
             <Text style={styles.box}>Aadhaar Card</Text>
             {user.documents?.AADHAAR_upload_status ? (
               <CircleCheckIcon
@@ -137,11 +127,7 @@ const DocUpload = ({ navigation, route }) => {
             style={styles.boxBtn}
             onPress={() => navigation.navigate("panUpload")}
           >
-            <Image
-              source={{
-                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315122_Aadhar.png",
-              }}
-            />
+            <Image source={require("../../../assets/Icon/aadhaar.png")} />
             <Text style={styles.box}>Pan Card</Text>
             {user.documents?.PAN_CARD_upload_status ? (
               <CircleCheckIcon
@@ -158,11 +144,7 @@ const DocUpload = ({ navigation, route }) => {
             style={styles.boxBtn}
             onPress={() => navigation.navigate("profileDetails")}
           >
-            <Image
-              source={{
-                uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315185_profile.png",
-              }}
-            />
+            <Image source={require("../../../assets/Icon/profile.png")} />
             <Text style={styles.box}>Profile Details</Text>
             {user.pilot?.profile_upload_status ? (
               <CircleCheckIcon
