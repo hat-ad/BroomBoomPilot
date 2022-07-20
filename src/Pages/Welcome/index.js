@@ -64,7 +64,7 @@ const Welcome = ({ navigation }) => {
   };
   const data = [
     {
-      title: "Bengal's Own cab",
+      title: "Bengal's Own Cab",
       // body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
       imgUrl: "https://broomboomimages.s3.ap-south-1.amazonaws.com/Group.png",
     },

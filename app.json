@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/logoSmall.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.hatad.BroomBroom"
+      "package": "com.hatad.BroomBoom"
     },
     "web": {
       "favicon": "./assets/favicon.png"
