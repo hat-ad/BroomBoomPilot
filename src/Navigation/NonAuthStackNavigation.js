@@ -18,10 +18,9 @@ import {
   SearchCity,
   ProfileDetails,
 } from "../Pages";
-import { Pressable } from "react-native";
-import { QuestionIcon } from "../Utility/iconLibrary";
+
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDetails } from "../Redux/Actions";
+import { notify } from "../Redux/Actions";
 import Api from "../Services";
 
 const Stack = createNativeStackNavigator();
@@ -29,6 +28,7 @@ const Stack = createNativeStackNavigator();
 const StackNavigation = ({ navigation }) => {
   const initialRender = useRef(true);
   const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (auth.clientToken) {
@@ -59,6 +59,7 @@ const StackNavigation = ({ navigation }) => {
             }
           })
           .catch((err) => {
+            console.log(err);
             dispatch(
               notify({
                 message: "Cannot get user details!Please try again later",
@@ -77,6 +78,7 @@ const StackNavigation = ({ navigation }) => {
       const user = await Api.get("/pilot/get-user-details");
       return user;
     } catch (error) {
+      console.log(error);
       return 0;
     }
   };

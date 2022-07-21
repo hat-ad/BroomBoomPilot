@@ -71,7 +71,13 @@ const VehicleRC = ({ navigation }) => {
           notify({ type: "error", message: "Please add vehicle rc number" })
         );
         return;
+      } else if (vehicleType === "") {
+        dispatch(
+          notify({ type: "error", message: "Please Select vehicle type" })
+        );
+        return;
       }
+
       const payload = {
         frontImageUrl: vehicleRc.front,
         backImageUrl: vehicleRc.back,
