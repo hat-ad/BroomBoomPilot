@@ -20,6 +20,7 @@ import SearchCity from "./SearchCity";
 import ReferAndEarn from "./ReferAndEarn";
 import Faq from "./Faq";
 import ProfileDetails from "./ProfileDetails";
+import EarningHistory from "./EarningHistory";
 
 export {
   Welcome,
@@ -44,4 +45,5 @@ export {
   ReferAndEarn,
   Faq,
   ProfileDetails,
+  EarningHistory,
 };

@@ -72,3 +72,11 @@ export const AddressCardIcon = ({ size, color, style }) => (
     size={size}
   />
 );
+export const LocationIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon
+    icon={"location-dot"}
+    color={color}
+    style={style}
+    size={size}
+  />
+);

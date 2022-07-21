@@ -17,6 +17,7 @@ import {
   Pending,
   SearchCity,
   ProfileDetails,
+  EarningHistory,
 } from "../Pages";
 import { Pressable } from "react-native";
 import { QuestionIcon } from "../Utility/iconLibrary";
@@ -30,47 +31,47 @@ const StackNavigation = ({ navigation }) => {
   const initialRender = useRef(true);
   const auth = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (auth.clientToken) {
-      if (initialRender.current) {
-        initialRender.current = false;
-        getUserDetails()
-          .then((res) => {
-            const { data: user } = res;
+  // useEffect(() => {
+  //   if (auth.clientToken) {
+  //     if (initialRender.current) {
+  //       initialRender.current = false;
+  //       getUserDetails()
+  //         .then((res) => {
+  //           const { data: user } = res;
 
-            if (
-              !user.documents ||
-              user.documents?.verification_status === null
-            ) {
-              navigation.replace("searchCity");
-              return;
-            } else if (user.documents?.verification_status === 0) {
-              navigation.replace("pending");
-              return;
-            } else if (user.documents?.verification_status === -1) {
-              navigation.replace("error");
-              return;
-            } else if (user.documents?.verification_status === 1) {
-              navigation.replace("tab");
-              return;
-            } else if (user.documents?.verification_status === 2) {
-              navigation.replace("tab");
-              return;
-            }
-          })
-          .catch((err) => {
-            dispatch(
-              notify({
-                message: "Cannot get user details!Please try again later",
-                type: "error",
-              })
-            );
-          });
-      }
-    } else {
-      navigation.navigate("Welcome");
-    }
-  }, [auth]);
+  //           if (
+  //             !user.documents ||
+  //             user.documents?.verification_status === null
+  //           ) {
+  //             navigation.replace("searchCity");
+  //             return;
+  //           } else if (user.documents?.verification_status === 0) {
+  //             navigation.replace("pending");
+  //             return;
+  //           } else if (user.documents?.verification_status === -1) {
+  //             navigation.replace("error");
+  //             return;
+  //           } else if (user.documents?.verification_status === 1) {
+  //             navigation.replace("tab");
+  //             return;
+  //           } else if (user.documents?.verification_status === 2) {
+  //             navigation.replace("tab");
+  //             return;
+  //           }
+  //         })
+  //         .catch((err) => {
+  //           dispatch(
+  //             notify({
+  //               message: "Cannot get user details!Please try again later",
+  //               type: "error",
+  //             })
+  //           );
+  //         });
+  //     }
+  //   } else {
+  //     navigation.navigate("Welcome");
+  //   }
+  // }, [auth]);
 
   const getUserDetails = async () => {
     try {
@@ -160,6 +161,7 @@ const StackNavigation = ({ navigation }) => {
         </>
       ) : (
         <>
+          <Stack.Screen name="EarningHistory" component={EarningHistory} />
           <Stack.Screen name="Welcome" component={Welcome} />
           {/* <Stack.Screen name="Language" component={Language} /> */}
           <Stack.Screen name="SignUp" component={SignUp} />
