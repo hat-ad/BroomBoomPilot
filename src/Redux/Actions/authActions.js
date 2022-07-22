@@ -12,8 +12,7 @@ export const login = (payload) => {
 };
 
 export const logout = () => {
-  console.log("logout");
-  // AsyncStorage.clear();
+  AsyncStorage.clear();
   return {
     type: LOGOUT,
   };
