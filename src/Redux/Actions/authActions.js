@@ -1,6 +1,7 @@
 import Api from "../../Services";
 import { ADD_TOKEN, LOGOUT, UPDATE_USER } from "../actionTypes";
 import { store } from "../store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { notify } from "./notificationActions";
 
 export const login = (payload) => {
@@ -11,6 +12,8 @@ export const login = (payload) => {
 };
 
 export const logout = () => {
+  console.log("logout");
+  // AsyncStorage.clear();
   return {
     type: LOGOUT,
   };

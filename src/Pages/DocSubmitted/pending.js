@@ -1,8 +1,11 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./style";
+import { logout } from "../../Redux/Actions";
+import { useDispatch } from "react-redux";
 
 const Pending = () => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <View style={{ width: "100%", alignItems: "center" }}>
@@ -18,9 +21,12 @@ const Pending = () => {
           We are now verifying your submitted details
         </Text>
       </View>
-      {/* <View style={styles.loader}>
-        <Image source={require("../../../assets/BigLoader.png")} />
-      </View>  */}
+      <TouchableOpacity
+        style={styles.loader}
+        onPress={() => dispatch(logout())}
+      >
+        <Text style={{ fontSize: 18 }}>Logout</Text>
+      </TouchableOpacity>
     </View>
   );
 };
