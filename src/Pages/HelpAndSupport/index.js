@@ -79,7 +79,7 @@ const HelpAndSupport = ({ navigation }) => {
             </Text>
             <TouchableOpacity
               style={{ marginTop: metrics.verticalScale(10) }}
-              onPress={() => Linking.openURL(`tel:${1234567890}`)}
+              onPress={() => Linking.openURL(`tel:${8478056064}`)}
             >
               <Text style={{ fontSize: 10, color: "#347eea" }}>
                 Click Here <ArrowRight size={10} style={{ color: "#347eea" }} />
