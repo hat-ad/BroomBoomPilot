@@ -21,7 +21,7 @@ import {
 } from "../Pages";
 
 import { useDispatch, useSelector } from "react-redux";
-import { notify } from "../Redux/Actions";
+import { notify, updateUser } from "../Redux/Actions";
 import Api from "../Services";
 import { NavigationActions, StackActions } from "@react-navigation/native";
 
@@ -40,6 +40,7 @@ const StackNavigation = ({ navigation }) => {
           .then((res) => {
             const { data: user } = res;
 
+            dispatch(updateUser(user));
             if (
               !user.documents ||
               user.documents?.verification_status === null

@@ -50,7 +50,7 @@ const Error = ({ navigation }) => {
               }}
             />
             <Text style={styles.errowText}>
-              {auth.user?.documents?.failed_reasons}
+              {auth.user?.documents["failed_reasons"]}
             </Text>
           </View>
           {/* <View
