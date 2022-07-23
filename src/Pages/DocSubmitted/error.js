@@ -2,16 +2,32 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import styles from "./style";
 import metrics from "../../Utility/metrics";
+import { useDispatch, useSelector } from "react-redux";
+import { notify } from "../../Redux/Actions";
+import Api from "../../Services";
 
-const Error = () => {
+const Error = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+  const reSubmit = async () => {
+    try {
+      const res = await Api.get("/pilot/resubmit-document");
+      console.log("ressub", res);
+      if (res.status === 1) {
+        navigation.replace("searchCity");
+        return;
+      }
+      throw new Error("Cannot resubmit document");
+    } catch (error) {
+      dispatch(notify({ message: error.message, type: "error" }));
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={{ width: "100%", alignItems: "center" }}>
         <Image
           style={styles.GreenImg}
-          source={{
-            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315216_redMark.png",
-          }}
+          source={require("../../../assets/error.jpg")}
         />
         <Text style={styles.approveText}>Something went wrong</Text>
         <View
@@ -34,10 +50,10 @@ const Error = () => {
               }}
             />
             <Text style={styles.errowText}>
-              Error reason 1 "On the other hand, we a
+              {auth.user?.documents?.failed_reasons}
             </Text>
           </View>
-          <View
+          {/* <View
             style={{
               flexDirection: "row",
               marginBottom: metrics.verticalScale(14),
@@ -68,16 +84,14 @@ const Error = () => {
             <Text style={styles.errowText}>
               Men who are so beguile by the charms
             </Text>
-          </View>
+          </View> */}
         </View>
         <Image
           style={styles.NotApprovedImg}
-          source={{
-            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315192_NotApproved.png",
-          }}
+          source={require("../../../assets/notApproved.jpg")}
         />
       </View>
-      <TouchableOpacity style={styles.Errorbtn}>
+      <TouchableOpacity style={styles.Errorbtn} onPress={reSubmit}>
         <Text style={{ textAlign: "center", fontSize: 18, color: "#fff" }}>
           Resubmit
         </Text>

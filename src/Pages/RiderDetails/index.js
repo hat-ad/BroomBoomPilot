@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, Share } from "react-native";
+import { View, Text, Image, ScrollView, Share } from "react-native";
 import React from "react";
 import metrics from "../../Utility/metrics";
 import styles from "./style";
@@ -46,7 +46,7 @@ const RiderDetails = () => {
     }
   };
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={{ alignItems: "center" }}>
         <Image
           style={{
@@ -54,9 +54,7 @@ const RiderDetails = () => {
             width: metrics.scale(150),
           }}
           resizeMode="contain"
-          source={{
-            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315172_logoBigBlack.png",
-          }}
+          source={require("../../../assets/logoBigBlack.jpg")}
         />
         <Image
           style={{
@@ -130,7 +128,7 @@ const RiderDetails = () => {
             View more
           </Text>
         </TouchableOpacity> */}
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={{
             marginLeft: "auto",
             paddingHorizontal: metrics.scale(30),
@@ -141,9 +139,9 @@ const RiderDetails = () => {
           onPress={onShare}
         >
           <Text style={{ color: "#fff" }}>Share</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

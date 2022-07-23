@@ -23,7 +23,9 @@ const Pending = () => {
       </View>
       <TouchableOpacity
         style={styles.loader}
-        onPress={() => dispatch(logout())}
+        onPress={() => {
+          dispatch(logout());
+        }}
       >
         <Text style={{ fontSize: 18 }}>Logout</Text>
       </TouchableOpacity>

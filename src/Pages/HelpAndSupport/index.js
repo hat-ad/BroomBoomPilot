@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
 import React, { useState } from "react";
 import styles from "./style";
 import metrics from "../../Utility/metrics";
@@ -68,6 +68,7 @@ const HelpAndSupport = ({ navigation }) => {
           />
         </View>
 
+         */}
         <View style={styles.cards}>
           <View>
             <Text style={{ fontSize: 16, color: "#333", fontWeight: "700" }}>
@@ -78,7 +79,7 @@ const HelpAndSupport = ({ navigation }) => {
             </Text>
             <TouchableOpacity
               style={{ marginTop: metrics.verticalScale(10) }}
-              onPress={() => navigation.navigate("contact")}
+              onPress={() => Linking.openURL(`tel:${1234567890}`)}
             >
               <Text style={{ fontSize: 10, color: "#347eea" }}>
                 Click Here <ArrowRight size={10} style={{ color: "#347eea" }} />
@@ -86,10 +87,12 @@ const HelpAndSupport = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           <Image
-         source={{uri:"https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315133_contactIcon.png"}}
+            source={{
+              uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315133_contactIcon.png",
+            }}
             style={{ width: 44, height: 44, marginLeft: "auto" }}
           />
-        </View> */}
+        </View>
       </View>
 
       <Text style={styles.anchorTag}>

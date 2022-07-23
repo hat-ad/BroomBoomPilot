@@ -6,7 +6,7 @@ export default styles = {
     paddingVertical: metrics.verticalScale(20),
     height: "100%",
     flex: 1,
-    backgroundColor: "#F9F9F9",
+    backgroundColor: "white",
     width: "100%",
   },
   cardText: {

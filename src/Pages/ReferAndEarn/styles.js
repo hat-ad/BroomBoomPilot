@@ -105,5 +105,11 @@ export default styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 20,
   },
-  container: { paddingHorizontal: 20, flex: 1, backgroundColor: "white" },
+  container: {
+    paddingHorizontal: 20,
+    flex: 1,
+    backgroundColor: "white",
+    // alignItems: "center",
+    justifyContent: "center",
+  },
 });

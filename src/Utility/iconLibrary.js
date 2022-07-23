@@ -44,6 +44,14 @@ export const SearchIcon = ({ size, color, style }) => (
 export const FileIcon = ({ size, color, style }) => (
   <FontAwesomeIcon icon={"file"} color={color} style={style} size={size} />
 );
+export const ShareAllIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon
+    icon={"share-from-square"}
+    color={color}
+    style={style}
+    size={size}
+  />
+);
 export const GiftIcon = ({ size, color, style }) => (
   <FontAwesomeIcon icon={"gift"} color={color} style={style} size={size} />
 );

@@ -17,11 +17,13 @@ import {
   Pending,
   SearchCity,
   ProfileDetails,
+  AddReferral,
 } from "../Pages";
 
 import { useDispatch, useSelector } from "react-redux";
 import { notify } from "../Redux/Actions";
 import Api from "../Services";
+import { NavigationActions, StackActions } from "@react-navigation/native";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,7 +44,9 @@ const StackNavigation = ({ navigation }) => {
               !user.documents ||
               user.documents?.verification_status === null
             ) {
-              navigation.replace("searchCity");
+              navigation.replace(
+                user?.details?.refered_by_id ? "searchCity" : "addReferral"
+              );
               return;
             } else if (user.documents?.verification_status === 0) {
               navigation.replace("pending");
@@ -103,77 +107,83 @@ const StackNavigation = ({ navigation }) => {
         },
       }}
     >
-      {auth.clientToken ? (
-        <>
-          <Stack.Screen
-            name="pending"
-            options={{ header: () => null }}
-            component={Pending}
-          />
-          <Stack.Screen
-            name="error"
-            options={{ header: () => null }}
-            component={Error}
-          />
-          <Stack.Screen
-            name="searchCity"
-            component={SearchCity}
-            options={{ headerTitle: "Search City" }}
-          />
-          <Stack.Screen
-            name="GetReady"
-            options={{
-              headerTitle: "",
-            }}
-            component={GetReady}
-          />
-          <Stack.Screen
-            name="docUpload"
-            options={{
-              headerTitle: "Document Upload",
-            }}
-            component={DocUpload}
-          />
-          <Stack.Screen
-            name="drivingLicense"
-            options={{ headerTitle: "Driving License" }}
-            component={DrivingLicense}
-          />
-          <Stack.Screen
-            name="vehicleRc"
-            options={{ headerTitle: "Vehicle RC" }}
-            component={vehicleRC}
-          />
-          <Stack.Screen
-            name="aadharUpload"
-            options={{ headerTitle: "Aadhar Upload" }}
-            component={AadharUpload}
-          />
-          <Stack.Screen
-            name="panUpload"
-            options={{ headerTitle: "Pan Upload" }}
-            component={PanUpload}
-          />
-          <Stack.Screen
-            name="profileDetails"
-            component={ProfileDetails}
-            options={{ headerTitle: "Profile Details" }}
-          />
-        </>
+      {/* {auth.clientToken ? (
+        <> */}
+      <Stack.Screen name="Welcome" component={Welcome} />
+      {/* <Stack.Screen name="Language" component={Language} /> */}
+      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen
+        name="otp"
+        options={{
+          headerTitle: "OTP",
+        }}
+        component={OtpScreen}
+      />
+      <Stack.Screen
+        name="pending"
+        options={{ header: () => null }}
+        component={Pending}
+      />
+      <Stack.Screen
+        name="error"
+        options={{ header: () => null }}
+        component={Error}
+      />
+      <Stack.Screen
+        name="addReferral"
+        component={AddReferral}
+        options={{ headerTitle: "Add Referral" }}
+      />
+      <Stack.Screen
+        name="searchCity"
+        component={SearchCity}
+        options={{ headerTitle: "Search City" }}
+      />
+      <Stack.Screen
+        name="GetReady"
+        options={{
+          headerTitle: "",
+        }}
+        component={GetReady}
+      />
+      <Stack.Screen
+        name="docUpload"
+        options={{
+          headerTitle: "Document Upload",
+        }}
+        component={DocUpload}
+      />
+      <Stack.Screen
+        name="drivingLicense"
+        options={{ headerTitle: "Driving License" }}
+        component={DrivingLicense}
+      />
+      <Stack.Screen
+        name="vehicleRc"
+        options={{ headerTitle: "Vehicle RC" }}
+        component={vehicleRC}
+      />
+      <Stack.Screen
+        name="aadharUpload"
+        options={{ headerTitle: "Aadhar Upload" }}
+        component={AadharUpload}
+      />
+      <Stack.Screen
+        name="panUpload"
+        options={{ headerTitle: "Pan Upload" }}
+        component={PanUpload}
+      />
+      <Stack.Screen
+        name="profileDetails"
+        component={ProfileDetails}
+        options={{ headerTitle: "Profile Details" }}
+      />
+      {/* </>
       ) : (
-        <>
-          <Stack.Screen name="Welcome" component={Welcome} />
-          {/* <Stack.Screen name="Language" component={Language} /> */}
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen
-            name="otp"
-            options={{
-              headerTitle: "OTP",
-            }}
-            component={OtpScreen}
-          />
-        </>
-      )}
+        <> */}
+
+      {/* </>
+      )} */}
     </Stack.Navigator>
   );
 };

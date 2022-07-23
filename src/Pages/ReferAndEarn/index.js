@@ -59,7 +59,7 @@ const ReferAndEarn = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>
         Earn upto ₹100 per friend you invite to Broomboom
       </Text>
@@ -82,7 +82,7 @@ const ReferAndEarn = () => {
       <View style={styles.inviteTextContainer}>
         <View style={styles.row}>
           <GiftIcon />
-          <Text style={styles.inviteText}>Invite Friends to Broomboom</Text>
+          <Text style={styles.inviteText}>Invite Friends to Broomboom </Text>
         </View>
         <TouchableOpacity onPress={onShare}>
           <Text style={styles.link}>Invite</Text>
@@ -121,7 +121,7 @@ const ReferAndEarn = () => {
           </View>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

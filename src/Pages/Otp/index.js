@@ -7,6 +7,8 @@ import Api from "../../Services";
 import { useDispatch } from "react-redux";
 import { login } from "../../Redux/Actions/authActions";
 import { notify } from "../../Redux/Actions/notificationActions";
+import { CommonActions } from "@react-navigation/native";
+
 const OtpScreen = ({ navigation, route }) => {
   const [otp, setOtp] = React.useState("");
   const [isLoading, setLoading] = React.useState(false);
@@ -34,23 +36,41 @@ const OtpScreen = ({ navigation, route }) => {
             user: response.data,
           })
         );
-        // const user = response.data;
-        // if (!user.documents || !user.documents?.verification_status !== null) {
-        // navigation.navigate("searchCity");
-        //   return;
-        // } else if (user.documents?.verification_status === 0) {
-        //   navigation.navigate("pending");
-        //   return;
-        // } else if (user.documents?.verification_status === -1) {
-        //   navigation.navigate("error");
-        //   return;
-        // } else if (user.documents?.verification_status === 1) {
-        //   navigation.navigate("tab");
-        //   return;
-        // } else if (user.documents?.verification_status === 2) {
-        //   navigation.navigate("tab");
-        //   return;
-        // }
+
+        const user = response.data;
+
+        if (!user.documents || user.documents?.verification_status === null) {
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [
+                {
+                  name: user?.details?.refered_by_id
+                    ? "searchCity"
+                    : "addReferral",
+                },
+              ],
+            })
+          );
+          return;
+        } else if (user.documents?.verification_status === 0) {
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [{ name: "pending" }],
+            })
+          );
+          return;
+        } else if (user.documents?.verification_status === -1) {
+          navigation.replace("error");
+          return;
+        } else if (user.documents?.verification_status === 1) {
+          navigation.replace("tab");
+          return;
+        } else if (user.documents?.verification_status === 2) {
+          navigation.replace("tab");
+          return;
+        }
       } else {
         throw new Error(response.message);
       }

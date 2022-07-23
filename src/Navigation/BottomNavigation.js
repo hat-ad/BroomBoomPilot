@@ -12,7 +12,7 @@ import {
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import ProfileSettings from "../Pages/ProfileSettings";
 import { Pressable, Text } from "react-native";
-import { FileIcon, ProfileIcon } from "../Utility/iconLibrary";
+import { FileIcon, ProfileIcon, ShareAllIcon } from "../Utility/iconLibrary";
 import { useEffect } from "react";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -41,10 +41,15 @@ const ProfileStack = () => {
         options={{ headerTitle: "Rider Details" }}
       /> */}
       <Stack.Screen
+        name="RiderDetails"
+        component={RiderDetails}
+        options={{ headerTitle: "My Details" }}
+      />
+      {/* <Stack.Screen
         name="referAndEarn"
         component={ReferAndEarn}
         options={{ headerTitle: "Refer and Earn" }}
-      />
+      /> */}
       <Stack.Screen
         name="helpAndSupport"
         component={HelpAndSupport}
@@ -79,17 +84,22 @@ export default function BottomNavigation({ navigation }) {
           }}
         >
           <Tab.Screen
-            name="RiderDetails"
-            component={RiderDetails}
+            name="referAndEarn"
+            component={ReferAndEarn}
             options={{
-              tabBarIcon: FileIcon,
-              title: "Rider Details",
+              tabBarIcon: ShareAllIcon,
+              title: "Refer and Earn",
+              tabBarLabelStyle: { fontSize: 12, fontWeight: "500" },
             }}
           />
           <Tab.Screen
             name="Profile"
             component={ProfileStack}
-            options={{ tabBarIcon: ProfileIcon, title: "Profile" }}
+            options={{
+              tabBarIcon: ProfileIcon,
+              title: "Profile",
+              tabBarLabelStyle: { fontSize: 12, fontWeight: "500" },
+            }}
           />
         </Tab.Navigator>
       </SafeAreaView>

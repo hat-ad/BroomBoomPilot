@@ -13,9 +13,9 @@ const ProfileSettings = ({ navigation }) => {
       </TouchableOpacity> */}
       <TouchableOpacity
         style={{ paddingVertical: metrics.verticalScale(20) }}
-        onPress={() => navigation.navigate("referAndEarn")}
+        onPress={() => navigation.navigate("RiderDetails")}
       >
-        <Text style={{ fontSize: 16 }}>Refer and Earn</Text>
+        <Text style={{ fontSize: 16 }}>My Profile</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={{ paddingVertical: metrics.verticalScale(20) }}

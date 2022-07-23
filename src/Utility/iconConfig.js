@@ -16,6 +16,7 @@ import {
   faArrowLeft,
   faFile,
   // faCheckCircle,
+  faShareFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -32,6 +33,7 @@ library.add(
   faUser,
   faAddressCard,
   faArrowLeft,
-  faFile
+  faFile,
+  faShareFromSquare
   // faCheckCircle
 );
