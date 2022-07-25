@@ -8,6 +8,7 @@ export default styleForInitialScreen = StyleSheet.create({
   imageContainer: {
     width: "100%",
     height: "35%",
+    marginBottom: 2,
   },
   searchingContainer: {
     width: "100%",
@@ -17,11 +18,14 @@ export default styleForInitialScreen = StyleSheet.create({
   confirmContainer: {
     width: "100%",
     height: "30%",
+    marginTop: 200,
   },
   chooseCityText: {
     textAlign: "center",
     fontSize: 20,
     fontWeight: "700",
+    marginTop: 20,
+    color: "black",
   },
   searchbox: {
     flexDirection: "row",

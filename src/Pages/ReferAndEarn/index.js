@@ -61,7 +61,7 @@ const ReferAndEarn = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        Earn upto ₹100 per friend you invite to Broomboom
+        INVITE YOUR FRIEND AND EARN UPTO 100 BROOMBOOM COINS
       </Text>
       <Image
         source={{
@@ -71,7 +71,7 @@ const ReferAndEarn = () => {
         resizeMode="contain"
       />
       <Text style={styles.subTitle}>
-        Copy the code and send it to friend and earn both
+        COPY & SEND THE CODE TO YOUR FRIEND TO REGISTER AND EARN NOW
       </Text>
       <View style={styles.copyCodeContainer}>
         <Text style={styles.copyCodeText}>{referralCode}</Text>
@@ -82,7 +82,7 @@ const ReferAndEarn = () => {
       <View style={styles.inviteTextContainer}>
         <View style={styles.row}>
           <GiftIcon />
-          <Text style={styles.inviteText}>Invite Friends to Broomboom </Text>
+          <Text style={styles.inviteText}>Invite Friends to Broomboom</Text>
         </View>
         <TouchableOpacity onPress={onShare}>
           <Text style={styles.link}>Invite</Text>
@@ -97,9 +97,9 @@ const ReferAndEarn = () => {
           </View>
           <View>
             <Text style={styles.stepsCounterTitle}>
-              Your friend registers with us
+              YOUR FRIEND REGISTERED WITH US
             </Text>
-            <Text style={styles.mutedText}>Friend earns ₹0 </Text>
+            <Text style={styles.mutedText}>YOUR EARNING ₹0 </Text>
           </View>
         </View>
         <View style={styles.stepsBorder2} />
@@ -109,15 +109,9 @@ const ReferAndEarn = () => {
           </View>
           <View>
             <Text style={styles.stepsCounterTitle}>
-              Your friend completes first order
+              YOUR FRIEND COMPLETES FIRST 10 RIDES
             </Text>
-            <Text style={styles.mutedText}>
-              within 7 working days of registration
-            </Text>
-            <View style={styles.chipTextContainer}>
-              <Text style={styles.chipTextMuted}>Friend earns ₹50</Text>
-              <Text style={styles.chipText}>You earn ₹100</Text>
-            </View>
+            <Text style={styles.mutedText}>YOU EARN 100 BROOMBOOM COINS</Text>
           </View>
         </View>
       </View>

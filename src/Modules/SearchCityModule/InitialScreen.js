@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { useDispatch } from "react-redux";
 import styles from "../../Pages/SearchCity/style/styleForInitialScreen";
 import { notify } from "../../Redux/Actions";
-import { SearchIcon } from "../../Utility/iconLibrary";
+import { SearchIcon, GroupIcon, ArrowIcon } from "../../Utility/iconLibrary";
 
 const InitialScreen = ({ setState, city, navigation }) => {
   const dispatch = useDispatch();
@@ -16,10 +16,12 @@ const InitialScreen = ({ setState, city, navigation }) => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}></View>
       <View style={styles.searchingContainer}>
+        <ArrowIcon style={{ marginRight: 250, marginTop: 10 }} />
+        <GroupIcon style={{ height: 150, width: 300, marginTop: 20 }} />
+
         <Text style={styles.chooseCityText}>
-          Choose you city where you want to ride ?
+          Choose your city where you want to ride
         </Text>
         <View style={styles.searchbox}>
           <SearchIcon style={styles.searchIcon} />

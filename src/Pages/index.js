@@ -1,7 +1,7 @@
 import Welcome from "./Welcome";
 import DrivingLicense from "./DocUpload/DrivingLicense";
-import Language from "./Language/";
-import SignUp from "./SignUp/";
+import Language from "./Language";
+import SignUp from "./SignUp";
 import GetReady from "./DocUpload/GetReady";
 import vehicleRC from "./DocUpload/vehicleRC";
 import AadharUpload from "./DocUpload/aadharUpload";
@@ -21,7 +21,6 @@ import ReferAndEarn from "./ReferAndEarn";
 import Faq from "./Faq";
 import ProfileDetails from "./ProfileDetails";
 import AddReferral from "./AddReferral";
-
 export {
   Welcome,
   Language,

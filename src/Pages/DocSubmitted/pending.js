@@ -10,7 +10,7 @@ const Pending = () => {
     <View style={styles.container}>
       <View style={{ width: "100%", alignItems: "center" }}>
         <Text style={styles.text}>
-          You have successfully submitted all required documents
+          You have successfully submitted all the required documents
         </Text>
         <Image
           style={styles.img}

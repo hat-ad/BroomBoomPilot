@@ -1,3 +1,4 @@
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Image } from "react-native";
 
@@ -66,6 +67,37 @@ export const SteeringIcon = ({ size, color, style }) => (
     }}
     style={style}
   />
+);
+
+export const BankIcon = ({ size, color, style }) => (
+  <Image source={require("../../assets/account_balance.png")} style={style} />
+);
+
+export const VectorIcon = ({ size, color, style }) => (
+  <Image source={require("../../assets/vector.png")} style={style} />
+);
+
+export const CoinIcon = ({ size, color, style }) => (
+  <Image source={require("../../assets/BBCoin.png")} style={style} />
+);
+
+export const AddBankAndUpiIcon = ({ size, color, style }) => (
+  <Image source={require("../../assets/AddBankAndUPI.png")} style={style} />
+);
+
+export const RightIcon = ({ size, color, style }) => (
+  <Image source={require("../../assets/right.png")} style={style} />
+);
+
+export const OrderDoneIcon = ({ size, color, style }) => (
+  <Image source={require("../../assets/OrderDone.png")} style={style} />
+);
+export const GroupIcon = ({ size, color, style }) => (
+  <Image source={require("../../assets/Group.png")} style={style} />
+);
+
+export const ArrowIcon = ({ size, color, style }) => (
+  <Image source={require("../../assets/arrow.png")} style={style} />
 );
 
 export const ProfileIcon = ({ size, color, style }) => (

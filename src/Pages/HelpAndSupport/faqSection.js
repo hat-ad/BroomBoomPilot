@@ -24,7 +24,7 @@ const HelpAndSupport = () => {
               FAQs
             </Text>
             <Text style={{ fontSize: 12, color: "#aaa", fontWeight: "600" }}>
-              Some long long text here{" "}
+              Get answers to your general queries.
             </Text>
             <TouchableOpacity style={{ marginTop: metrics.verticalScale(10) }}>
               <Text style={{ fontSize: 10, color: "#347eea" }}>
@@ -68,7 +68,7 @@ const HelpAndSupport = () => {
               Contact 24x7 Help
             </Text>
             <Text style={{ fontSize: 12, color: "#aaa", fontWeight: "600" }}>
-              Our excutive will help solve your problem
+              Connect with Broomboom team
             </Text>
             <TouchableOpacity style={{ marginTop: metrics.verticalScale(10) }}>
               <Text style={{ fontSize: 10, color: "#347eea" }}>
@@ -86,10 +86,10 @@ const HelpAndSupport = () => {
       </View>
 
       <Text style={styles.anchorTag}>
-        For more information read our{" "}
-        <Text style={{ color: "#347EEA" }}> terms and condition </Text>
-        and <Text style={{ color: "#347EEA" }}> privacy policy </Text>
-        of Broomboom
+        For more information read
+        <Text style={{ color: "#347EEA" }}> Terms & Conditions </Text>
+        and <Text style={{ color: "#347EEA" }}> Privacy Policies </Text>
+        of BroomBoom Pilot
       </Text>
     </View>
   );

@@ -83,7 +83,6 @@ const StackNavigation = ({ navigation }) => {
       const user = await Api.get("/pilot/get-user-details");
       return user;
     } catch (error) {
-      console.log(error);
       return 0;
     }
   };
@@ -150,7 +149,7 @@ const StackNavigation = ({ navigation }) => {
       <Stack.Screen
         name="docUpload"
         options={{
-          headerTitle: "Document Upload",
+          headerTitle: "Upload Document",
         }}
         component={DocUpload}
       />
