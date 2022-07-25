@@ -13,6 +13,11 @@ export default styles = StyleSheet.create({
   loader: {
     position: "absolute",
     bottom: 40,
+    backgroundColor: "#F5C001",
+    padding: 10,
+    width: "100%",
+    alignItems: "center",
+    borderRadius: 50,
   },
   text: {
     fontSize: 22,

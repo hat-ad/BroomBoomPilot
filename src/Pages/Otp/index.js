@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import OTPTextInput from "../../Components/AppOtpInput";
 import { ActivityIndicator, Button } from "react-native-paper";
@@ -12,6 +12,7 @@ import { CommonActions } from "@react-navigation/native";
 const OtpScreen = ({ navigation, route }) => {
   const [otp, setOtp] = React.useState("");
   const [isLoading, setLoading] = React.useState(false);
+  const [counter, setCounter] = React.useState(60);
   const { mobile } = route.params;
   const dispatch = useDispatch();
 
@@ -80,6 +81,31 @@ const OtpScreen = ({ navigation, route }) => {
     setLoading(false);
   };
 
+  const resendOtp = async () => {
+    setLoading(true);
+    try {
+      const response = await Api.post("/pilot/resend-otp", {
+        mobile: mobile,
+      });
+
+      if (response.status === 1) {
+        setCounter(60);
+        dispatch(notify({ type: "success", message: response.message }));
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(notify({ type: "error", message: error.message }));
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    return () => clearInterval(timer);
+  }, [counter]);
+
   return (
     <View style={{ marginTop: 30, paddingHorizontal: 30 }}>
       <Text style={{ fontSize: 22, fontWeight: "700", textAlign: "center" }}>
@@ -98,17 +124,30 @@ const OtpScreen = ({ navigation, route }) => {
           width: "100%",
         }}
       >
+        {counter === 0 ? (
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#F5C001",
+              padding: 10,
+              borderRadius: 50,
+            }}
+            onPress={resendOtp}
+          >
+            <Text style={{ fontSize: 14, fontWeight: "500" }}>Resend OTP</Text>
+          </TouchableOpacity>
+        ) : (
+          <Text style={{ fontSize: 14, fontWeight: "500", textAlign: "left" }}>
+            Resend OTP in {counter}s
+          </Text>
+        )}
         {isLoading && (
-          <>
+          <View style={{ flexDirection: "row" }}>
             <ActivityIndicator animating={true} color={"red"} />
-            <Text style={{ fontSize: 14, fontWeight: "500" }}>
+            <Text style={{ fontSize: 14, fontWeight: "500", marginLeft: 10 }}>
               Auto verifying
             </Text>
-          </>
+          </View>
         )}
-        {/* <Text style={{ fontSize: 14, fontWeight: "500", textAlign: "right" }}>
-          Resend OTP in 10s
-        </Text> */}
       </View>
     </View>
   );

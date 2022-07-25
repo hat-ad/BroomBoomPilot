@@ -14,8 +14,9 @@ export default styles = StyleSheet.create({
   button: {
     width: "100%",
     padding: 10,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 50,
+    backgroundColor: "#F5C001",
   },
   submit: {
     width: "100%",

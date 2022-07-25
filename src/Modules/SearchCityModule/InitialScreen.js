@@ -38,7 +38,7 @@ const InitialScreen = ({ setState, city, navigation }) => {
           You can ride only in your selected city
         </Text>
         <TouchableOpacity style={styles.button} onPress={onNext}>
-          <Text>confirm city</Text>
+          <Text style={{ fontWeight: "500", fontSize: 16 }}>confirm city</Text>
         </TouchableOpacity>
       </View>
     </View>

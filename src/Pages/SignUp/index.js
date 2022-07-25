@@ -16,8 +16,17 @@ const SignUp = ({ navigation }) => {
   });
 
   const [checked, setChecked] = useState(true);
+  const isValidNumber = (number) => {
+    return inputRef.current.isValidNumber(number);
+  };
 
   const onSubmit = async () => {
+    if (!isValidNumber(credentials.mobile)) {
+      dispatch(
+        notify({ type: "error", message: "Please enter valid mobile number" })
+      );
+      return;
+    }
     setIsLoading(true);
 
     try {
@@ -76,6 +85,7 @@ const SignUp = ({ navigation }) => {
           autoFormat={true}
           autoFocus
           placeholder="Enter phone number"
+          defaultCode="IN"
           containerStyle={{
             backgroundColor: "#fff",
             width: "100%",
@@ -133,10 +143,10 @@ const SignUp = ({ navigation }) => {
           style={{
             width: "100%",
             padding: 10,
-            borderWidth: 1,
+            // borderWidth: 1,
             borderRadius: 50,
             backgroundColor:
-              !checked || !credentials.mobile || isLoading ? "#ddd" : "#fff",
+              !checked || !credentials.mobile || isLoading ? "#ddd" : "#F5C001",
           }}
           disabled={!checked || !credentials.mobile || isLoading}
           onPress={onSubmit}

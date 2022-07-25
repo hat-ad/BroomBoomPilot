@@ -133,14 +133,19 @@ const Welcome = ({ navigation }) => {
       <View style={{ marginTop: 67, alignItems: "center" }}>
         <TouchableOpacity
           style={{
-            borderWidth: 1,
+            // borderWidth: 1,
             width: "100%",
-            paddingVertical: 15,
-            borderRadius: 20,
+            paddingVertical: 10,
+            borderRadius: 50,
+            backgroundColor: "#F5C001",
           }}
           onPress={() => navigation.navigate("SignUp")}
         >
-          <Text style={{ textAlign: "center" }}>Get Started</Text>
+          <Text
+            style={{ textAlign: "center", fontWeight: "500", fontSize: 16 }}
+          >
+            Get Started
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

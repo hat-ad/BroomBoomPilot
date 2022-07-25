@@ -28,12 +28,13 @@ export default styles = StyleSheet.create({
   },
   btn: {
     width: "100%",
-    borderWidth: 1,
-    borderColor: "black",
+    // borderWidth: 1,
+    // borderColor: "black",
     borderRadius: 50,
-    paddingVertical: 8,
+    paddingVertical: 10,
     marginTop: metrics.verticalScale(10),
     marginBottom: metrics.verticalScale(10),
+    backgroundColor: "#F5C001",
   },
   centerText: {
     textAlign: "center",

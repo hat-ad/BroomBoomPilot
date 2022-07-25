@@ -240,7 +240,11 @@ const ProfileDetails = ({ navigation }) => {
       </View>
       <View style={styles.submit}>
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={{ textAlign: "center" }}>Submit</Text>
+          <Text
+            style={{ textAlign: "center", fontWeight: "500", fontSize: 16 }}
+          >
+            Submit
+          </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

@@ -47,14 +47,13 @@ export default styles = StyleSheet.create({
     marginVertical: 10,
   },
   submit: {
-    borderColor: "#347EEA",
-    borderWidth: 2,
+    backgroundColor: "#F5C001",
+    // borderWidth: 2,
     borderRadius: 50,
     padding: 10,
     alignSelf: "center",
     // bottom: 0,
     width: "100%",
-    backgroundColor: "#347EEA",
     marginTop: metrics.verticalScale(40),
     marginBottom: metrics.verticalScale(30),
   },
@@ -62,8 +61,8 @@ export default styles = StyleSheet.create({
   centerText: {
     textAlign: "center",
     fontSize: 16,
-    fontWeight: "600",
-    color: "#fff",
+    fontWeight: "500",
+    color: "#000",
   },
   image: {
     width: 80,

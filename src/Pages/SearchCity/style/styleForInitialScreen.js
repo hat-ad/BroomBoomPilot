@@ -52,11 +52,11 @@ export default styleForInitialScreen = StyleSheet.create({
     marginTop: 45,
   },
   button: {
-    paddingVertical: metrics.scale(15),
+    paddingVertical: metrics.scale(10),
     marginTop: metrics.verticalScale(25),
     marginHorizontal: metrics.scale(15),
     borderRadius: 22,
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
+    backgroundColor: "#F5C001",
   },
 });

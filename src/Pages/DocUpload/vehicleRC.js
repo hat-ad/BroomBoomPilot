@@ -164,14 +164,14 @@ const VehicleRC = ({ navigation }) => {
             >
               {isChoosenFrontFile}
             </Text>
-            {isChoosenFrontFile !== "No choosen file" && (
-              <TouchableOpacity
-                style={{ marginLeft: 20 }}
-                onPress={() => deleteImage("FRONT")}
-              >
-                <DeleteIcon />
-              </TouchableOpacity>
-            )}
+            {/* {isChoosenFrontFile !== "No choosen file" && ( */}
+            <TouchableOpacity
+              style={{ marginLeft: 20 }}
+              onPress={() => deleteImage("FRONT")}
+            >
+              <DeleteIcon />
+            </TouchableOpacity>
+            {/* )} */}
           </View>
         </View>
         <View style={{ marginTop: 15 }}>
@@ -197,14 +197,14 @@ const VehicleRC = ({ navigation }) => {
             >
               {isChoosenBackFile}
             </Text>
-            {isChoosenBackFile !== "No choosen file" && (
-              <TouchableOpacity
-                style={{ marginLeft: 20 }}
-                onPress={() => deleteImage("BACK")}
-              >
-                <DeleteIcon />
-              </TouchableOpacity>
-            )}
+            {/* {isChoosenBackFile !== "No choosen file" && ( */}
+            <TouchableOpacity
+              style={{ marginLeft: 20 }}
+              onPress={() => deleteImage("BACK")}
+            >
+              <DeleteIcon />
+            </TouchableOpacity>
+            {/* )} */}
           </View>
         </View>
 

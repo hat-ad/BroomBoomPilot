@@ -27,7 +27,7 @@ const Pending = () => {
           dispatch(logout());
         }}
       >
-        <Text style={{ fontSize: 18 }}>Logout</Text>
+        <Text style={{ fontWeight: "500", fontSize: 16 }}>Logout</Text>
       </TouchableOpacity>
     </View>
   );
