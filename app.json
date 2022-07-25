@@ -2,7 +2,7 @@
   "expo": {
     "name": "BroomBoom Pilot",
     "slug": "BroomBoomPilot",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/logoSmall.png",
     "userInterfaceStyle": "light",
@@ -23,7 +23,8 @@
         "foregroundImage": "./assets/logoSmall.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.hatad.BroomBoom"
+      "package": "com.hatad.BroomBroom",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
