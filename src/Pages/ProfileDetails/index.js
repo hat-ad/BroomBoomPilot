@@ -29,7 +29,7 @@ const ProfileDetails = ({ navigation }) => {
   const handleSubmit = () => {
     var firstNameValid = false;
     if (firstName.length == 0) {
-      setFirstNameError("First name is required");
+      setFirstNameError("First Name Is Required");
     } else {
       setFirstNameError("");
       firstNameValid = true;
@@ -37,7 +37,7 @@ const ProfileDetails = ({ navigation }) => {
 
     var lastNameValid = false;
     if (lastName.length == 0) {
-      setLastNameError("last name is required");
+      setLastNameError("Last Name Is Required");
     } else {
       setLastNameError("");
       lastNameValid = true;
@@ -45,7 +45,7 @@ const ProfileDetails = ({ navigation }) => {
 
     var emailValid = false;
     if (email.length == 0) {
-      setEmailError("email is required");
+      setEmailError("Email Is Required");
     } else {
       setEmailError("");
       emailValid = true;
@@ -53,7 +53,7 @@ const ProfileDetails = ({ navigation }) => {
 
     var dobValid = false;
     if (!date) {
-      setDobError("dob is required");
+      setDobError("Dob Is Required");
     } else {
       setDobError("");
       dobValid = true;
@@ -61,7 +61,7 @@ const ProfileDetails = ({ navigation }) => {
 
     var genderValid = false;
     if (gender.length == 0) {
-      setGenderError("gender is required");
+      setGenderError("Gender Is Required");
     } else {
       setGenderError("");
       genderValid = true;

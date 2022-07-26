@@ -21,7 +21,7 @@ const InitialScreen = ({ setState, city, navigation }) => {
         <GroupIcon style={{ height: 150, width: 300, marginTop: 20 }} />
 
         <Text style={styles.chooseCityText}>
-          Choose your city where you want to ride
+          Choose the city where you want to ride
         </Text>
         <View style={styles.searchbox}>
           <SearchIcon style={styles.searchIcon} />
@@ -35,7 +35,7 @@ const InitialScreen = ({ setState, city, navigation }) => {
       </View>
       <View style={styles.confirmContainer}>
         <Text style={styles.selectedCityText}>
-          You can ride only in your selected city
+          You can ride in your selected city
         </Text>
         <TouchableOpacity style={styles.button} onPress={onNext}>
           <Text>confirm city</Text>

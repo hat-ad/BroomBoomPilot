@@ -15,6 +15,11 @@ export default styles = {
   paragraph: {
     lineHeight: 24,
     textAlign: "justify",
-    marginTop: 24,
+    marginTop: 9,
+  },
+  title: {
+    fontSize: 13,
+    fontWeight: "200",
+    fontWeight: "bold",
   },
 };

@@ -96,10 +96,10 @@ const HelpAndSupport = ({ navigation }) => {
       </View>
 
       <Text style={styles.anchorTag}>
-        For more information read our{" "}
-        <Text style={{ color: "#347EEA" }}> terms and condition </Text>
-        and <Text style={{ color: "#347EEA" }}> privacy policy </Text>
-        of Broomboom
+        For more information read
+        <Text style={{ color: "#347EEA" }}> Terms & Conditions </Text>
+        and <Text style={{ color: "#347EEA" }}> Privacy Policies </Text>
+        of BroomBoom Pilot
       </Text>
     </View>
   );
