@@ -122,21 +122,21 @@ const SignUp = ({ navigation }) => {
             }}
           />
           <Text style={{ marginBottom: 15, textAlign: "auto" }}>
-            By continuing,you agree to the{" "}
+            By continuing,you agree to the
             <Text
               style={{ color: "blue" }}
               onPress={() => Linking.openURL("#")}
             >
-              terms{" "}
+              terms
             </Text>
-            and{" "}
+            & conditions
             <Text
               style={{ color: "blue" }}
               onPress={() => Linking.openURL("#")}
             >
-              privacy policy{" "}
+              and privacy policy
             </Text>
-            of Broomboom Pilot
+            of BroomBoom Pilot
           </Text>
         </View>
         <TouchableOpacity
