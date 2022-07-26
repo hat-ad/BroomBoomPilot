@@ -4,14 +4,14 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native-paper";
 import { AppDocumentPicker } from "../../Components";
 import styles from "./styles";
 import { DeleteIcon } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
 import { RadioButton } from "react-native-paper";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, notify } from "../../Redux/Actions";
 import Api from "../../Services";
 
@@ -21,14 +21,31 @@ const AadharOrPanUpload = ({ navigation }) => {
   const [isChoosenFrontFile, setIsChoosenFrontFile] =
     useState("No choosen file");
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state.auth.user);
+  console.log(user.documents);
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
   const [adhaarOrPan, setAdhaarOrPan] = useState({
     front: "",
     back: "",
     adhaarOrPanNumber: "",
   });
-
+  useEffect(() => {
+    if (user.documents.AADHAAR_upload_status === 1) {
+      const frontImageUrl = user.documents.AADHAAR_front_image;
+      const frontImageName = frontImageUrl.split("_")[1];
+      setIsChoosenFrontFile(frontImageName);
+      const backImageUrl = user.documents.AADHAAR_back_image;
+      const backImageName = backImageUrl.split("_")[1];
+      setIsChoosenBackFile(backImageName);
+      const adhaarNo = user.documents.AADHAAR_number;
+      console.log(adhaarNo);
+      setAdhaarOrPan({
+        front: frontImageUrl,
+        back: backImageUrl,
+        adhaarOrPanNumber: adhaarNo,
+      });
+    }
+  }, [user]);
   const onDocumentPicked = (type, uri) => {
     if (type === "FRONT") {
       setIsChoosenFrontFile(uri.key);
@@ -66,7 +83,9 @@ const AadharOrPanUpload = ({ navigation }) => {
 
       const response = await Api.post("/pilot/doc-upload", payload);
       if (response.status === 1) {
+        console.log("response", response);
         dispatch(getUserDetails());
+
         navigation.navigate("docUpload");
         dispatch(notify({ type: "success", message: response.message }));
       } else {
@@ -186,6 +205,7 @@ const AadharOrPanUpload = ({ navigation }) => {
               setAdhaarOrPan({ ...adhaarOrPan, adhaarOrPanNumber: e });
             }}
             mode="outlined"
+            defaultValue={adhaarOrPan.adhaarOrPanNumber}
           />
         </View>
         <TouchableOpacity style={styles.submit} onPress={onSubmit}>
