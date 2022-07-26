@@ -8,6 +8,7 @@ import {
   Faq,
   PrivacyPolicy,
   TermsAndConditions,
+  ViewAllTickets,
 } from "../Pages";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import ProfileSettings from "../Pages/ProfileSettings";
@@ -69,6 +70,16 @@ const ProfileStack = () => {
         name="faq"
         component={Faq}
         options={{ headerTitle: "Faq" }}
+      />
+      <Stack.Screen
+        name="contactUs"
+        component={ContactUs}
+        options={{ headerTitle: "Contact Us" }}
+      />
+      <Stack.Screen
+        name="viewAllTickets"
+        component={ViewAllTickets}
+        options={{ headerTitle: "View Tickets" }}
       />
     </Stack.Navigator>
   );

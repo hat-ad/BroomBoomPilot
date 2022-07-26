@@ -39,7 +39,7 @@ const StackNavigation = ({ navigation }) => {
         getUserDetails()
           .then((res) => {
             const { data: user } = res;
-
+            console.log(user);
             dispatch(updateUser(user));
             if (
               !user.documents ||

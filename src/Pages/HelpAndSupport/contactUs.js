@@ -4,11 +4,11 @@ import styles from "./style";
 import metrics from "../../Utility/metrics";
 import { SearchIcon, ArrowRight } from "../../Utility/iconLibrary";
 
-const ContactUs = () => {
+const ContactUs = ({ navigation }) => {
   return (
     // <ScrollView style={{ flex: 1 }}>
     <View style={styles.container}>
-      <TouchableOpacity style={styles.search}>
+      {/* <TouchableOpacity style={styles.search}>
         <SearchIcon
           size={24}
           style={{ paddingHorizontal: metrics.scale(20) }}
@@ -16,14 +16,19 @@ const ContactUs = () => {
         <Text style={{ fontSize: 16, color: "#828282", fontWeight: "600" }}>
           Search Issue
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <View style={styles.recentTickets}>
         <View style={{ flexDirection: "row", width: "100%" }}>
           <Text style={{ color: "#333", fontSize: 18, fontWeight: "700" }}>
             Your Recent Tickets
           </Text>
-          <TouchableOpacity style={styles.viewAll}>
+          <TouchableOpacity
+            style={styles.viewAll}
+            onPress={() => {
+              navigation.navigate("viewAllTickets");
+            }}
+          >
             <Text style={{ color: "#347EEA", fontSize: 12, fontWeight: "700" }}>
               View all
             </Text>

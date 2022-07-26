@@ -102,7 +102,7 @@ export default styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   Btn: {
-    height: 50,
+    // height: 50,
     backgroundColor: "#347EEA",
     width: "100%",
     justifyContent: "center",
@@ -110,11 +110,13 @@ export default styles = StyleSheet.create({
     marginTop: metrics.verticalScale(10),
     position: "absolute",
     bottom: 20,
+    padding: metrics.verticalScale(10),
+    backgroundColor: "#F5C001",
   },
   BtnText: {
-    fontSize: 20,
-    color: "#fff",
-    fontWeight: "700",
+    fontSize: 16,
+    // color: "#fff",
+    fontWeight: "500",
     alignSelf: "center",
   },
   dragBorder: {

@@ -97,5 +97,6 @@ export default styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: metrics.scale(20),
     alignItems: "center",
+    backgroundColor: "#f2f2f2",
   },
 });

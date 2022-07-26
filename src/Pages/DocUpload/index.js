@@ -33,7 +33,12 @@ const DocUpload = ({ navigation, route }) => {
   };
 
   return (
-    <View style={[styles.container, { paddingRight: metrics.scale(20) }]}>
+    <View
+      style={[
+        styles.container,
+        { paddingRight: metrics.scale(20), backgroundColor: "#fff" },
+      ]}
+    >
       <View
         style={{
           flexDirection: "row",

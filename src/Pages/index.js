@@ -21,6 +21,7 @@ import ReferAndEarn from "./ReferAndEarn";
 import Faq from "./Faq";
 import ProfileDetails from "./ProfileDetails";
 import AddReferral from "./AddReferral";
+import ViewAllTickets from "./HelpAndSupport/viewAllTickets";
 export {
   Welcome,
   Language,
@@ -45,4 +46,5 @@ export {
   Faq,
   ProfileDetails,
   AddReferral,
+  ViewAllTickets,
 };
