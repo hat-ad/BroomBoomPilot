@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import React from "react";
 import styles from "./style";
-import { ListAccordion, ListItem, Checkbox } from "react-native-paper";
+import { List } from "react-native-paper";
 
 const ViewAllTickets = () => {
   const DATA = [
@@ -18,41 +18,21 @@ const ViewAllTickets = () => {
       title: "Third Item",
     },
   ];
+
   const listItem = ({ item }) => (
-    <ListAccordion
-      title={() => (
-        <TouchableOpacity>
-          <View style={styles.ticketDetails}>
-            <View>
-              <Text style={{ fontSize: 14, color: "#333", fontWeight: "600" }}>
-                Ticket related to wallet
-              </Text>
-              <Text style={{ fontSize: 12, color: "#aaa", fontWeight: "400" }}>
-                Issue with my wallet
-              </Text>
-            </View>
-            <View style={{ marginLeft: "auto" }}>
-              <Text style={{ color: "#AAAAAA", fontWeight: "700" }}>
-                6:33 PM
-              </Text>
-              <Text
-                style={{
-                  color: "#00E94F",
-                  alignSelf: "flex-end",
-                  fontWeight: "700",
-                }}
-              >
-                Solved
-              </Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-      )}
-      icon="folder"
+    // <List.AccordionGroup>
+    <List.Accordion
+      title="HOW CAN I BOOK A RIDE ??"
+      id="First"
+      // titleNumberOfLines={5}
+      // style={styles.accordion}
     >
-      <ListItem title="First item" />
-      <ListItem title="Second item" />
-    </ListAccordion>
+      <List.Item
+        // description="PICKUP LOCATION > DESTINATION > REQUEST BB > BOOKED (NOTIFIED WHEN ACCEPTED BY PILOT)"
+        description="PICKUP LOCATION > DESTINATION > REQUEST BB > BOOKED (NOTIFIED WHEN ACCEPTED BY PILOT)"
+        descriptionNumberOfLines={5}
+      />
+    </List.Accordion>
   );
   return (
     <View style={styles.container}>
