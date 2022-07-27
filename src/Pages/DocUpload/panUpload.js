@@ -10,10 +10,10 @@ import { AppDocumentPicker } from "../../Components";
 import styles from "./styles";
 import { DeleteIcon } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
-import { RadioButton } from "react-native-paper";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, notify } from "../../Redux/Actions";
 import Api from "../../Services";
+import { useEffect } from "react";
 
 // import matrics from "../../Utility/metrics";
 
@@ -21,6 +21,7 @@ const AadharOrPanUpload = ({ navigation }) => {
   const [isChoosenFrontFile, setIsChoosenFrontFile] =
     useState("No choosen file");
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
 
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
   const [adhaarOrPan, setAdhaarOrPan] = useState({
@@ -28,6 +29,22 @@ const AadharOrPanUpload = ({ navigation }) => {
     back: "",
     adhaarOrPanNumber: "",
   });
+
+  useEffect(() => {
+    if (user.documents.PAN_CARD_upload_status === 1) {
+      const frontImageUrl = user.documents.PAN_CARD_front_image;
+      const frontImageName = frontImageUrl.split("_")[1];
+      setIsChoosenFrontFile(frontImageName);
+      const backImageUrl = user.documents.PAN_CARD_back_image;
+      const backImageName = backImageUrl.split("_")[1];
+      setIsChoosenBackFile(backImageName);
+      setAdhaarOrPan({
+        front: frontImageUrl,
+        back: backImageUrl,
+        adhaarOrPanNumber: user.documents.PAN_CARD_number,
+      });
+    }
+  }, [user]);
 
   const onDocumentPicked = (type, uri) => {
     if (type === "FRONT") {
@@ -170,6 +187,7 @@ const AadharOrPanUpload = ({ navigation }) => {
               setAdhaarOrPan({ ...adhaarOrPan, adhaarOrPanNumber: e });
             }}
             mode="outlined"
+            value={adhaarOrPan.adhaarOrPanNumber}
           />
         </View>
         <TouchableOpacity style={styles.submit} onPress={onSubmit}>

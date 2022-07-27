@@ -112,3 +112,32 @@ export const AddressCardIcon = ({ size, color, style }) => (
     size={size}
   />
 );
+
+export const FlipCameraIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon
+    icon={"camera-rotate"}
+    color={color}
+    style={style}
+    size={size}
+  />
+);
+
+export const CrossIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"xmark"} color={color} style={style} size={size} />
+);
+
+export const CameraIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"camera"} color={color} style={style} size={size} />
+);
+
+export const GalleryIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"image"} color={color} style={style} size={size} />
+);
+export const LogoutIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon
+    icon={"right-from-bracket"}
+    color={color}
+    style={style}
+    size={size}
+  />
+);

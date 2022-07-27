@@ -17,6 +17,11 @@ import {
   faFile,
   // faCheckCircle,
   faShareFromSquare,
+  faCameraRotate,
+  faXmark,
+  faCamera,
+  faImage,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -34,6 +39,11 @@ library.add(
   faAddressCard,
   faArrowLeft,
   faFile,
-  faShareFromSquare
-  // faCheckCircle
+  faShareFromSquare,
+  // faCheckCircle,
+  faCameraRotate,
+  faXmark,
+  faCamera,
+  faImage,
+  faRightFromBracket
 );

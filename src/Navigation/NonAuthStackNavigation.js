@@ -1,4 +1,4 @@
-import { Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import React, { useEffect, useRef } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
@@ -21,9 +21,10 @@ import {
 } from "../Pages";
 
 import { useDispatch, useSelector } from "react-redux";
-import { notify, updateUser } from "../Redux/Actions";
+import { notify, updateUser, logout } from "../Redux/Actions";
 import Api from "../Services";
-import { NavigationActions, StackActions } from "@react-navigation/native";
+import { CommonActions } from "@react-navigation/native";
+import { LogoutIcon } from "../Utility/iconLibrary";
 
 const Stack = createNativeStackNavigator();
 
@@ -74,7 +75,17 @@ const StackNavigation = ({ navigation }) => {
           });
       }
     } else {
-      navigation.navigate("Welcome");
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [
+            {
+              name: "Welcome",
+            },
+          ],
+        })
+      );
+      // navigation.replace("Welcome");
     }
   }, [auth]);
 
@@ -137,7 +148,18 @@ const StackNavigation = ({ navigation }) => {
       <Stack.Screen
         name="searchCity"
         component={SearchCity}
-        options={{ headerTitle: "Search City" }}
+        options={{
+          headerTitle: "Search City",
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(logout());
+              }}
+            >
+              <LogoutIcon color={"#fff"} size={20} />
+            </TouchableOpacity>
+          ),
+        }}
       />
       <Stack.Screen
         name="GetReady"

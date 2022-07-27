@@ -22,13 +22,14 @@ const AadharOrPanUpload = ({ navigation }) => {
     useState("No choosen file");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  console.log(user.documents);
+
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
   const [adhaarOrPan, setAdhaarOrPan] = useState({
     front: "",
     back: "",
     adhaarOrPanNumber: "",
   });
+
   useEffect(() => {
     if (user.documents.AADHAAR_upload_status === 1) {
       const frontImageUrl = user.documents.AADHAAR_front_image;
@@ -37,15 +38,14 @@ const AadharOrPanUpload = ({ navigation }) => {
       const backImageUrl = user.documents.AADHAAR_back_image;
       const backImageName = backImageUrl.split("_")[1];
       setIsChoosenBackFile(backImageName);
-      const adhaarNo = user.documents.AADHAAR_number;
-      console.log(adhaarNo);
       setAdhaarOrPan({
         front: frontImageUrl,
         back: backImageUrl,
-        adhaarOrPanNumber: adhaarNo,
+        adhaarOrPanNumber: user.documents.AADHAAR_number,
       });
     }
   }, [user]);
+
   const onDocumentPicked = (type, uri) => {
     if (type === "FRONT") {
       setIsChoosenFrontFile(uri.key);
@@ -205,7 +205,7 @@ const AadharOrPanUpload = ({ navigation }) => {
               setAdhaarOrPan({ ...adhaarOrPan, adhaarOrPanNumber: e });
             }}
             mode="outlined"
-            defaultValue={adhaarOrPan.adhaarOrPanNumber}
+            value={adhaarOrPan.adhaarOrPanNumber}
           />
         </View>
         <TouchableOpacity style={styles.submit} onPress={onSubmit}>

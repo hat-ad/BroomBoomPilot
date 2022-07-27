@@ -11,11 +11,14 @@ import { RadioButton, TextInput } from "react-native-paper";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import moment from "moment";
 import Api from "../../Services";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { notify, updateUser } from "../../Redux/Actions/";
+import { useEffect } from "react";
 
 const ProfileDetails = ({ navigation }) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+
   const [firstName, setFirstName] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
   const [lastName, setLastName] = useState("");
@@ -25,6 +28,16 @@ const ProfileDetails = ({ navigation }) => {
   const [dobError, setDobError] = useState("");
   const [gender, setGender] = useState("");
   const [genderError, setGenderError] = useState("");
+
+  useEffect(() => {
+    if (user.pilot.profile_upload_status === 1) {
+      setFirstName(user.pilot.name.split(" ")[0]);
+      setLastName(user.pilot.name.split(" ")[1]);
+      setEmail(user.pilot.email);
+      setGender(user.pilot.gender);
+      setDate(user.pilot.dob);
+    }
+  }, [user]);
 
   const handleSubmit = () => {
     var firstNameValid = false;

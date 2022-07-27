@@ -6,7 +6,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextInput, Portal, Modal } from "react-native-paper";
 import { AppDocumentPicker } from "../../Components";
 import styles from "./styles";
@@ -16,12 +16,14 @@ import {
   InfoCircle,
 } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, notify } from "../../Redux/Actions";
 import Api from "../../Services";
 
 const VehicleRC = ({ navigation }) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+
   const [visible, setVisible] = useState(true);
   const [vehicleType, setVehicleType] = useState("");
   const [isChoosenFrontFile, setIsChoosenFrontFile] =
@@ -32,6 +34,23 @@ const VehicleRC = ({ navigation }) => {
     back: "",
     vehicleRcNumber: "",
   });
+
+  useEffect(() => {
+    if (user.documents.RC_upload_status === 1) {
+      const frontImageUrl = user.documents.vehicle_RC_front_image;
+      const frontImageName = frontImageUrl.split("_")[1];
+      setIsChoosenFrontFile(frontImageName);
+      const backImageUrl = user.documents.vehicle_RC_back_image;
+      const backImageName = backImageUrl.split("_")[1];
+      setIsChoosenBackFile(backImageName);
+      setVehicleRc({
+        front: frontImageUrl,
+        back: backImageUrl,
+        vehicleRcNumber: user.documents.vehicle_RC_Number,
+      });
+      setVehicleType(user.documents.vehicle_type);
+    }
+  }, [user]);
 
   const vehicleTypeEnum = Object.freeze({
     CAR: "Car",
@@ -220,6 +239,7 @@ const VehicleRC = ({ navigation }) => {
             onChangeText={(text) =>
               setVehicleRc({ ...vehicleRc, vehicleRcNumber: text })
             }
+            value={vehicleRc.vehicleRcNumber}
           />
           {/* < InfoCircle /> */}
         </View>

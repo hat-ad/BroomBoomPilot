@@ -12,6 +12,7 @@ const AppDocumentPicker = ({
   onDocumentPicked,
   containerStyle,
   buttonStyle,
+  onError,
 }) => {
   const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -20,36 +21,41 @@ const AppDocumentPicker = ({
     DocumentPicker.getDocumentAsync({
       type: ["image/jpeg", "image/jpg", "application/pdf"],
       copyToCacheDirectory: true,
-    }).then(async (response) => {
-      setLoading(true);
-      const formData = new FormData();
-      formData.append("file", {
-        name: response.name,
-        uri: response.uri,
-        type: response.mimeType,
+    })
+      .then(async (response) => {
+        setLoading(true);
+        const formData = new FormData();
+        formData.append("file", {
+          name: response.name,
+          uri: response.uri,
+          type: response.mimeType,
+        });
+        try {
+          // throw new Error("error");
+          const res = await Axios.post(
+            "http://3.110.168.181:7000/api/v1/upload/single",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+          onError(null);
+          setError("");
+          onDocumentPicked(res.data.data);
+        } catch (error) {
+          onError(error.message);
+          setError("error!");
+          dispatch(
+            notify({ message: "Error uploading document", type: "error" })
+          );
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
       });
-      try {
-        // throw new Error("error");
-        const res = await Axios.post(
-          "http://3.110.168.181:7000/api/v1/upload/single",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        setError("");
-        onDocumentPicked(res.data.data);
-      } catch (error) {
-        setError("error!");
-        dispatch(
-          notify({ message: "Error uploading document", type: "error" })
-        );
-      }
-      setLoading(false);
-    });
   };
   return (
     <>
