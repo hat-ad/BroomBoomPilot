@@ -17,7 +17,7 @@ const InitialScreen = ({ setState, city, navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchingContainer}>
-        <ArrowIcon style={{ marginRight: 250, marginTop: 10 }} />
+        {/* <ArrowIcon style={{ marginRight: 250, marginTop: 10 }} /> */}
         <GroupIcon style={{ height: 150, width: 300, marginTop: 20 }} />
 
         <Text style={styles.chooseCityText}>
