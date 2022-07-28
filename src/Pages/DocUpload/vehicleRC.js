@@ -36,7 +36,7 @@ const VehicleRC = ({ navigation }) => {
   });
 
   useEffect(() => {
-    if (user.documents.RC_upload_status === 1) {
+    if (user?.documents?.RC_upload_status === 1) {
       const frontImageUrl = user.documents.vehicle_RC_front_image;
       const frontImageName = frontImageUrl.split("_")[1];
       setIsChoosenFrontFile(frontImageName);

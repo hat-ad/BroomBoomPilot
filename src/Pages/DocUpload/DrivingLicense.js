@@ -31,7 +31,7 @@ const DrivingLicense = ({ navigation }) => {
   });
 
   useEffect(() => {
-    if (user.documents.DL_upload_status === 1) {
+    if (user?.documents?.DL_upload_status === 1) {
       const frontImageUrl = user.documents.DL_front_image;
       const frontImageName = frontImageUrl.split("_")[1];
       setIsChoosenFrontFile(frontImageName);

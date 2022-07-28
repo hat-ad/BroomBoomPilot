@@ -31,7 +31,7 @@ const AadharOrPanUpload = ({ navigation }) => {
   });
 
   useEffect(() => {
-    if (user.documents.AADHAAR_upload_status === 1) {
+    if (user?.documents?.AADHAAR_upload_status === 1) {
       const frontImageUrl = user.documents.AADHAAR_front_image;
       const frontImageName = frontImageUrl.split("_")[1];
       setIsChoosenFrontFile(frontImageName);
@@ -112,7 +112,7 @@ const AadharOrPanUpload = ({ navigation }) => {
       keyboardVerticalOffset={metrics.verticalScale(150)}
     >
       <View style={styles.container}>
-        <Text style={styles.heading}>Select One</Text>
+        <Text style={styles.heading}>Upload Aadhar Card Image</Text>
         {/* <RadioButton.Group
           onValueChange={(value) => setDocType(value)}
           value={docType}

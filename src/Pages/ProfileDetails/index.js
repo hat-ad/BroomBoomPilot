@@ -30,7 +30,7 @@ const ProfileDetails = ({ navigation }) => {
   const [genderError, setGenderError] = useState("");
 
   useEffect(() => {
-    if (user.pilot.profile_upload_status === 1) {
+    if (user?.pilot?.profile_upload_status === 1) {
       setFirstName(user.pilot.name.split(" ")[0]);
       setLastName(user.pilot.name.split(" ")[1]);
       setEmail(user.pilot.email);
