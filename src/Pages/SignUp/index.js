@@ -127,14 +127,25 @@ const SignUp = ({ navigation }) => {
               style={{ color: "blue" }}
               onPress={() => Linking.openURL("#")}
             >
-              terms{" "}
+              terms {""}
             </Text>
-            & conditions{" "}
             <Text
               style={{ color: "blue" }}
               onPress={() => Linking.openURL("#")}
             >
-              and privacy policy{" "}
+              & conditions {""}
+            </Text>
+            <Text
+              style={{ color: "blue", textAlign: "left" }}
+              onPress={() => Linking.openURL("#")}
+            >
+              and {""}
+            </Text>
+            <Text
+              style={{ color: "blue" }}
+              onPress={() => Linking.openURL("#")}
+            >
+              privacy policy {""}
             </Text>
             of BroomBoom Pilot
           </Text>

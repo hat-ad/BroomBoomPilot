@@ -41,8 +41,8 @@ const AddReferral = ({ navigation }) => {
         <Text style={styles.text}>Hello Pilot!</Text>
         <Text style={styles.textP}>Have a Referral code?</Text>
         <Text style={styles.textP}>
-          Get upto ₹100 as referral joining bonus. Bonus will be added into your
-          wallet soon.
+          Get upto ₹100 as referral bonus. Bonus will be added into your wallet
+          soon.
         </Text>
         <Image source={require("../../../assets/reward.png")} />
         <View style={styles.inputContainer}>
