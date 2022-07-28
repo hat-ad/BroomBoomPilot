@@ -83,7 +83,6 @@ const AadharOrPanUpload = ({ navigation }) => {
 
       const response = await Api.post("/pilot/doc-upload", payload);
       if (response.status === 1) {
-        console.log("response", response);
         dispatch(getUserDetails());
 
         navigation.navigate("docUpload");

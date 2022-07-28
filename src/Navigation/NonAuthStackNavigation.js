@@ -40,7 +40,6 @@ const StackNavigation = ({ navigation }) => {
         getUserDetails()
           .then((res) => {
             const { data: user } = res;
-            console.log(user);
             dispatch(updateUser(user));
             if (
               !user.documents ||
@@ -65,7 +64,6 @@ const StackNavigation = ({ navigation }) => {
             }
           })
           .catch((err) => {
-            console.log(err);
             dispatch(
               notify({
                 message: "Cannot get user details!Please try again later",

@@ -5,7 +5,7 @@ if (__DEV__) {
     "EventEmitter.removeListener",
     "[fuego-swr-keys-from-collection-path]",
     "Setting a timer for a long period of time",
-    "ViewPropTypes will be removed from React Native",
+    "ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from 'deprecated-react-native-prop-types'",
     "AsyncStorage has been extracted from react-native",
     "exported from 'deprecated-react-native-prop-types'.",
     "Non-serializable values were found in the navigation state.",

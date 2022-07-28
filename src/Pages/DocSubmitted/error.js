@@ -12,7 +12,6 @@ const Error = ({ navigation }) => {
   const reSubmit = async () => {
     try {
       const res = await Api.get("/pilot/resubmit-document");
-      console.log("ressub", res);
       if (res.status === 1) {
         navigation.replace("searchCity");
         return;

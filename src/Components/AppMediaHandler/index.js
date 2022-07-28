@@ -71,7 +71,6 @@ const AppMediaHandler = ({
               const result = launchCamera({}, (e) => {
                 console.log(e);
               });
-              console.log(result);
             }}
           >
             <CameraIcon size={50} />
