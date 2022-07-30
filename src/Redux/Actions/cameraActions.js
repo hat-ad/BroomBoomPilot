@@ -19,7 +19,7 @@ export const captureSuccess = (payload) => {
       try {
         // throw new Error("error");
         const res = await Axios.post(
-          "http://192.168.0.106:7000/api/v1/upload/single",
+          "http://3.110.168.181:7000/api/v1/upload/single",
           formData,
           {
             headers: {
