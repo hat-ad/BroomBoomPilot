@@ -43,7 +43,7 @@ const ReferAndEarn = () => {
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message: `Hurry! You're invited to be a Broomboom Pilot.Please use the below coupon code during registration and earn broomboom coins.Referral Code: ${referralCode}.\nYou can dowload the app from this link:https://bit.ly/3zu4kiW`,
+        message: `Hurry! You're invited to be a Broomboom Pilot.Please use the below coupon code during registration and earn broomboom coins.Referral Code: ${referralCode}.\nYou can download the app from this link:https://bit.ly/3zu4kiW`,
       });
       // if (result.action === Share.sharedAction) {
       //   if (result.activityType) {
