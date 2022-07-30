@@ -35,7 +35,7 @@ const ReferAndEarn = () => {
 
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(
-      `Hurry! You're invited to be a Broomboom Pilot.Please use the below coupon code during registration and earn broomboom coins.Referral Code: ${referralCode}.\nYou can dowload the app from this link:https://bit.ly/3zu4kiW
+      `Hurry! You're invited to be a Broomboom Pilot.Please use the below coupon code during registration and earn broomboom coins.Referral Code: ${referralCode}.\nYou can download the app from this link:https://bit.ly/3zu4kiW
       `
     );
   };
@@ -60,63 +60,65 @@ const ReferAndEarn = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        INVITE YOUR FRIEND AND EARN UPTO 100 BROOMBOOM COINS
-      </Text>
-      <Image
-        source={{
-          uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315253_referAndEarn.png",
-        }}
-        style={styles.img}
-        resizeMode="contain"
-      />
-      <Text style={styles.subTitle}>
-        COPY & SEND THE CODE TO YOUR FRIEND TO REGISTER AND EARN NOW
-      </Text>
-      <View style={styles.copyCodeContainer}>
-        <Text style={styles.copyCodeText}>{referralCode}</Text>
-        <TouchableOpacity onPress={copyToClipboard}>
-          <CopyIcon />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.inviteTextContainer}>
-        <View style={styles.row}>
-          <GiftIcon />
-          <Text style={styles.inviteText}>Invite Friends to Broomboom</Text>
+    <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
+      <View style={styles.container}>
+        <Text style={styles.title}>
+          INVITE YOUR FRIEND AND EARN UPTO 100 BROOMBOOM COINS
+        </Text>
+        <Image
+          source={{
+            uri: "https://broomboomimages.s3.ap-south-1.amazonaws.com/1657284315253_referAndEarn.png",
+          }}
+          style={styles.img}
+          resizeMode="contain"
+        />
+        <Text style={styles.subTitle}>
+          COPY & SEND THE CODE TO YOUR FRIEND TO REGISTER AND EARN NOW
+        </Text>
+        <View style={styles.copyCodeContainer}>
+          <Text style={styles.copyCodeText}>{referralCode}</Text>
+          <TouchableOpacity onPress={copyToClipboard}>
+            <CopyIcon />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={onShare}>
-          <Text style={styles.link}>Invite</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{ paddingHorizontal: 30 }}>
-        <Text style={styles.stepsTitle}>Steps</Text>
-        <View style={styles.stepsBorder1} />
-        <View style={styles.row}>
-          <View style={styles.stepsCounterContainer}>
-            <Text style={styles.stepsCounterText}>1</Text>
+        <View style={styles.inviteTextContainer}>
+          <View style={styles.row}>
+            <GiftIcon />
+            <Text style={styles.inviteText}>Invite Friends to Broomboom</Text>
           </View>
-          <View>
-            <Text style={styles.stepsCounterTitle}>
-              YOUR FRIEND REGISTERED WITH US
-            </Text>
-            <Text style={styles.mutedText}>YOUR EARNING ₹0 </Text>
+          <TouchableOpacity onPress={onShare}>
+            <Text style={styles.link}>Invite</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ paddingHorizontal: 30 }}>
+          <Text style={styles.stepsTitle}>Steps</Text>
+          <View style={styles.stepsBorder1} />
+          <View style={styles.row}>
+            <View style={styles.stepsCounterContainer}>
+              <Text style={styles.stepsCounterText}>1</Text>
+            </View>
+            <View>
+              <Text style={styles.stepsCounterTitle}>
+                YOUR FRIEND REGISTERED WITH US
+              </Text>
+              <Text style={styles.mutedText}>YOUR EARNING ₹0 </Text>
+            </View>
+          </View>
+          <View style={styles.stepsBorder2} />
+          <View style={styles.row}>
+            <View style={styles.stepsCounterContainer}>
+              <Text style={styles.stepsCounterText}>2</Text>
+            </View>
+            <View>
+              <Text style={styles.stepsCounterTitle}>
+                YOUR FRIEND COMPLETES FIRST 10 RIDES
+              </Text>
+              <Text style={styles.mutedText}>YOU EARN 100 BROOMBOOM COINS</Text>
+            </View>
           </View>
         </View>
-        <View style={styles.stepsBorder2} />
-        <View style={styles.row}>
-          <View style={styles.stepsCounterContainer}>
-            <Text style={styles.stepsCounterText}>2</Text>
-          </View>
-          <View>
-            <Text style={styles.stepsCounterTitle}>
-              YOUR FRIEND COMPLETES FIRST 10 RIDES
-            </Text>
-            <Text style={styles.mutedText}>YOU EARN 100 BROOMBOOM COINS</Text>
-          </View>
-        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
