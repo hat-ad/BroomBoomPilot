@@ -6,14 +6,15 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native-paper";
-import { AppDocumentPicker } from "../../Components";
+import { AppDocumentUploader, AppMediaHandler } from "../../Components";
 import styles from "./styles";
-import { DeleteIcon } from "../../Utility/iconLibrary";
+import { DeleteIcon, UploadIcon } from "../../Utility/iconLibrary";
 import metrics from "../../Utility/metrics";
 import { RadioButton } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, notify } from "../../Redux/Actions";
 import Api from "../../Services";
+import { captureReset } from "../../Redux/Actions/cameraActions";
 
 // import matrics from "../../Utility/metrics";
 
@@ -22,6 +23,7 @@ const AadharOrPanUpload = ({ navigation }) => {
     useState("No choosen file");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const camera = useSelector((state) => state.camera);
 
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
   const [adhaarOrPan, setAdhaarOrPan] = useState({
@@ -29,6 +31,22 @@ const AadharOrPanUpload = ({ navigation }) => {
     back: "",
     adhaarOrPanNumber: "",
   });
+  const [error, setError] = useState("");
+  const [isShowModal, setShowModal] = useState(false);
+  const [activePhase, setActivePhase] = useState("FRONT");
+
+  useEffect(() => {
+    if (camera?.data) {
+      if (activePhase === "FRONT") {
+        setAdhaarOrPan({ ...adhaarOrPan, front: camera.data.Location });
+        setIsChoosenFrontFile(camera.data.key);
+      } else {
+        setAdhaarOrPan({ ...adhaarOrPan, back: camera.data.Location });
+        setIsChoosenBackFile(camera.data.key);
+      }
+      dispatch(captureReset());
+    }
+  }, [camera]);
 
   useEffect(() => {
     if (user?.documents?.AADHAAR_upload_status === 1) {
@@ -113,33 +131,21 @@ const AadharOrPanUpload = ({ navigation }) => {
     >
       <View style={styles.container}>
         <Text style={styles.heading}>Upload Aadhar Card Image</Text>
-        {/* <RadioButton.Group
-          onValueChange={(value) => setDocType(value)}
-          value={docType}
-        >
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <RadioButton value="AADHAAR" />
-              <Text>Aadhar Card</Text>
-            </View>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <RadioButton value="PAN" />
-              <Text>Pan Card</Text>
-            </View>
-          </View>
-        </RadioButton.Group> */}
-
         <View style={{ marginTop: 20 }}>
           <Text style={styles.title}>Front</Text>
           <Text style={styles.muted}>Supported files PDF, JPG, PNG</Text>
           <View style={styles.uploadContainer}>
-            <AppDocumentPicker
-              title={"upload"}
-              onDocumentPicked={(e) => onDocumentPicked("FRONT", e)}
-              buttonStyle={styles.pickerButton}
-              containerStyle={styles.pickerContainer}
+            <AppDocumentUploader
+              pickerContainer={styles.pickerContainer}
+              pickerButton={styles.pickerButton}
+              onUploadPressed={() => {
+                setShowModal(true);
+                setActivePhase("FRONT");
+              }}
+              defaultPhase={"FRONT"}
+              activePhase={activePhase}
+              error={error}
+              isLoading={camera.isLoading}
             />
             <Text
               style={{
@@ -165,11 +171,17 @@ const AadharOrPanUpload = ({ navigation }) => {
           <Text style={styles.title}>Back</Text>
           <Text style={styles.muted}>Supported files PDF, JPG, PNG</Text>
           <View style={styles.uploadContainer}>
-            <AppDocumentPicker
-              title={"upload"}
-              onDocumentPicked={(e) => onDocumentPicked("BACK", e)}
-              buttonStyle={styles.pickerButton}
-              containerStyle={styles.pickerContainer}
+            <AppDocumentUploader
+              pickerContainer={styles.pickerContainer}
+              pickerButton={styles.pickerButton}
+              onUploadPressed={() => {
+                setShowModal(true);
+                setActivePhase("BACK");
+              }}
+              defaultPhase={"BACK"}
+              activePhase={activePhase}
+              error={error}
+              isLoading={camera.isLoading}
             />
             <Text
               style={{
@@ -211,6 +223,12 @@ const AadharOrPanUpload = ({ navigation }) => {
           <Text style={styles.centerText}>Submit</Text>
         </TouchableOpacity>
       </View>
+      <AppMediaHandler
+        isShowModal={isShowModal}
+        setShowModal={setShowModal}
+        onDocumentPicked={(e) => onDocumentPicked(activePhase, e)}
+        onError={(e) => setError(e)}
+      />
     </KeyboardAvoidingView>
   );
 };

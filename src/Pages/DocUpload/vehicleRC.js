@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { TextInput, Portal, Modal } from "react-native-paper";
-import { AppDocumentPicker } from "../../Components";
+import { AppDocumentUploader, AppMediaHandler } from "../../Components";
 import styles from "./styles";
 import {
   DeleteIcon,
@@ -19,10 +19,12 @@ import metrics from "../../Utility/metrics";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, notify } from "../../Redux/Actions";
 import Api from "../../Services";
+import { captureReset } from "../../Redux/Actions/cameraActions";
 
 const VehicleRC = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const camera = useSelector((state) => state.camera);
 
   const [visible, setVisible] = useState(true);
   const [vehicleType, setVehicleType] = useState("");
@@ -34,6 +36,22 @@ const VehicleRC = ({ navigation }) => {
     back: "",
     vehicleRcNumber: "",
   });
+  const [error, setError] = useState("");
+  const [isShowModal, setShowModal] = useState(false);
+  const [activePhase, setActivePhase] = useState("FRONT");
+
+  useEffect(() => {
+    if (camera?.data) {
+      if (activePhase === "FRONT") {
+        setVehicleRc({ ...vehicleRc, front: camera.data.Location });
+        setIsChoosenFrontFile(camera.data.key);
+      } else {
+        setVehicleRc({ ...vehicleRc, back: camera.data.Location });
+        setIsChoosenBackFile(camera.data.key);
+      }
+      dispatch(captureReset());
+    }
+  }, [camera]);
 
   useEffect(() => {
     if (user?.documents?.RC_upload_status === 1) {
@@ -164,12 +182,17 @@ const VehicleRC = ({ navigation }) => {
           <Text style={styles.title}>Front</Text>
           <Text style={styles.muted}>Supported files PDF, JPG, PNG</Text>
           <View style={styles.uploadContainer}>
-            <AppDocumentPicker
-              title={"upload"}
-              onDocumentPicked={(e) => onDocumentPicked("FRONT", e)}
-              buttonStyle={styles.pickerButton}
-              containerStyle={styles.pickerContainer}
-              setIsChoosenFile={setIsChoosenFrontFile}
+            <AppDocumentUploader
+              pickerContainer={styles.pickerContainer}
+              pickerButton={styles.pickerButton}
+              onUploadPressed={() => {
+                setShowModal(true);
+                setActivePhase("FRONT");
+              }}
+              defaultPhase={"FRONT"}
+              activePhase={activePhase}
+              error={error}
+              isLoading={camera.isLoading}
             />
             <Text
               style={{
@@ -197,12 +220,17 @@ const VehicleRC = ({ navigation }) => {
           <Text style={styles.title}>Back</Text>
           <Text style={styles.muted}>Supported files PDF, JPG, PNG</Text>
           <View style={styles.uploadContainer}>
-            <AppDocumentPicker
-              title={"upload"}
-              onDocumentPicked={(e) => onDocumentPicked("BACK", e)}
-              buttonStyle={styles.pickerButton}
-              containerStyle={styles.pickerContainer}
-              setIsChoosenFile={setIsChoosenBackFile}
+            <AppDocumentUploader
+              pickerContainer={styles.pickerContainer}
+              pickerButton={styles.pickerButton}
+              onUploadPressed={() => {
+                setShowModal(true);
+                setActivePhase("BACK");
+              }}
+              defaultPhase={"BACK"}
+              activePhase={activePhase}
+              error={error}
+              isLoading={camera.isLoading}
             />
             <Text
               style={{
@@ -331,6 +359,12 @@ const VehicleRC = ({ navigation }) => {
           </Modal>
         </Portal>
       </View>
+      <AppMediaHandler
+        isShowModal={isShowModal}
+        setShowModal={setShowModal}
+        onDocumentPicked={(e) => onDocumentPicked(activePhase, e)}
+        onError={(e) => setError(e)}
+      />
     </KeyboardAvoidingView>
   );
 };

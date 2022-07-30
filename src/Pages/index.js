@@ -22,6 +22,7 @@ import Faq from "./Faq";
 import ProfileDetails from "./ProfileDetails";
 import AddReferral from "./AddReferral";
 import ViewAllTickets from "./HelpAndSupport/viewAllTickets";
+import Camera from "./Camera";
 export {
   Welcome,
   Language,
@@ -47,4 +48,5 @@ export {
   ProfileDetails,
   AddReferral,
   ViewAllTickets,
+  Camera,
 };
