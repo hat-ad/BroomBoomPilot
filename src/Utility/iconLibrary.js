@@ -141,3 +141,6 @@ export const LogoutIcon = ({ size, color, style }) => (
     size={size}
   />
 );
+export const CheckIcon = ({ size, color, style }) => (
+  <FontAwesomeIcon icon={"check"} color={color} style={style} size={size} />
+);

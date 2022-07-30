@@ -22,6 +22,7 @@ import {
   faCamera,
   faImage,
   faRightFromBracket,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -45,5 +46,6 @@ library.add(
   faXmark,
   faCamera,
   faImage,
-  faRightFromBracket
+  faRightFromBracket,
+  faCheck
 );

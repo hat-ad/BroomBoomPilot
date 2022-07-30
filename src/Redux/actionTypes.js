@@ -10,3 +10,9 @@ export const POP_REQUEST = "POP_REQUEST";
 // Notification
 export const NOTIFY = "NOTIFY";
 export const HIDE = "HIDE";
+
+// Camera
+export const CAMERA_CAPTURE_SUCCESS = "CAMERA_CAPTURE_SUCCESS";
+export const CAMERA_CAPTURE_FAILURE = "CAMERA_CAPTURE_FAILURE";
+export const CAMERA_CAPTURE_RESET = "CAMERA_CAPTURE_RESET";
+export const MEDIA_UPLOAD_LOADER = "MEDIA_UPLOAD_LOADER";

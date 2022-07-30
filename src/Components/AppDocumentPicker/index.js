@@ -12,7 +12,6 @@ const AppDocumentPicker = ({
   onDocumentPicked,
   containerStyle,
   buttonStyle,
-  onError,
 }) => {
   const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -41,11 +40,10 @@ const AppDocumentPicker = ({
               },
             }
           );
-          onError(null);
           setError("");
+          console.log(res.data.data);
           onDocumentPicked(res.data.data);
         } catch (error) {
-          onError(error.message);
           setError("error!");
           dispatch(
             notify({ message: "Error uploading document", type: "error" })

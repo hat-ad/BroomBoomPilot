@@ -18,6 +18,7 @@ import {
   SearchCity,
   ProfileDetails,
   AddReferral,
+  Camera,
 } from "../Pages";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -159,6 +160,7 @@ const StackNavigation = ({ navigation }) => {
           ),
         }}
       />
+
       <Stack.Screen
         name="GetReady"
         options={{
@@ -197,6 +199,11 @@ const StackNavigation = ({ navigation }) => {
         name="profileDetails"
         component={ProfileDetails}
         options={{ headerTitle: "Profile Details" }}
+      />
+      <Stack.Screen
+        name="camera"
+        component={Camera}
+        options={{ header: () => null }}
       />
       {/* </>
       ) : (

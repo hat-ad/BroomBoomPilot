@@ -8,6 +8,8 @@ import { notify } from "../../Redux/Actions";
 import { useDispatch } from "react-redux";
 import Axios from "axios";
 import { launchCamera, launchImageLibrary } from "react-native-image-picker";
+import { useNavigation } from "@react-navigation/native";
+import { mediaUploadLoader } from "../../Redux/Actions/cameraActions";
 
 const AppMediaHandler = ({
   isShowModal,
@@ -15,10 +17,12 @@ const AppMediaHandler = ({
   onDocumentPicked,
   onError,
 }) => {
+  const navigation = useNavigation();
   const [animateModal, setanimateModal] = useState(false);
   const dispatch = useDispatch();
 
   const handleDocumentSelection = () => {
+    dispatch(mediaUploadLoader(true));
     DocumentPicker.getDocumentAsync({
       type: ["image/jpeg", "image/jpg", "application/pdf"],
       copyToCacheDirectory: true,
@@ -30,7 +34,6 @@ const AppMediaHandler = ({
         type: response.mimeType,
       });
       try {
-        // throw new Error("error");
         const res = await Axios.post(
           "http://3.110.168.181:7000/api/v1/upload/single",
           formData,
@@ -41,11 +44,11 @@ const AppMediaHandler = ({
           }
         );
         onError(null);
-        // setError("");
         onDocumentPicked(res.data.data);
+        dispatch(mediaUploadLoader(false));
       } catch (error) {
         onError(error.message);
-        // setError("error!");
+        dispatch(mediaUploadLoader(false));
         dispatch(
           notify({ message: "Error uploading document", type: "error" })
         );
@@ -68,9 +71,8 @@ const AppMediaHandler = ({
               alignItems: "center",
             }}
             onPress={() => {
-              const result = launchCamera({}, (e) => {
-                console.log(e);
-              });
+              setShowModal(false);
+              navigation.navigate("camera");
             }}
           >
             <CameraIcon size={50} />

@@ -4,18 +4,20 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  Button,
 } from "react-native";
 import React, { useState } from "react";
 import { TextInput } from "react-native-paper";
-import { AppDocumentPicker, AppMediaHandler } from "../../Components";
+import { AppDocumentUploader, AppMediaHandler } from "../../Components";
 import styles from "./styles";
-import { DeleteIcon, UploadIcon } from "../../Utility/iconLibrary";
+import { DeleteIcon } from "../../Utility/iconLibrary";
 import Api from "../../Services";
 import { useDispatch, useSelector } from "react-redux";
 import { notify } from "../../Redux/Actions/notificationActions";
 import metrics from "../../Utility/metrics";
 import { getUserDetails } from "../../Redux/Actions";
 import { useEffect } from "react";
+import { captureReset } from "../../Redux/Actions/cameraActions";
 
 const DrivingLicense = ({ navigation }) => {
   const [isChoosenFrontFile, setIsChoosenFrontFile] =
@@ -23,6 +25,9 @@ const DrivingLicense = ({ navigation }) => {
   const [isChoosenBackFile, setIsChoosenBackFile] = useState("No choosen file");
   const [isShowModal, setShowModal] = useState(false);
   const user = useSelector((state) => state.auth.user);
+  const camera = useSelector((state) => state.camera);
+  const [activePhase, setActivePhase] = useState("FRONT");
+  const [error, setError] = useState("");
 
   const [licenseCreds, setLicenseCreds] = useState({
     licenseNumber: "",
@@ -31,7 +36,20 @@ const DrivingLicense = ({ navigation }) => {
   });
 
   useEffect(() => {
-    if (user.documents.DL_upload_status === 1) {
+    if (camera?.data) {
+      if (activePhase === "FRONT") {
+        setLicenseCreds({ ...licenseCreds, front: camera.data.Location });
+        setIsChoosenFrontFile(camera.data.key);
+      } else {
+        setLicenseCreds({ ...licenseCreds, back: camera.data.Location });
+        setIsChoosenBackFile(camera.data.key);
+      }
+      dispatch(captureReset());
+    }
+  }, [camera]);
+
+  useEffect(() => {
+    if (user?.documents?.DL_upload_status === 1) {
       const frontImageUrl = user.documents.DL_front_image;
       const frontImageName = frontImageUrl.split("_")[1];
       setIsChoosenFrontFile(frontImageName);
@@ -121,11 +139,17 @@ const DrivingLicense = ({ navigation }) => {
           <Text style={styles.title}>Front</Text>
           <Text style={styles.muted}>Supported files PDF, JPG, PNG</Text>
           <View style={styles.uploadContainer}>
-            <AppDocumentPicker
-              title={"upload"}
-              onDocumentPicked={(e) => onDocumentPicked("FRONT", e)}
-              buttonStyle={styles.pickerButton}
-              containerStyle={styles.pickerContainer}
+            <AppDocumentUploader
+              pickerContainer={styles.pickerContainer}
+              pickerButton={styles.pickerButton}
+              onUploadPressed={() => {
+                setShowModal(true);
+                setActivePhase("FRONT");
+              }}
+              defaultPhase={"FRONT"}
+              activePhase={activePhase}
+              error={error}
+              isLoading={camera.isLoading}
             />
             <Text
               style={{
@@ -153,31 +177,17 @@ const DrivingLicense = ({ navigation }) => {
           <Text style={styles.title}>Back</Text>
           <Text style={styles.muted}>Supported files PDF, JPG, PNG</Text>
           <View style={styles.uploadContainer}>
-            {/* <View style={styles.pickerContainer}>
-              <TouchableOpacity
-                style={[styles.pickerButton]}
-                onPress={() => setShowModal(true)}
-              >
-                <UploadIcon size={18} color="white" />
-                <Text
-                  style={{
-                    textAlign: "center",
-                    fontSize: 16,
-                    fontWeight: "600",
-                    color: "white",
-                    marginLeft: 8,
-                  }}
-                >
-                  Upload
-                </Text>
-              </TouchableOpacity>
-            </View> */}
-            <AppDocumentPicker
-              title={"upload"}
-              onDocumentPicked={(e) => onDocumentPicked("BACK", e)}
-              buttonStyle={styles.pickerButton}
-              containerStyle={styles.pickerContainer}
-              setIsChoosenFile={setIsChoosenBackFile}
+            <AppDocumentUploader
+              pickerContainer={styles.pickerContainer}
+              pickerButton={styles.pickerButton}
+              onUploadPressed={() => {
+                setShowModal(true);
+                setActivePhase("BACK");
+              }}
+              defaultPhase={"BACK"}
+              activePhase={activePhase}
+              error={error}
+              isLoading={camera.isLoading}
             />
             <Text
               style={{
@@ -221,7 +231,12 @@ const DrivingLicense = ({ navigation }) => {
           <Text style={styles.centerText}>Submit</Text>
         </TouchableOpacity>
       </View>
-      {/* <AppMediaHandler isShowModal={isShowModal} setShowModal={setShowModal} /> */}
+      <AppMediaHandler
+        isShowModal={isShowModal}
+        setShowModal={setShowModal}
+        onDocumentPicked={(e) => onDocumentPicked(activePhase, e)}
+        onError={(e) => setError(e)}
+      />
     </KeyboardAvoidingView>
   );
 };
