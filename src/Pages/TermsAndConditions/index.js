@@ -7,7 +7,7 @@ const TermsAndConditions = () => {
     <ScrollView>
       <View style={styles.container}>
         <View>
-          <Text style={styles.header}>TAXI CUSTOMER TERMS AND CONDITIONS</Text>
+          <Text style={styles.header}>TERMS AND CONDITIONS</Text>
         </View>
         <View>
           <Text style={styles.paragraph}>

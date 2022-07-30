@@ -24,7 +24,7 @@ const HelpAndSupport = ({ navigation }) => {
               FAQs
             </Text>
             <Text style={{ fontSize: 12, color: "#aaa", fontWeight: "600" }}>
-              Some long long text here{" "}
+              Get answers to your general queries.
             </Text>
             <TouchableOpacity
               style={{ marginTop: metrics.verticalScale(10) }}
@@ -75,7 +75,7 @@ const HelpAndSupport = ({ navigation }) => {
               Contact 24x7 Help
             </Text>
             <Text style={{ fontSize: 12, color: "#aaa", fontWeight: "600" }}>
-              Our excutive will help solve your problem
+              Connect with Broomboom team
             </Text>
             <TouchableOpacity
               style={{ marginTop: metrics.verticalScale(10) }}
