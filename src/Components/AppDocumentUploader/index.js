@@ -14,10 +14,7 @@ const AppDocumentUploader = ({
   return (
     <View style={pickerContainer}>
       <TouchableOpacity
-        style={[
-          pickerButton,
-          error && defaultPhase === activePhase && { backgroundColor: "red" },
-        ]}
+        style={[pickerButton, error && { backgroundColor: "red" }]}
         onPress={onUploadPressed}
         disabled={isLoading}
       >

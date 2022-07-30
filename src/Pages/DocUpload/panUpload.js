@@ -31,7 +31,8 @@ const AadharOrPanUpload = ({ navigation }) => {
     back: "",
     adhaarOrPanNumber: "",
   });
-  const [error, setError] = useState("");
+  const [errorFront, setErrorFront] = useState(false);
+  const [errorBack, setErrorBack] = useState(false);
   const [isShowModal, setShowModal] = useState(false);
   const [activePhase, setActivePhase] = useState("FRONT");
 
@@ -46,6 +47,11 @@ const AadharOrPanUpload = ({ navigation }) => {
       }
       dispatch(captureReset());
     }
+    if (camera?.error && !camera.isLoading)
+      activePhase === "FRONT" ? setErrorFront(true) : setErrorBack(true);
+    return () => {
+      dispatch(captureReset());
+    };
   }, [camera]);
 
   useEffect(() => {
@@ -145,7 +151,7 @@ const AadharOrPanUpload = ({ navigation }) => {
               }}
               defaultPhase={"FRONT"}
               activePhase={activePhase}
-              error={error}
+              error={errorFront}
               isLoading={camera.isLoading}
             />
             <Text
@@ -181,7 +187,7 @@ const AadharOrPanUpload = ({ navigation }) => {
               }}
               defaultPhase={"BACK"}
               activePhase={activePhase}
-              error={error}
+              error={errorBack}
               isLoading={camera.isLoading}
             />
             <Text
@@ -228,7 +234,10 @@ const AadharOrPanUpload = ({ navigation }) => {
         isShowModal={isShowModal}
         setShowModal={setShowModal}
         onDocumentPicked={(e) => onDocumentPicked(activePhase, e)}
-        onError={(e) => setError(e)}
+        onError={(e) => {
+          dispatch(captureReset());
+          activePhase === "FRONT" ? setErrorFront(e) : setErrorBack(e);
+        }}
       />
     </KeyboardAvoidingView>
   );

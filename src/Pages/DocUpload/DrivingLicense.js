@@ -27,8 +27,8 @@ const DrivingLicense = ({ navigation }) => {
   const user = useSelector((state) => state.auth.user);
   const camera = useSelector((state) => state.camera);
   const [activePhase, setActivePhase] = useState("FRONT");
-  const [error, setError] = useState("");
-
+  const [errorFront, setErrorFront] = useState(false);
+  const [errorBack, setErrorBack] = useState(false);
   const [licenseCreds, setLicenseCreds] = useState({
     licenseNumber: "",
     front: "",
@@ -46,6 +46,11 @@ const DrivingLicense = ({ navigation }) => {
       }
       dispatch(captureReset());
     }
+    if (camera?.error && !camera.isLoading)
+      activePhase === "FRONT" ? setErrorFront(true) : setErrorBack(true);
+    return () => {
+      dispatch(captureReset());
+    };
   }, [camera]);
 
   useEffect(() => {
@@ -148,7 +153,7 @@ const DrivingLicense = ({ navigation }) => {
               }}
               defaultPhase={"FRONT"}
               activePhase={activePhase}
-              error={error}
+              error={errorFront}
               isLoading={camera.isLoading}
             />
             <Text
@@ -186,7 +191,7 @@ const DrivingLicense = ({ navigation }) => {
               }}
               defaultPhase={"BACK"}
               activePhase={activePhase}
-              error={error}
+              error={errorBack}
               isLoading={camera.isLoading}
             />
             <Text
@@ -235,7 +240,10 @@ const DrivingLicense = ({ navigation }) => {
         isShowModal={isShowModal}
         setShowModal={setShowModal}
         onDocumentPicked={(e) => onDocumentPicked(activePhase, e)}
-        onError={(e) => setError(e)}
+        onError={(e) => {
+          dispatch(captureReset());
+          activePhase === "FRONT" ? setErrorFront(e) : setErrorBack(e);
+        }}
       />
     </KeyboardAvoidingView>
   );

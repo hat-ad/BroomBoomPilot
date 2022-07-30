@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, Button } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import SwipeUpDownModal from "react-native-swipe-modal-up-down";
 import { CameraIcon, GalleryIcon } from "../../Utility/iconLibrary";
@@ -7,7 +7,6 @@ import * as DocumentPicker from "expo-document-picker";
 import { notify } from "../../Redux/Actions";
 import { useDispatch } from "react-redux";
 import Axios from "axios";
-import { launchCamera, launchImageLibrary } from "react-native-image-picker";
 import { useNavigation } from "@react-navigation/native";
 import { mediaUploadLoader } from "../../Redux/Actions/cameraActions";
 
@@ -43,11 +42,11 @@ const AppMediaHandler = ({
             },
           }
         );
-        onError(null);
+        onError(false);
         onDocumentPicked(res.data.data);
         dispatch(mediaUploadLoader(false));
       } catch (error) {
-        onError(error.message);
+        onError(true);
         dispatch(mediaUploadLoader(false));
         dispatch(
           notify({ message: "Error uploading document", type: "error" })
