@@ -12,7 +12,7 @@ export const captureSuccess = (payload) => {
     try {
       const formData = new FormData();
       formData.append("file", {
-        name: new Date().getTime() + "_camera.jpg",
+        name: `camera${new Date().getTime()}.jpg`,
         uri: payload.uri,
         type: "image/jpeg",
       });

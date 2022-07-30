@@ -40,20 +40,22 @@ const AadharOrPanUpload = ({ navigation }) => {
     if (camera?.data) {
       if (activePhase === "FRONT") {
         setAdhaarOrPan({ ...adhaarOrPan, front: camera.data.Location });
-        setIsChoosenFrontFile(camera.data.key);
+        setIsChoosenFrontFile(camera.data.key.split("_")[1]);
       } else {
         setAdhaarOrPan({ ...adhaarOrPan, back: camera.data.Location });
-        setIsChoosenBackFile(camera.data.key);
+        setIsChoosenBackFile(camera.data.key.split("_")[1]);
       }
       dispatch(captureReset());
     }
     if (camera?.error && !camera.isLoading)
       activePhase === "FRONT" ? setErrorFront(true) : setErrorBack(true);
+  }, [camera]);
+
+  useEffect(() => {
     return () => {
       dispatch(captureReset());
     };
-  }, [camera]);
-
+  }, []);
   useEffect(() => {
     if (user?.documents?.PAN_CARD_upload_status === 1) {
       const frontImageUrl = user.documents.PAN_CARD_front_image;
