@@ -78,14 +78,11 @@ const DocUpload = ({ navigation, route }) => {
         <View>
           <TouchableOpacity
             style={styles.boxBtn}
-            onPress={() => navigation.navigate("drivingLicense")}
+            onPress={() => navigation.navigate("profileDetails")}
           >
-            <Image
-              style={{ width: 50, height: 32 }}
-              source={require("../../../assets/Icon/license.png")}
-            />
-            <Text style={styles.box}>Driving License</Text>
-            {user.documents?.DL_upload_status ? (
+            <Image source={require("../../../assets/Icon/profile.png")} />
+            <Text style={styles.box}>Profile Details</Text>
+            {user.pilot?.profile_upload_status ? (
               <CircleCheckIcon
                 style={{ alignSelf: "center" }}
                 color="green"
@@ -113,6 +110,26 @@ const DocUpload = ({ navigation, route }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.boxBtn}
+            onPress={() => navigation.navigate("drivingLicense")}
+          >
+            <Image
+              style={{ width: 50, height: 32 }}
+              source={require("../../../assets/Icon/license.png")}
+            />
+            <Text style={styles.box}>Driving License</Text>
+            {user.documents?.DL_upload_status ? (
+              <CircleCheckIcon
+                style={{ alignSelf: "center" }}
+                color="green"
+                size={20}
+              />
+            ) : (
+              <ArrowRight style={{ alignSelf: "center" }} size={20} />
+            )}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.boxBtn}
             onPress={() => navigation.navigate("aadharUpload")}
           >
             <Image source={require("../../../assets/Icon/aadhaar.png")} />
@@ -135,23 +152,6 @@ const DocUpload = ({ navigation, route }) => {
             <Image source={require("../../../assets/Icon/aadhaar.png")} />
             <Text style={styles.box}>Pan Card</Text>
             {user.documents?.PAN_CARD_upload_status ? (
-              <CircleCheckIcon
-                style={{ alignSelf: "center" }}
-                color="green"
-                size={20}
-              />
-            ) : (
-              <ArrowRight style={{ alignSelf: "center" }} size={20} />
-            )}
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.boxBtn}
-            onPress={() => navigation.navigate("profileDetails")}
-          >
-            <Image source={require("../../../assets/Icon/profile.png")} />
-            <Text style={styles.box}>Profile Details</Text>
-            {user.pilot?.profile_upload_status ? (
               <CircleCheckIcon
                 style={{ alignSelf: "center" }}
                 color="green"

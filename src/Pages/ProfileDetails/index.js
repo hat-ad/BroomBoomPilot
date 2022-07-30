@@ -14,6 +14,7 @@ import Api from "../../Services";
 import { useDispatch, useSelector } from "react-redux";
 import { notify, updateUser } from "../../Redux/Actions/";
 import { useEffect } from "react";
+import { validateEmail } from "../../Utility/common";
 
 const ProfileDetails = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -59,6 +60,8 @@ const ProfileDetails = ({ navigation }) => {
     var emailValid = false;
     if (email.length == 0) {
       setEmailError("Email Is Required");
+    } else if (!validateEmail(email)) {
+      setEmailError("Invalid email id");
     } else {
       setEmailError("");
       emailValid = true;
